@@ -5,11 +5,11 @@
   #
   ##################################################################################################################
 
-  users.users.ryan = {
-    # dashu's authorizedKeys
-    # TODO
-    openssh.authorizedKeys.keys = [
-      "ssh-ed25519 "
-    ];
-  };
+#  users.users.ryan = {
+#    # dashu's authorizedKeys
+#    # TODO
+#    openssh.authorizedKeys.keys = [
+#      "ssh-ed25519 "
+#    ];
+#  };
 }

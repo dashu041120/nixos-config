@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 {
   imports = [
-    ./hardware-configuration.nix
+    #./hardware-configuration.nix
     ./../../modules/core
   ];
 
@@ -28,7 +28,7 @@
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.stable;
     modesetting.enable = true;
-  }
+  };
 
 
   services = {

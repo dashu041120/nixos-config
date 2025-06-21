@@ -44,15 +44,15 @@
 
     # secrets management
     # TODO
-    agenix = {
-      # lock with git commit at 0.15.0
-      url = "github:ryantm/agenix";
-      # replaced with a type-safe reimplementation to get a better error message and less bugs.
-      # url = "github:yourusername/ragenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-      # optionally choose not to download darwin deps (saves some resources on Linux)
-      #inputs.agenix.inputs.darwin.follows = "";
-    };  
+#    agenix = {
+#      # lock with git commit at 0.15.0
+#      url = "github:ryantm/agenix";
+#      # replaced with a type-safe reimplementation to get a better error message and less bugs.
+#      # url = "github:yourusername/ragenix";
+#      inputs.nixpkgs.follows = "nixpkgs";
+#      # optionally choose not to download darwin deps (saves some resources on Linux)
+#      #inputs.agenix.inputs.darwin.follows = "";
+#    };  
 
     nixpak = {
       url = "github:nixpak/nixpak";
@@ -74,16 +74,16 @@
     # my private secrets, it's a private repository, you need to replace it with your own.
     # use ssh protocol to authenticate via ssh-agent/ssh-key, and shallow clone to save time
     # TODO
-    mysecrets = {
-      url = "git+ssh://git@github.com/xxx/nix-secrets.git?shallow=1";
-      flake = false;
-    };
+#    mysecrets = {
+#      url = "git+ssh://git@github.com/xxx/nix-secrets.git?shallow=1";
+#      flake = false;
+#    };
 
     # my wallpapers
-    wallpapers = {
-      url = "github:xxx/wallpapers";
-      flake = false;
-    };
+#    wallpapers = {
+#      url = "github:xxx/wallpapers";
+#      flake = false;
+#    };
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

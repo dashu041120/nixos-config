@@ -8,7 +8,7 @@
     ./bluetooth.nix
     ./garbage_clean.nix
     ./pipewire.nix
-    ./program.nix
+    ./programs.nix
     ./security.nix
     ./services.nix
     ./system.nix

@@ -6,17 +6,17 @@
       xkb.layout = "us,cn";
     };
 
-    displayManager = {
+    xserver.displayManager = {
       lightdm.enable = true;
       gdm.enable = false;
     };
     # Enable auto-login for the specified user
-    displayManager.autoLogin = {
+    xserver.displayManager.autoLogin = {
       enable = false;
       user = "${username}";
     };
     
-    libinput = {
+    xserver.libinput = {
       enable = true;
     };
   };

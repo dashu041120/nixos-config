@@ -9,10 +9,9 @@
     syncthing.enable = true;
 
     # auto mount usb drives
-    udiskie.enable = true;
+    udisks2.enable = true;
     printing.enable = true;
-    cups.enable = true;
-    cups.browsed.enable = true; # enable auto-discovery of printers
+    
     openssh = {
       enable = true;
       settings = {
