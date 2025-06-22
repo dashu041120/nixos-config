@@ -7,16 +7,16 @@
     };
 
     xserver.displayManager = {
-      lightdm.enable = true;
-      gdm.enable = false;
+      lightdm.enable = false;
     };
+    displayManager.gdm.enable = true;
     # Enable auto-login for the specified user
-    xserver.displayManager.autoLogin = {
+    displayManager.autoLogin = {
       enable = false;
       user = "${username}";
     };
     
-    xserver.libinput = {
+    libinput = {
       enable = true;
     };
   };

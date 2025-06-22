@@ -49,8 +49,10 @@
     htop
     btop
     xfce.thunar
-    nixosConfigurationsscrot
+    xfce.thunar-archive-plugin
+    scrot
     sysstat
+    yazi
   ];
 
   time.timeZone = "Asia/Shanghai";

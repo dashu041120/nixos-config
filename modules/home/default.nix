@@ -1,7 +1,7 @@
-# { ... }:
-# {
-#   imports = [
-#     ./home.nix
+{ ... }:
+{
+  imports = [
+    ./home.nix
 #     # TODO
 #     ./aseprite/aseprite.nix           # pixel art editor
 #     ./audacious.nix                   # music player
@@ -41,5 +41,5 @@
 #     ./waypaper.nix                    # GUI wallpaper picker
 #     ./xdg-mimes.nix                   # xdg config
 #     ./zsh                             # shell
-#   ];
-# }
+  ];
+}

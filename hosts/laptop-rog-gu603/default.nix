@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 {
   imports = [
-    #./hardware-configuration.nix
+    ./hardware-configuration.nix
     ./../../modules/core
   ];
 
@@ -13,20 +13,20 @@
   ];
 
   
-
+  _module.args.host = "laptop-rog-gu603";
   networking.hostName = "dashu-rog16"; # Define your hostname.
   networking.networkmanager.enable = true;  # Enables wireless support via wpa_supplicant.
 
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = true;
-  sound.enable = true;
+
   security.rtkit.enable = true; # PipeWire 推荐开启
 
   #for Nvidia GPU
   services.xserver.videoDrivers = ["nvidia"];
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    open = true; # Use the open source driver
     modesetting.enable = true;
   };
 

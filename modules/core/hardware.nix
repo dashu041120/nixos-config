@@ -1,8 +1,4 @@
 { inputs, pkgs, ... }:
-let
-  hyprland-pkgs =
-    inputs.hyprland.inputs.nixpkgs.legacyPackages.${pkgs.stdenv.hostPlatform.system};
-in
 {
 # CPU 微码 (Microcode) 配置
   # NixOS 会自动侦测您的 CPU 类型，并加载正确的微码更新
@@ -13,18 +9,18 @@ in
   # 强烈推荐，为许多无线网卡、蓝牙和GPU提供必要的固件
   hardware.enableRedistributableFirmware = true;
 
-# graphics
+# graphics  
   hardware = {
     graphics = {
       enable = true;
-      package = hyprland-pkgs.mesa;
+      package = pkgs.mesa;
       extraPackages = with pkgs; [
         intel-media-driver # Intel 新一代硬解驱动 (VA-API)
         # Intel 新一代硬解驱动 (VA-API)
         (vaapiIntel.override { enableHybridCodec = true; }) 
         
         #AMD
-        admvlk # AMD 官方开源 Vulkan 驱动 (与 Mesa RADV 互补)
+        amdvlk # AMD 官方开源 Vulkan 驱动 (与 Mesa RADV 互补)
 
         # generic
         vaapiVdpau # VDPAU 到 VA-API 的转译层

@@ -17,9 +17,9 @@
       settings = {
         X11Forwarding = true;
         PermitRootLogin = "no"; # disable root login
-        PasswordAuthentication = false; # disable password login
+        PasswordAuthentication = true; # enable password login
       };
-      openFirewall = true;
+      openFirewall = false;
     };
 
     power-profiles-daemon = {
@@ -51,5 +51,6 @@
   services.logind.extraConfig = ''
     # don’t shutdown when power button is short-pressed
     HandlePowerKey=ignore
-  '';
+  ''; 
+  
 }

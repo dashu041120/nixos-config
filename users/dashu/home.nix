@@ -8,7 +8,7 @@
   imports = [
 
 
-    ../../modules/home/core.nix
+    # ../../modules/home/core.nix
 
     # ../../modules/home/fcitx5
     # ../../modules/home/hyprland
