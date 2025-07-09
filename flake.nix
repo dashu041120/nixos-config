@@ -30,6 +30,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    
+
     home-manager = {
       url = "github:nix-community/home-manager";
       # url = "github:nix-community/home-manager/release-24.11";
@@ -71,6 +73,8 @@
       flake = false;
     };
 
+    catppuccin.url = "github:catppuccin/nix";
+
     polybar-themes = {
       url = "github:adi1090x/polybar-themes";
       flake = false;
@@ -107,7 +111,8 @@
         modules = [
           # 原有的主机配置
           ./hosts/${hostname}
-
+          # 添加 Catppuccin NixOS 模块
+          inputs.catppuccin.nixosModules.catppuccin
           # --- Home Manager 配置开始 ---
           # 1. 导入 Home Manager 的 NixOS 模块
           inputs.home-manager.nixosModules.home-manager
@@ -116,10 +121,18 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            # 启用文件备份功能，避免配置冲突
+            home-manager.backupFileExtension = "hm-backup";
             # 将 specialArgs 传递给 home.nix
             home-manager.extraSpecialArgs = specialArgs;
             # 关联用户和其 home.nix 配置文件
-            home-manager.users.${username} = import ./users/${username}/home.nix;
+            home-manager.users.${username} = {
+              imports = [
+                ./users/${username}/home.nix
+                # 添加 Catppuccin Home Manager 模块
+                inputs.catppuccin.homeManagerModules.catppuccin
+              ];
+            };
           }
           # --- Home Manager 配置结束 ---
         ];

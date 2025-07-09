@@ -3,7 +3,8 @@
   imports = [
     ./home.nix
 #     # TODO
-#     ./aseprite/aseprite.nix           # pixel art editor
+    ./aseprite.nix           # pixel art editor
+    ./alacritty.nix         # terminal emulator
 #     ./audacious.nix                   # music player
 #     ./bat.nix                         # better cat command
 #     ./browser.nix                     # firefox based browser
@@ -14,11 +15,11 @@
 #     ./flow.nix                        # terminal text editor
 #     ./fzf.nix                         # fuzzy finder
 #     ./gaming.nix                      # packages related to gaming
-#     ./ghostty.nix                     # terminal
+    ./ghostty.nix                     # terminal
 #     ./git.nix                         # version control
 #     ./gnome.nix                       # gnome apps
-#     ./gtk.nix                         # gtk theme
-#     ./hyprland                        # window manager
+    ./gtk.nix                         # gtk theme
+    ./hyprland                      # window manager
 #     ./kitty.nix                       # terminal
 #     ./lazygit.nix
 #     ./nemo.nix                        # file manager
