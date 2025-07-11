@@ -20,7 +20,7 @@ in {
 				max_height = 1000;
 			};
 		};
-
+		
 		plugins = {
 			# chmod = "${yazi-plugins}/chmod.yazi";
 			# full-border = "${yazi-plugins}/full-border.yazi";
