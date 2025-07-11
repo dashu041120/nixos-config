@@ -96,7 +96,7 @@
 #    };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let
     # 步骤1: 定义一个函数，它接受所有可能变化的参数
     mkSystem = { hostname, username, system ? "x86_64-linux" }: 
@@ -137,7 +137,6 @@
           # --- Home Manager 配置结束 ---
         ];
       };
-
   in
   {
     # 步骤2: 调用这个函数来生成你的所有主机配置
@@ -160,6 +159,7 @@
         username = "guest";
       };
 
+
       # (可选) 如果你的某台机器是 aarch64 架构
       # macbook = mkSystem {
       #   hostname = "macbook";
@@ -167,6 +167,21 @@
       #   system = "aarch64-darwin";
       # };
     };
+
+    # 新增：为 home-manager 提供 flake homeConfigurations 输出
+    # homeConfigurations = {
+    #   "dashu@laptop-rog-gu603" = home-manager.lib.homeManagerConfiguration {
+    #     pkgs = nixpkgs.legacyPackages.x86_64-linux;
+    #     extraSpecialArgs = { username = "dashu"; };
+    #     modules = [
+    #       ./modules/home/home.nix
+    #       ./modules/core
+    #       inputs.catppuccin.homeManagerModules.catppuccin
+    #     ];
+    #     # 你可以根据需要添加更多模块
+    #   };
+    #   # 其他用户可仿照添加
+    # };
   };
 }
 

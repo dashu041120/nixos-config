@@ -19,7 +19,7 @@
     # (可选) 设置 GRUB 菜单的默认启动项，通常是第一个操作系统
     #default = 0; # 0 表示第一个操作系统，1 表示第二个，以此类推 
     # (可选) 设置 GRUB 菜单的超时时间，单位为秒
-    timeout = 5; # 5 秒后自动启动默认操作系统
+    # timeout = 5; # 5 秒后自动启动默认操作系统
     # (可选) 设置 GRUB 菜单的主题，您可以选择其他主题或自定义主题
     # theme = "my-custom-theme"; # 请替换成您自己的主题名称
     # (可选) 设置 GRUB 菜单的分辨率，通常为 1024x768 或 1920x1080
@@ -33,6 +33,9 @@
     # (可选) 启用 GRUB 的高级功能，如 LUKS 加密支持、Btrfs 快照支持等
     # advancedFeatures = true; # 如果您希望启用高级功能，请取消注释此行
     };
+
+    boot.loader.timeout = 5; # 设置 GRUB 菜单的超时时间，单位为秒
+    
     # 如果您的系统是 UEFI 模式，请务必禁用 systemd-boot 以免冲突
     # 如果为虚拟机，请override
     boot.loader.systemd-boot.enable = false;

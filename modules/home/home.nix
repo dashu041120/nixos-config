@@ -1,4 +1,4 @@
-{username, ...}: {
+{username, pkgs, ...}: {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home = {
@@ -14,6 +14,11 @@
     # the Home Manager release notes for a list of state version
     # changes in each release.
     stateVersion = "25.05";
+    
+    # Install Home Manager CLI（已通过 flake 管理，无需重复安装）
+    # packages = with pkgs; [
+    #   home-manager
+    # ];
   };
 
   # Let Home Manager install and manage itself.

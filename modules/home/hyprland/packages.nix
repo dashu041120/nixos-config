@@ -1,7 +1,7 @@
-{}:
+{ pkgs, ... }:
 
 {
-home.packages = with pkgs; [
+  home.packages = with pkgs; [
     ghostty
     hyprpolkitagent
     mako
@@ -20,20 +20,21 @@ home.packages = with pkgs; [
     hyprpolkitagent
     light
     yad
-    thunar
+    xfce.thunar
+    xfce.thunar-volman
     geany
     mpv
     mpd
     mpc
     viewnior
     imagemagick
-    xorg-xwayland
+    xwayland
     xdg-desktop-portal-wlr
     playerctl
     pastel
-    python-pywal
+    pywal
     alacritty
     pulsemixer
     hyprlock
-];
+  ];
 }

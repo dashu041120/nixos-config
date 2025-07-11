@@ -69,6 +69,9 @@
 
   powerManagement.cpuFreqGovernor = "balance";
 
+  # 将内核包切换为最新的可用版本
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   boot = {
     kernelModules = [ "acpi_call" ];
     extraModulePackages =
