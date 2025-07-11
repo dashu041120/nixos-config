@@ -14,7 +14,8 @@
       fcitx5-chinese-addons
       # fcitx5-mozc    # japanese input method
       fcitx5-gtk # gtk im module
-      fcitx5-qt  # qt im module
+      fcitx5-qt5  # qt im module
+      fcitx5-qt6
       fcitx5-libpinyin # pinyin input method
     ];
   };
