@@ -6,6 +6,9 @@
   ];
 
   services.vscode-server.enable = true;
+
+  programs.nix-ld.enable = true;
+
 }
 
 # systemctl --user enable --now auto-fix-vscode-server.service

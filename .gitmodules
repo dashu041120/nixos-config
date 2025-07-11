@@ -1,0 +1,6 @@
+[submodule "modules/home/fcitx5/themes"]
+	path = modules/home/fcitx5/themes
+	url = https://github.com/thep0y/fcitx5-themes-candlelight.git
+[submodule "modules/home/fcitx5/oh-my-rime"]
+	path = modules/home/fcitx5/oh-my-rime
+	url = https://github.com/Mintimate/oh-my-rime.git

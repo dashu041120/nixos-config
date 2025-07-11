@@ -19,7 +19,14 @@
 #     ./git.nix                         # version control
 #     ./gnome.nix                       # gnome apps
     ./gtk.nix                         # gtk theme
-    ./hyprland                      # window manager
+    ./hyprland
+    ./fcitx5                     # window manager
+    ./cli.nix
+    ./dev.nix
+    ./gui.nix
+    ./vscode.nix
+    ./xdg.nix
+    ./yazi.nix                        # file manager
 #     ./kitty.nix                       # terminal
 #     ./lazygit.nix
 #     ./nemo.nix                        # file manager

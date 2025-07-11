@@ -10,13 +10,13 @@
       "https://cache.nixos.org/"
       "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"  # 新增的 Hyprland 缓存
-      "https://yazi.cachix.org"
+      # "https://yazi.cachix.org"
       "https://cache.nixos.org/"
     ];
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
+      # "yazi.cachix.org-1:Dcdz63NZKfvUCbDGngQDAZq6kOroIrFoyO064uvLh8k="
     ];
   };
     
