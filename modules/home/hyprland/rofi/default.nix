@@ -3,6 +3,8 @@
   config,
   ...
 }: {
+  # 导入 Rofi 的 Wayland 支持包
+  home.packages = with pkgs; [ rofi-wayland ];
   # 直接从当前文件夹中读取配置文件作为配置内容
   home.file.".config/rofi" = {
     source = ./configs;

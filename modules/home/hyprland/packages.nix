@@ -1,0 +1,39 @@
+{}:
+
+{
+home.packages = with pkgs; [
+    ghostty
+    hyprpolkitagent
+    mako
+    rofi-wayland
+    swaybg
+    swayidle
+    swaylock
+    wlroots
+    wl-clipboard
+    waybar
+    foot
+    grim
+    slurp
+    wf-recorder
+    hyprpicker
+    hyprpolkitagent
+    light
+    yad
+    thunar
+    geany
+    mpv
+    mpd
+    mpc
+    viewnior
+    imagemagick
+    xorg-xwayland
+    xdg-desktop-portal-wlr
+    playerctl
+    pastel
+    python-pywal
+    alacritty
+    pulsemixer
+    hyprlock
+];
+}

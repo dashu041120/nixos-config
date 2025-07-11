@@ -5,18 +5,12 @@
     swww
     # inputs.hypr-contrib.packages.${pkgs.system}.grimblast
     # inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
-    hyprpicker
-    grim
-    slurp
+    
     wl-clip-persist
     cliphist
-    wf-recorder
     glib
     wayland
     direnv
-    ghostty
-    hyprpolkitagent
-    mako
   ];
   systemd.user.targets.hyprland-session.Unit.Wants = [
     "xdg-desktop-autostart.target"
@@ -27,6 +21,7 @@
     package = null;
     portalPackage = null;
     xwayland.enable = true;
+# gammastep/wallpaper-switcher need this to be enabled.
     systemd.variables = ["--all"];
   };
 }

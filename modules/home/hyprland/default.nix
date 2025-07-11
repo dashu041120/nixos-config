@@ -3,10 +3,13 @@
 {
   imports = [
     ./hyprland.nix
-    ./rofi.nix
+    
     ./fonts.nix
     ./variables.nix
     ./config.nix
-    ./waybar
+    ./packages.nix
+    # Below are already set in configs directory
+    # ./waybar
+    # ./rofi
   ];
 }

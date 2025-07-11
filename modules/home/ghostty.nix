@@ -8,7 +8,7 @@
     window-padding-x = 12
     window-padding-y = 12
     window-decoration = true
-    window-opacity = 1.0
+    # window-opacity = 1.0
     
     # Font configuration matching Alacritty
     font-family = "JetBrainsMono Nerd Font"
