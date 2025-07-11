@@ -1,0 +1,55 @@
+main:
+  push:
+    - stages:
+      - name: release clean
+        image: docker.cnb.cool/cnb/plugins/cnbcool/release-clean:latest
+        settings:
+          filter: "RECENT_N=0"
+          debug: false
+      - name: 删除最新标签
+        script: git push origin --delete latest
+      - name: 重新制作标签
+        script: git tag -fa latest -m "latest" && git push origin latest
+$:
+  tag_push:
+    # 上传二进制包到 release 附件
+    - docker:
+        build: .ide/Dockerfile
+      stages:
+        - name: 更新日志
+          image: cnbcool/changelog
+          settings:
+            day: 60
+          exports:
+            latestChangeLog: LATEST_CHANGE_LOG
+        - name: 创建发布标签
+          type: git:release
+          options:
+            title: latest
+            description: ${LATEST_CHANGE_LOG}
+        - name: 打包为zip包
+          script: find ./ -type f ! -name ".*" ! -path "*/.git/*" -exec zip oh-my-rime.zip {} +
+        - name: 下载上游客户端
+          script: 
+            # 下载 weasel .exe 文件并设置输出变量
+            - weasel_url=$(curl -sL https://api.github.com/repos/rime/weasel/releases/latest | grep -Eo 'https://[^"]+\.exe' | head -1)
+            - weasel_file=$(basename "$weasel_url")
+            - curl -LO "$weasel_url"
+            - mv "$weasel_file" weasel-installer-latest.exe
+            # 下载 squirrel .pkg 文件并设置输出变量
+            - squirrel_url=$(curl -sL https://api.github.com/repos/rime/squirrel/releases/latest | grep -Eo 'https://[^"]+\.pkg' | head -1)
+            - squirrel_file=$(basename "$squirrel_url")
+            - curl -LO "$squirrel_url"
+            - mv "$squirrel_file" Squirrel-latest.pkg
+            # 下载 Fctix5-macOS installer 文件并设置输出变量
+            - fctix5_macOS_url=$(curl -sL https://api.github.com/repos/fcitx-contrib/fcitx5-macos-installer/releases/latest | grep -Eo 'https://[^"]+Rime.zip' | head -1)
+            - fctix5_macOS_file=$(basename "$fctix5_macOS_url")
+            - curl -LO "$fctix5_macOS_url" -o "$(basename "$fctix5_macOS_url")"
+        - name: release 上传附件
+          image: cnbcool/attachments:latest
+          settings:
+            attachments:
+              - oh-my-rime.zip
+              - weasel-installer-latest.exe
+              - Squirrel-latest.pkg
+              - Fcitx5-Rime.zip
