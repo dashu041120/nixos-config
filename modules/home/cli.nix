@@ -21,7 +21,8 @@
     asciinema-agg
     binsider
     bitwise                           # cli tool for bit / hex manipulation
-    broot                             # tree files view
+    broot
+    btop                             # tree files view
     caligula                          # User-friendly, lightweight TUI for disk imaging
     hyperfine                         # benchmarking tool
     pastel                            # cli to manipulate colors
@@ -31,6 +32,7 @@
     translate-shell                   # cli translator
     # woomer
     # yt-dlp-light
+    htop
 
     ## TUI
     # epy                               # ebook reader
@@ -53,6 +55,7 @@
     # cmatrix
     # countryfetch
     cowsay
+    fastfetch
     # figlet
     # fortune
     # lavat
@@ -71,7 +74,7 @@
     ## Utilities
     meld
     entr                              # perform action when file change
-    ffmpeg
+    # ffmpeg  # removed to avoid conflict with ffmpeg-full
     file                              # Show file information
     jq                                # JSON processor
     killall

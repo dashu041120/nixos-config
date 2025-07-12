@@ -14,7 +14,7 @@
 #     ./fastfetch.nix                   # fetch tool
 #     ./flow.nix                        # terminal text editor
 #     ./fzf.nix                         # fuzzy finder
-#     ./gaming.nix                      # packages related to gaming
+    ./gaming.nix                      # packages related to gaming
     ./ghostty.nix                     # terminal
 #     ./git.nix                         # version control
 #     ./gnome.nix                       # gnome apps
@@ -43,6 +43,7 @@
 #     ./swaylock.nix                    # lock screen
 #     ./swayosd.nix                     # brightness / volume wiget
 #     ./swaync/swaync.nix               # notification deamon
+      ./social.nix                     # social apps
 #     # ./viewnior.nix                    # image viewer
 #     ./vscodium                        # vscode fork
 #     ./waybar                          # status bar

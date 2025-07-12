@@ -19,6 +19,7 @@
     gnome-disk-utility
     mission-center # GUI resources monitor
     zenity
+    boxbuddy
 
     ## Level editor
     ldtk
