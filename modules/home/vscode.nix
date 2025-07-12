@@ -18,7 +18,7 @@
       #   "--enable-wayland-ime"
       #   # "--password-store=gnome" # use gnome-keyring as password store
       # ];
-      extensions = with pkgs.vscode-extensions; [
+      profiles.default.extensions = with pkgs.vscode-extensions; [
         ms-python.python            # Python support
         ms-toolsai.jupyter          # Jupyter support
         ms-vscode.cpptools          # C/C++ support

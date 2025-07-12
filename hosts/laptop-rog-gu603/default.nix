@@ -10,6 +10,7 @@
     brightnessctl
     cpupower-gui
     powertop
+    pkgs.nvidia-container-toolkit
   ];
 
   
@@ -27,9 +28,13 @@
   hardware.graphics.enable = true;
   hardware.nvidia = {
     open = true; # Use the open source driver
+    nvidiaSettings = true;
     modesetting.enable = true;
   };
+# nix-shell -p nvtopPackages.full --run nvtop
 
+
+  hardware.nvidia-container-toolkit.mount-nvidia-executables = true;
 
   services = {
     power-profiles-daemon.enable = true;

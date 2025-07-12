@@ -3,11 +3,11 @@
 {
   xdg.configFile."ghostty/config".text = ''
     # Window settings matching Alacritty
-    window-width = 95
-    window-height = 24
-    window-padding-x = 12
-    window-padding-y = 12
-    window-decoration = true
+    # window-width = 95
+    # window-height = 24
+    # window-padding-x = 12
+    # window-padding-y = 12
+    # window-decoration = true
     # window-opacity = 1.0
     
     # Font configuration matching Alacritty
