@@ -7,7 +7,7 @@
     ./alacritty.nix         # terminal emulator
 #     ./audacious.nix                   # music player
 #     ./bat.nix                         # better cat command
-#     ./browser.nix                     # firefox based browser
+    ./browser.nix                     # firefox based browser
 #     ./btop.nix                        # resouces monitor 
 #     ./cava.nix                        # audio visualizer
 #     ./discord.nix                     # discord
