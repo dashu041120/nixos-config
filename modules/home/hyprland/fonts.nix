@@ -3,8 +3,8 @@
 {
   # Install fonts via Nix packages for broader availability
   home.packages = with pkgs; [
-    nerdfonts
-    (nerdfonts.override { fonts = [ "Iosevka" "JetBrainsMono" ]; })
+    nerd-fonts.iosevka
+    nerd-fonts.jetbrains-mono
   ];
 
   # Link local fonts from the project's home module directory

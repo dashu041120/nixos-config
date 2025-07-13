@@ -3,10 +3,10 @@
 {
   imports = [
     ./hyprland.nix
-    ./rofi.nix
+    ./rofi
     ./fonts.nix
     ./variables.nix
     ./config.nix
     ./waybar
   ];
-}
+} 

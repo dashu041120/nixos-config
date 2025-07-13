@@ -10,7 +10,7 @@
     position = "top";
     height = 32;
     spacing = 6;
-    margin = 0;
+    margin = "0";
     margin-top = 0;
     margin-bottom = 0;
     margin-left = 0;
