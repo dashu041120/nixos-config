@@ -20,6 +20,8 @@
     mission-center # GUI resources monitor
     zenity
     boxbuddy
+    clash-verge-rev
+    localsend
 
     ## Level editor
     ldtk
