@@ -11,6 +11,10 @@
     cpupower-gui
     powertop
     pkgs.nvidia-container-toolkit
+    # GPU and performance monitoring tools
+    # nvtopPackages.full
+    glxinfo
+    vulkan-tools
   ];
 
   

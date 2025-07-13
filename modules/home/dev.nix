@@ -18,7 +18,7 @@
     valgrind
     llvmPackages_20.clang-tools
 
-    ## Python
+
     python3
   ];
 }
