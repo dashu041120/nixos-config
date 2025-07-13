@@ -26,7 +26,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # IMPORTANT
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -114,10 +114,11 @@
         modules = [
           # 原有的主机配置
           ./hosts/${hostname}
-          # 添加 Catppuccin NixOS 模块
+          # 添加  模块
           inputs.catppuccin.nixosModules.catppuccin
+          inputs.chaotic.nixosModules.default
           # --- Home Manager 配置开始 ---
-          # 1. 导入 Home Manager 的 NixOS 模块
+          #导入 Home Manager 的 NixOS 模块
           inputs.home-manager.nixosModules.home-manager
 
           # 2. 添加内联配置
@@ -132,8 +133,9 @@
             home-manager.users.${username} = {
               imports = [
                 ./users/${username}/home.nix
-                # 添加 Catppuccin Home Manager 模块
+                # 添加 Home Manager 模块
                 inputs.catppuccin.homeManagerModules.catppuccin
+                inputs.chaotic.homeManagerModules.default
               ];
             };
           }
