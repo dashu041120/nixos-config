@@ -4,10 +4,10 @@
   # Install fonts via Nix packages for broader availability
   home.packages = with pkgs; [
     # hyprland needs these fonts
-    nerd-fonts.iosevka
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.symbols-only
-    icomoon-feather
+    # nerd-fonts.iosevka
+    # nerd-fonts.jetbrains-mono
+    # nerd-fonts.symbols-only
+    # icomoon-feather
 
     #cjk
     noto-fonts
@@ -27,25 +27,25 @@
     ".local/share/fonts/Archcraft" = {
       source = ../fonts/Archcraft.ttf;
     };
-    # ".local/share/fonts/IcomoonFeather" = {
-    #   source = ../../fonts/IcomoonFeather.ttf;
-    # };
-    # ".local/share/fonts/SymbolsNerdFontComplete" = {
-    #   source = ../../fonts/SymbolsNerdFontComplete.ttf;
-    # };
-    #  ".local/share/fonts/IosevkaNerdFonts" = {
-    #   source = ../../fonts/IosevkaNerdFonts;
-    #   recursive = true;
-    # };
-    # ".local/share/fonts/JetBrainsMono" = {
-    #   source = ../../fonts/JetBrainsMono;
-    #   recursive = true;
-    # };
-    # ".local/share/fonts/JetBrainsMonoNerdFonts" = {
-    #   source = ../../fonts/JetBrainsMonoNerdFonts;
-    #   recursive = true;
+    ".local/share/fonts/IcomoonFeather" = {
+      source = ../fonts/IcomoonFeather.ttf;
+    };
+    ".local/share/fonts/SymbolsNerdFontComplete" = {
+      source = ../fonts/SymbolsNerdFontComplete.ttf;
+    };
+     ".local/share/fonts/IosevkaNerdFonts" = {
+      source = ../fonts/IosevkaNerdFonts;
+      recursive = true;
+    };
+    ".local/share/fonts/JetBrainsMono" = {
+      source = ../fonts/JetBrainsMono;
+      recursive = true;
+    };
+    ".local/share/fonts/JetBrainsMonoNerdFonts" = {
+      source = ../fonts/JetBrainsMonoNerdFonts;
+      recursive = true;
+    };
   };
-
   # Rebuild font cache after activation to make new fonts available
   home.activation.rebuildFontCache = ''
     ${pkgs.fontconfig}/bin/fc-cache -fv

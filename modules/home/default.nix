@@ -15,7 +15,8 @@
 #     ./flow.nix                        # terminal text editor
 #     ./fzf.nix                         # fuzzy finder
     ./gaming.nix                      # packages related to gaming
-    ./ghostty.nix                     # terminal
+    # ./ghostty.nix                     # terminal
+    # ./gpu-optimization.nix            # GPU performance optimization
 #     ./git.nix                         # version control
 #     ./gnome.nix                       # gnome apps
     ./gtk.nix                         # gtk theme

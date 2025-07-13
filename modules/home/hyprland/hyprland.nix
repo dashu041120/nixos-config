@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 {
+
   home.packages = with pkgs; [
     swww
     # inputs.hypr-contrib.packages.${pkgs.system}.grimblast
@@ -11,6 +12,8 @@
     glib
     wayland
     direnv
+    
+    
   ];
   systemd.user.targets.hyprland-session.Unit.Wants = [
     "xdg-desktop-autostart.target"
@@ -23,6 +26,7 @@
     xwayland.enable = true;
 # gammastep/wallpaper-switcher need this to be enabled.
     systemd.variables = ["--all"];
+    
     
     # 引用外部配置文件来避免警告
     extraConfig = ''

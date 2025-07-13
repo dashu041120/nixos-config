@@ -159,7 +159,7 @@
       # 主机三：虚拟机
       vm = mkSystem {
         hostname = "vm";
-        username = "guest";
+        username = "dashu";
       };
 
 
