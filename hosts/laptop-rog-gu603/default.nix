@@ -94,7 +94,9 @@
   powerManagement.cpuFreqGovernor = "balance";
 
   # 将内核包切换为最新的可用版本
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_cachyos;
+  services.scx.enable = true; # by default uses scx_rustland scheduler
 
   boot = {
     kernelModules = [ "acpi_call" ];
