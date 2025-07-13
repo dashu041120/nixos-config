@@ -8,7 +8,6 @@
     window-padding-x = 12
     window-padding-y = 12
     window-decoration = true
-    # window-opacity 在 ghostty 1.1.3 中不被支持，已移除
     
     # Font configuration matching Alacritty
     font-family = "JetBrainsMono Nerd Font"
@@ -38,32 +37,6 @@
     # Performance settings
     resize-overlay = never
     resize-overlay-position = center
-    
-    # GPU acceleration and performance optimization
-    gtk-single-instance = false
-    gtk-titlebar = false
-    
-    # 修复 GTK 相关的警告和无响应问题
-    window-save-state = never
-    window-new-tab-position = end
-    
-    # 修复 Wayland 下的无响应问题
-    gtk-wide-class = false
-    gtk-adwaita = false
-    
-    # 改善响应性
-    command = /bin/zsh
-    wait-after-command = false
-    
-    # 禁用可能导致问题的功能
-    macos-non-native-fullscreen = false
-    
-    # Terminal optimization
-    auto-update = off
-    
-    # 减少资源使用
-    unfocused-split-opacity = 1.0
-    working-directory = inherit
     
     # Theme
     theme = catppuccin-mocha
