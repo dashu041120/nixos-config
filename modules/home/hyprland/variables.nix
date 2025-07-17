@@ -25,7 +25,7 @@
     XDG_SESSION_DESKTOP = "Hyprland";
     SDL_VIDEODRIVER = "wayland";
     CLUTTER_BACKEND = "wayland";
-    GTK_THEME = "Colloid-Green-Dark-Gruvbox";
+    # GTK_THEME = "";
     GRIMBLAST_HIDE_CURSOR = 0;
     
     # 修复 GTK 应用在 Wayland 下的无响应问题

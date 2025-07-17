@@ -24,5 +24,6 @@
     "modules-left": ["custom/menu", "cpu", "memory", "disk", "idle_inhibitor"],
     "modules-center": ["hyprland/workspaces", "mpd", "tray"],
     //"modules-center": ["hyprland/workspaces", "custom/spotify", "tray"],
-    "modules-right": ["custom/themes", "pulseaudio", "backlight", "bluetooth", "network", "battery", "clock", "custom/power"],
+    // "modules-right": ["custom/themes", "pulseaudio", "backlight", "bluetooth", "network", "battery", "mode", "clock", "custom/power"],
+    "modules-right": ["pulseaudio", "backlight", "bluetooth", "network", "battery", "mode", "clock", "custom/power"]
 }

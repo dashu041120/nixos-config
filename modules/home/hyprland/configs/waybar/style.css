@@ -263,7 +263,12 @@ window#waybar.hidden {
 #clock,
 #cpu,
 #disk,
-#mode,
+mode {
+	border-radius: 12px;
+	margin: 6px 0px;
+	padding: 2px 10px;
+}
+
 #memory,
 #mpd,
 #custom-spotify,

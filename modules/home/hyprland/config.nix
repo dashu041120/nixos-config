@@ -28,7 +28,7 @@ in {
   # status bar
   programs.waybar = {
     enable = true;
-    systemd.enable = true;
+    # systemd.enable = true;
   };
 
   # screen locker
