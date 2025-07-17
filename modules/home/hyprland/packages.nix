@@ -17,7 +17,7 @@
     slurp
     wf-recorder
     hyprpicker
-    hyprpolkitagent
+    
     light
     yad
     xfce.thunar
@@ -29,7 +29,7 @@
     viewnior
     imagemagick
     xwayland
-    xdg-desktop-portal-wlr
+    # xdg-desktop-portal-wlr
     playerctl
     pastel
     pywal
