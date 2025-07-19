@@ -21,7 +21,7 @@ systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP &
 # fi
 systemctl --user start hyprpolkitagent
 # Set Cursor
-hyprctl setcursor Bibata-Modern-Ice 24 &
+# hyprctl setcursor Bibata-Modern-Ice 24 &
 
 # Set wallpaper
 ~/.config/hypr/scripts/wallpaper &

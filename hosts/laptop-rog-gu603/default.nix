@@ -17,6 +17,8 @@
     # nvtopPackages.nvidia
     glxinfo
     vulkan-tools
+
+    asusctl
   ];
 
   
