@@ -36,5 +36,9 @@
     alacritty
     pulsemixer
     hyprlock
+    
+    pavucontrol
+    power-profiles-daemon
+    nwg-dock-hyprland
   ];
 }

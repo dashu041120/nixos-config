@@ -1,30 +1,30 @@
 {
-    "label" : "suspend",
-    "text" : "Suspend",
-    "action" : "~/.config/hypr/wlogout/actions --suspend",
-    "keybind" : "u"
-}
-{
-    "label" : "logout",
-    "text" : "Logout",
-    "action" : "~/.config/hypr/wlogout/actions --logout",
-    "keybind" : "e"
-}
-{
     "label" : "lock",
+    "action" : "~/.config/hypr/scripts/power.sh lock",
     "text" : "Lock",
-    "action" : "~/.config/hypr/wlogout/actions --lock",
     "keybind" : "l"
 }
 {
+    "label" : "logout",
+    "action" : "~/.config/hypr/scripts/power.sh exit",
+    "text" : "Log Out",
+    "keybind" : "e"
+}
+{
+    "label" : "suspend",
+    "action" : "~/.config/hypr/scripts/power.sh suspend",
+    "text" : "Suspend",
+    "keybind" : "u"
+}
+{
     "label" : "reboot",
-    "text" : "Reboot",
-    "action" : "~/.config/hypr/wlogout/actions --reboot",
+    "action" : "~/.config/hypr/scripts/power.sh reboot",
+    "text" : "Restart",
     "keybind" : "r"
 }
 {
     "label" : "shutdown",
-    "text" : "Shutdown",
-    "action" : "~/.config/hypr/wlogout/actions --shutdown",
+    "action" : "~/.config/hypr/scripts/power.sh shutdown",
+    "text" : "Power Off",
     "keybind" : "s"
 }
