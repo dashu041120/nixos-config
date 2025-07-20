@@ -68,7 +68,7 @@
 
     # 环境变量
     sessionVariables = {
-      EDITOR = "code";
+      EDITOR = "kate";  # 默认文本编辑器
       BROWSER = "firefox";
       TERMINAL = "ghostty";
     };

@@ -13,7 +13,6 @@
     ## Office
     # libreoffice
     gnome-calculator
-    wpsoffice-cn
     obsidian
     kdePackages.kate
 

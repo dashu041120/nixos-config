@@ -13,7 +13,7 @@
 #     ./discord.nix                     # discord
 #     ./fastfetch.nix                   # fetch tool
 #     ./flow.nix                        # terminal text editor
-#     ./fzf.nix                         # fuzzy finder
+    ./fzf.nix                         # fuzzy finder
     ./gaming.nix                      # packages related to gaming
     ./ghostty.nix                     # terminal
     # ./gpu-optimization.nix            # GPU performance optimization
@@ -49,7 +49,8 @@
 #     ./vscodium                        # vscode fork
 #     ./waybar                          # status bar
 #     ./waypaper.nix                    # GUI wallpaper picker
+    ./wps-office.nix                # WPS office
 #     ./xdg-mimes.nix                   # xdg config
-#     ./zsh.nix                            # shell
+    ./zsh.nix                            # shell
   ];
 }
