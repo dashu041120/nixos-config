@@ -33,7 +33,7 @@
       # let `xdg-open` to open the url with the correct application.
       defaultApplications = let
         browser = [ "firefox.desktop" "google-chrome.desktop" ];
-        editor = ["code.desktop" "nvim.desktop" "Helix.desktop" ];
+        editor = [ "kate.desktop" "code.desktop" "nvim.desktop" "Helix.desktop" ];
       in {
         "application/json" = browser;
         "application/pdf" = browser; # TODO: pdf viewer

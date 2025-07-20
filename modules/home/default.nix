@@ -6,9 +6,9 @@
     ./aseprite.nix           # pixel art editor
     ./alacritty.nix         # terminal emulator
 #     ./audacious.nix                   # music player
-#     ./bat.nix                         # better cat command
+    ./bat.nix                         # better cat command
     ./browser.nix                     # firefox based browser
-#     ./btop.nix                        # resouces monitor 
+    # ./btop.nix                        # resouces monitor 
 #     ./cava.nix                        # audio visualizer
 #     ./discord.nix                     # discord
 #     ./fastfetch.nix                   # fetch tool
@@ -33,7 +33,7 @@
 #     ./nemo.nix                        # file manager
 #     ./nix-search/nix-search.nix       # TUI to search nixpkgs
 #     ./nvim.nix                        # neovim editor
-#     ./obsidian.nix
+    ./oh-my-posh.nix
 #     ./p10k/p10k.nix
 #     ./packages                        # other packages
 #     ./retroarch.nix  
@@ -50,6 +50,6 @@
 #     ./waybar                          # status bar
 #     ./waypaper.nix                    # GUI wallpaper picker
 #     ./xdg-mimes.nix                   # xdg config
-#     ./zsh                             # shell
+#     ./zsh.nix                            # shell
   ];
 }

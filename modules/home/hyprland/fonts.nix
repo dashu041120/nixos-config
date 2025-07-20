@@ -18,6 +18,16 @@
     sarasa-gothic # 更纱黑体
     source-code-pro
     wqy_zenhei # 添加文泉驿字体
+
+    fira
+    fira-sans
+    nerd-fonts.fira-code
+    font-awesome
+    roboto
+    helvetica-neue-lt-std
+    fragment-mono
+
+    corefonts
   ];
 
 

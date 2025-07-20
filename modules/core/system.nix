@@ -48,8 +48,7 @@
     curl
     htop
     btop
-    xfce.thunar
-    xfce.thunar-archive-plugin
+    
     scrot
     sysstat
     yazi

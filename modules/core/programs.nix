@@ -11,10 +11,20 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [ ];
   
-  
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [ 
+      thunar-archive-plugin 
+      thunar-volman 
+      thunar-media-tags-plugin 
+      thunar-vcs-plugin 
+    ];
+  };
+
   programs.hyprland = {
     enable = true;
     withUWSM = true;
+    xwayland.enable = true;
     #package = inputs.hyprland.packages.${pkgs.system}.default;
     #portalPackage =
     #  inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
@@ -26,6 +36,6 @@
   # programs.cinnamon = {
   #   enable = true;
   # }
-
+  
   
 }
