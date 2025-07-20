@@ -7,10 +7,11 @@
   package = pkgs.hyprland;
 in {
   # 直接复制配置文件到 .config/hypr 目录
-  home.file.".config/hypr" = {
-    source = ./configs;
-    recursive = true;
-  };
+  # TODO
+  # home.file.".config/hypr" = {
+  #   source = ./configs;
+  #   recursive = true;
+  # };
 
 
 
