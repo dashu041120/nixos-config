@@ -6,26 +6,24 @@
 }: let
   package = pkgs.hyprland;
 in {
-  # 直接复制配置文件到 .config/hypr 目录
-  # TODO
+  # 使用软链接的方式链接配置文件到 .config/hypr 目录
+
   # home.file.".config/hypr" = {
   #   source = ./configs;
   #   recursive = true;
   # };
 
-
-
-#   xdg.configFile = let
-#     mkSymlink = config.lib.file.mkOutOfStoreSymlink;
-#     hyprPath = "${config.home.homeDirectory}/nixos-config/modules/home/hyprland/configs";
-#   in {
-#     # "mako".source = mkSymlink "${hyprPath}/mako";
-#     # "waybar".source = mkSymlink "${hyprPath}/waybar";
-#     # "wlogout".source = mkSymlink "${hyprPath}/wlogout";
-#     # "hypr/hypridle.conf".source = mkSymlink "${hyprPath}/hypridle.conf";
-#     # "hypr/configs".source = mkSymlink "${hyprPath}/configs";
-#     "hypr".source = mkSymlink "${hyprPath}";
-#   };
+  # xdg.configFile = let
+  #   mkSymlink = config.lib.file.mkOutOfStoreSymlink;
+  #   hyprPath = "${config.home.homeDirectory}/nixos-config/modules/home/hyprland/configs";
+  # in {
+  #   # "mako".source = mkSymlink "${hyprPath}/mako";
+  #   # "waybar".source = mkSymlink "${hyprPath}/waybar";
+  #   # "wlogout".source = mkSymlink "${hyprPath}/wlogout";
+  #   # "hypr/hypridle.conf".source = mkSymlink "${hyprPath}/hypridle.conf";
+  #   # "hypr/configs".source = mkSymlink "${hyprPath}/configs";
+  #   "hypr".source = mkSymlink hyprPath;
+  # };
   # status bar
   programs.waybar = {
     enable = true;

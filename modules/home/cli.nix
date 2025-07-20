@@ -91,5 +91,7 @@
 
     winetricks
     wineWowPackages.waylandFull
+
+    gemini-cli
   ];
 }

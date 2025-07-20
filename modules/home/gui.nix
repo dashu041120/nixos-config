@@ -13,6 +13,9 @@
     ## Office
     # libreoffice
     gnome-calculator
+    wpsoffice-cn
+    obsidian
+    kdePackages.kate
 
     ## Utility
     dconf-editor
@@ -26,7 +29,10 @@
     ldtk
     tiled
 
-    clash-nyanpasu
+
+
+    ## terminal
+    warp-terminal
     
   ];
 }

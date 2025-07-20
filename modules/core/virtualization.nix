@@ -18,6 +18,7 @@
     distrobox
     crun
     runc
+    gnome-boxes
   ];
 
   # Manage the virtualisation services
