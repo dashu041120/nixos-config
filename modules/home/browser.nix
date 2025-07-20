@@ -1,6 +1,9 @@
 { inputs, pkgs, ... }:
 {
   home.packages = (
-    with pkgs; [ firefox ]
+    with pkgs; [ 
+      firefox
+      google-chrome
+    ]
   );
 }
