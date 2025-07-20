@@ -238,8 +238,8 @@ misc {
 	swallow_exception_regex = 
 	focus_on_activate = true
 	mouse_move_focuses_monitor = true
-	render_ahead_of_time = false
-	render_ahead_safezone = 1
+	#render_ahead_of_time = false
+	#render_ahead_safezone = 1
 	allow_session_lock_restore = false
 	background_color = 0x000000
 	close_special_on_empty = true
@@ -285,8 +285,8 @@ opengl {
 
 #-- Render -----------------------------------------------------
 render {
-	explicit_sync = 2
-	explicit_sync_kms = 2
+	#explicit_sync = 2
+	#explicit_sync_kms = 2
 	direct_scanout = false
 	expand_undersized_textures = true
 	xp_mode = false
@@ -345,7 +345,7 @@ debug {
 	enable_stdout_logs = false
 	manual_crash = 0
 	suppress_errors = false
-	watchdog_timeout = 5
+	#watchdog_timeout = 5
 	disable_scale_checks = false
 	error_limit = 5
 	error_position = 0
@@ -390,7 +390,7 @@ monitor = eDP-1,2560x1600@240,0x0,1.5
 #monitor = HDMI-A-1,1920x1080@60,1920x0,1.5
 #monitor = HDMI-A-1,addreserved,20,20,20,20
 #monitor = HDMI-A-1,transform,1
-monitor = HDMI-A-1,1920X1080@60,0x1599,1
+monitor = HDMI-A-1,1920x1080@60,0x1600,1
 #workspace = HDMI-A-1,2
 
 # Workspace Rules
@@ -433,7 +433,7 @@ master {
 	orientation = left
 	inherit_fullscreen = true
 	slave_count_for_center_master = 2
-	center_master_slaves_on_right = true
+	#center_master_slaves_on_right = true
 	smart_resizing = true
 	drop_at_cursor = true
 	always_keep_position = false
