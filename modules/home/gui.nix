@@ -4,11 +4,15 @@
     ## Multimedia
     audacity
     gimp
-    obs-studio
     pavucontrol
     soundwireserver
     video-trimmer
     vlc
+    spotify
+    mpv
+    kdePackages.kdenlive
+    
+
 
     ## Office
     # libreoffice
@@ -23,12 +27,12 @@
     zenity
     boxbuddy
     localsend
+    kdePackages.ark
+    peazip
 
     ## Level editor
     ldtk
     tiled
-
-
 
     ## terminal
     warp-terminal

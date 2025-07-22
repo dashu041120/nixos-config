@@ -104,7 +104,7 @@
   services.scx.enable = true; # by default uses scx_rustland scheduler
 
   boot = {
-    kernelModules = [ "acpi_call" ];
+    kernelModules = [ "acpi_call" "kvm-intel" "v4l2loopback" ];
     kernelParams = [
       "modprobe.blacklist=nouveau"
     ];
