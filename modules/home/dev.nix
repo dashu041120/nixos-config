@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    # !!! devbox
+    devbox
     ## Lsp
     nixd # nix
 
@@ -20,5 +22,11 @@
 
 
     python3
+
+
+    # gui
+    imhex
+    serial-studio
+    putty
   ];
 }

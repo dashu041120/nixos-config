@@ -26,6 +26,11 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "dialout"
+      "tty"
+      "libvirt"
+      "kvm"
+      "render"
     ];
     shell = pkgs.zsh;
   };

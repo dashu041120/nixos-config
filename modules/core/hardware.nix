@@ -9,6 +9,8 @@
   # 强烈推荐，为许多无线网卡、蓝牙和GPU提供必要的固件
   hardware.enableRedistributableFirmware = true;
 
+
+
 # graphics  
   hardware = {
     graphics = {
