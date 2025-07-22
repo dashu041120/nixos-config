@@ -34,6 +34,7 @@
 #     ./nix-search/nix-search.nix       # TUI to search nixpkgs
 #     ./nvim.nix                        # neovim editor
     ./oh-my-posh.nix
+    ./obs-studio.nix                 # screen recorder
 #     ./p10k/p10k.nix
 #     ./packages                        # other packages
 #     ./retroarch.nix  
