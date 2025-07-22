@@ -8,10 +8,9 @@
     extra-substituters = [
       "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://cache.nixos.org/"
-      "https://nix-community.cachix.org"
       "https://hyprland.cachix.org"  # 新增的 Hyprland 缓存
+      "https://nix-community.cachix.org"
       # "https://yazi.cachix.org"
-      "https://cache.nixos.org/"
       "https://nix-gaming.cachix.org"
     ];
     extra-trusted-public-keys = [
@@ -26,13 +25,13 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
-    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # IMPORTANT
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # IMPORTANT: 需要使用最新的 chaotic-cx/nyx 分支
+    hyprland.url = "github:hyprwm/Hyprland";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    
 
     home-manager = {
       url = "github:nix-community/home-manager";

@@ -14,6 +14,8 @@
     graphics = {
       enable = true;
       package = pkgs.mesa;
+      enable32Bit = true;
+      package32 = pkgs.pkgsi686Linux.mesa;
       extraPackages = with pkgs; [
         intel-media-driver # Intel 新一代硬解驱动 (VA-API)
         # Intel 新一代硬解驱动 (VA-API)

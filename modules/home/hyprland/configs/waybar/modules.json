@@ -67,9 +67,9 @@
   // Cliphist
   "custom/cliphist": {
     "format": "",
-    "on-click": "sleep 0.1 && ~/.config/waybar/cliphist.sh",
-    "on-click-right": "sleep 0.1 && ~/.config/waybar/cliphist.sh d",
-    "on-click-middle": "sleep 0.1 && ~/.config/waybar/cliphist.sh w",
+    "on-click": "sleep 0.1 && ~/.config/hypr/waybar/cliphist.sh",
+    "on-click-right": "sleep 0.1 && ~/.config/hypr/waybar/cliphist.sh d",
+    "on-click-middle": "sleep 0.1 && ~/.config/hypr/waybar/cliphist.sh w",
     "tooltip-format": "Left: Open clipboard Manager\nRight: Delete an entry\nMiddle: Clear list"
   },
 
@@ -221,7 +221,7 @@
       "children-class": "not-memory",
       "transition-left-to-right": false
     },
-    "modules": ["custom/system", "disk", "cpu", "memory", "hyprland/language"]
+    "modules": ["custom/system", "disk", "cpu", "memory"]
   },
 
   // Group Tools
