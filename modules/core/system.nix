@@ -52,6 +52,8 @@
     scrot
     sysstat
     yazi
+
+    pciutils  #lspci
   ];
 
   time.timeZone = "Asia/Shanghai";

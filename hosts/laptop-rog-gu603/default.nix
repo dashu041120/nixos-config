@@ -10,7 +10,7 @@
     brightnessctl
     cpupower-gui
     powertop
-    pkgs.nvidia-container-toolkit
+    nvidia-container-toolkit
     
     # GPU and performance monitoring tools
     # nvtopPackages.full
@@ -19,6 +19,7 @@
     vulkan-tools
 
     asusctl
+
   ];
 
   
@@ -35,6 +36,7 @@
   services.xserver.videoDrivers = ["nvidia"];
   hardware.graphics.enable = true;
   hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.beta;   # Latest beta driver
     open = true; # Use the open source driver
     nvidiaSettings = true;
     modesetting.enable = true;
@@ -44,17 +46,17 @@
     powerManagement.finegrained = false;
     
     # # 使用 NVIDIA Prime 同步模式以获得更好的性能
-    # prime = {
-    #   sync.enable = true;
-    #   # 你需要通过 lspci 找到正确的Bus ID
-    #   # 运行: lspci | grep -E "(VGA|3D)"
-    #   # intelBusId = "PCI:0:2:0";  # 需要根据实际情况调整
-    #   # nvidiaBusId = "PCI:1:0:0"; # 需要根据实际情况调整
-    # };
+    prime = {
+      sync.enable = true;
+      # 你需要通过 lspci 找到正确的Bus ID
+      # 运行: lspci | grep -E "(VGA|3D)"
+      intelBusId = "PCI:0:2:0";  # 需要根据实际情况调整
+      nvidiaBusId = "PCI:1:0:0"; # 需要根据实际情况调整
+    };
   };
 # nix-shell -p nvtopPackages.full --run nvtop
 
-
+  hardware.nvidia-container-toolkit.enable = true;
   hardware.nvidia-container-toolkit.mount-nvidia-executables = true;
 
   services = {
