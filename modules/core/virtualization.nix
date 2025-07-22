@@ -39,7 +39,7 @@
   # enable = true 会自动安装 Podman 并配置好 storage 和 socket。
   virtualisation.podman = {
     enable = true;
-    enableNvidia = true; # 如果需要使用 NVIDIA GPU
+    # enableNvidia = true; # 如果需要使用 NVIDIA GPU -- out date
     dockerCompat = true; # 启用 Docker 兼容性
     # networkSocket.enable = true; # 启用网络套接字
     dockerSocket.enable = true; # 启用 Docker 套接字

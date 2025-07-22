@@ -1,4 +1,4 @@
-#!/bin/bash
+#!bash
 #   ____ _ _       _     _     _
 #  / ___| (_)_ __ | |__ (_)___| |_
 # | |   | | | '_ \| '_ \| / __| __|
@@ -9,7 +9,7 @@
 
 case $1 in
     d)
-        cliphist list | rofi -dmenu -replace -config ~/.config/rofi/config-cliphist.rasi | cliphist delete
+        cliphist list | rofi -dmenu -replace -config ~/.config/hypr/waybar/config-cliphist.rasi | cliphist delete
         ;;
 
     w)
@@ -19,6 +19,6 @@ case $1 in
         ;;
 
     *)
-        cliphist list | rofi -dmenu -replace -config ~/.config/rofi/config-cliphist.rasi | cliphist decode | wl-copy
+        cliphist list | rofi -dmenu -replace -config ~/.config/hypr/waybar/config-cliphist.rasi | cliphist decode | wl-copy
         ;;
 esac

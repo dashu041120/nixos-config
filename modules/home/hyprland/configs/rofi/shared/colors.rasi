@@ -1,12 +1,18 @@
 /* Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com> */
 
-/* Colors */
+/* Colors - Unified theme with consistent transparency and blur effects */
 
 * {
-    background:     #1E1E2E;
-    background-alt: #28283d;
-    foreground:     #CDD6F4;
-    selected:       #89B4FA;
-    active:         #A6E3A1;
-    urgent:         #F38BA8;
+    /* Primary backgrounds with unified transparency */
+    background:     rgba(30, 30, 46, 0.8);      /* Main window background - slightly more opaque */
+    background-alt: rgba(40, 40, 61, 0.25);      /* Secondary elements - consistent transparency */
+    
+    /* Border and accent colors */
+    border-color:   rgba(40, 40, 61, 0.6);       /* Border with subtle transparency */
+    
+    /* Text and interactive colors */
+    foreground:     #CDD6F4;                     /* Main text color */
+    selected:       #89B4FA;                     /* Selected item highlight */
+    active:         #A6E3A1;                     /* Active state color */
+    urgent:         #F38BA8;                     /* Urgent/warning color */
 }

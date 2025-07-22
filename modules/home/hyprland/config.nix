@@ -8,10 +8,10 @@
 in {
   # 使用软链接的方式链接配置文件到 .config/hypr 目录
 
-  # home.file.".config/hypr" = {
-  #   source = ./configs;
-  #   recursive = true;
-  # };
+  home.file.".config/hypr" = {
+    source = ./configs;
+    recursive = true;
+  };
 
   # xdg.configFile = let
   #   mkSymlink = config.lib.file.mkOutOfStoreSymlink;

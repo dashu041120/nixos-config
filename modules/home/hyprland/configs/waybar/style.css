@@ -332,12 +332,19 @@ window#waybar.empty #window {
  * Custom Exit
  * ----------------------------------------------------- */
 
-#custom-exit {
+/* #custom-exit {
     margin: 0px 13px 0px 0px;
     padding: 0px;
-    font-size: 12px;
+    font-size: 14px;
     color: @iconcolor;
     opacity: 0.8;
+} */
+
+#custom-exit {
+	background-color: @red;
+	margin-right: 6px;
+	padding: 2px 8px;
+	font-size: 18px;
 }
 
 /* -----------------------------------------------------
@@ -347,16 +354,7 @@ window#waybar.empty #window {
 #disk,
 #memory,
 #cpu,
-#language {
-    margin: 0px;
-    padding: 0px;
-    font-size: 12px;
-    color: @iconcolor;
-}
 
-#language {
-    margin-right: 10px;
-}
 
 /* -----------------------------------------------------
  * Power Profiles Daemon
@@ -365,7 +363,7 @@ window#waybar.empty #window {
 #power-profiles-daemon {
     margin: 0px 13px 0px 0px;
     padding: 0px;
-    font-size: 12px;
+    font-size: 16px;
     color: @iconcolor;
 }
 

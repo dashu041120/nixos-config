@@ -1,11 +1,26 @@
 /**
  * Copyright (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+ * Modified with macOS Launchpad style elements
  **/
 
 /*****----- Configuration -----*****/
 configuration {
 	modi:                       "drun,run,filebrowser";
-    show-icons:                 false;
+    show-icons:                 true;
+    display-drun:               "";
+    display-run:                "";
+    display-filebrowser:        "";
+	drun-display-format:        "{name}";
+}ght (C) 2020-2024 Aditya Shakya <adi1090x@gmail.com>
+ **/
+
+/*****----- Configuration -----*****/
+configuration {
+	modi:                       "drun,run,filebrowser";
+    show-icons:                 true;
+    display-drun:               "";
+    display-run:                "";
+    display-filebrowser:        "";
 	drun-display-format:        "{name}";
 }
 
@@ -15,23 +30,18 @@ configuration {
 
 /*****----- Main Window -----*****/
 window {
-    /* properties for window widget */
+    /* macOS Launchpad style - fullscreen with blur */
     transparency:                "real";
-    location:                    east;
-    anchor:                      east;
-    fullscreen:                  false;
-    width:                       500px;
-    height:                      96%;
-    x-offset:                    -20px;
-    y-offset:                    0px;
-
+    location:                    center;
+    anchor:                      center;
+    fullscreen:                  true;
+    padding:                     2em;
+    
     /* properties for all widgets */
     enabled:                     true;
     margin:                      0px;
-    padding:                     0px;
-    border:                      4px solid;
-    border-radius:               12px;
-    border-color:                @border-color;
+    border:                      0px;
+    border-radius:               0px;
     cursor:                      "default";
     background-color:            @background;
 }
@@ -39,9 +49,9 @@ window {
 /*****----- Main Box -----*****/
 mainbox {
     enabled:                     true;
-    spacing:                     20px;
+    spacing:                     0px;
     margin:                      0px;
-    padding:                     20px;
+    padding:                     8px;
     background-color:            transparent;
     children:                    [ "inputbar", "listview" ];
 }
@@ -51,36 +61,33 @@ inputbar {
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     0px;
-    border-radius:               0px;
-    background-color:            transparent;
+    padding:                     10px;
+    border-radius:               12px;
+    background-color:            @background-alt;
     text-color:                  @foreground;
-    children:                    [ "textbox-prompt-colon", "prompt" ];
+    children:                    [ "textbox-prompt-colon", "entry" ];
 }
 
 prompt {
     enabled:                     true;
-    padding:                     8px;
-    border-radius:               12px;
-    background-color:            var(active);
-    text-color:                  @background;
+    background-color:            inherit;
+    text-color:                  inherit;
 }
 textbox-prompt-colon {
     enabled:                     true;
+    padding:                     0px;
     expand:                      false;
-    str:                         "";
-    padding:                     8px 10px;
-    border-radius:               12px;
-    background-color:            var(urgent);
-    text-color:                  @background;
+    str:                         "";
+    background-color:            inherit;
+    text-color:                  inherit;
 }
 entry {
     enabled:                     true;
-    padding:                     8px 0px;
+    padding:                     0px;
     background-color:            inherit;
     text-color:                  inherit;
     cursor:                      text;
-    placeholder:                 "";
+    placeholder:                 "Search...";
     placeholder-color:           inherit;
 }
 
@@ -88,7 +95,7 @@ entry {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       8;
+    lines:                       12;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   true;
@@ -106,7 +113,7 @@ scrollbar {
     handle-width:                5px ;
     handle-color:                @selected;
     border-radius:               10px;
-    background-color:            @background-alt;
+    background-color:            @border-color;
 }
 
 /*****----- Elements -----*****/
@@ -114,7 +121,7 @@ element {
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     8px;
+    padding:                     6px;
     border-radius:               12px;
     background-color:            transparent;
     text-color:                  @foreground;
@@ -161,19 +168,19 @@ mode-switcher{
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     0px;
+    padding:                     0px 0px;
     background-color:            transparent;
     text-color:                  @foreground;
 }
 button {
-    padding:                     8px 12px;
+    padding:                     10px;
     border-radius:               12px;
     background-color:            @background-alt;
     text-color:                  inherit;
     cursor:                      pointer;
 }
 button selected {
-    background-image:          	 linear-gradient(to right, #E06B74, #C778DD);
+    background-color:            var(urgent);
     text-color:                  var(background);
 }
 
@@ -181,7 +188,7 @@ button selected {
 message {
     enabled:                     true;
     margin:                      0px;
-    padding:                     8px 12px;
+    padding:                     10px;
     border-radius:               12px;
     background-color:            @background-alt;
     text-color:                  @foreground;
