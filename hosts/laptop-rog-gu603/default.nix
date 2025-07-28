@@ -20,6 +20,8 @@
 
     asusctl
 
+    cudatoolkit
+    cudaPackages.cudnn
   ];
 
   

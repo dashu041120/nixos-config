@@ -48,12 +48,22 @@
     curl
     htop
     btop
-    
+    util-linux
     scrot
     sysstat
     yazi
 
     pciutils  #lspci
+    autoconf
+    procps
+    m4
+    gperf
+    libGLU libGL
+    xorg.libXi xorg.libXmu freeglut
+    xorg.libXext xorg.libX11 xorg.libXv xorg.libXrandr zlib 
+    ncurses5
+    stdenv.cc
+    binutils
   ];
 
   time.timeZone = "Asia/Shanghai";

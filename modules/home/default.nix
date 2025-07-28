@@ -37,6 +37,7 @@
     ./obs-studio.nix                 # screen recorder
 #     ./p10k/p10k.nix
 #     ./packages                        # other packages
+    ./pro-audio
 #     ./retroarch.nix  
 #     ./rofi.nix                        # launcher
 #     ./scripts/scripts.nix             # personal scripts
