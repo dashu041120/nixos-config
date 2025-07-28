@@ -11,7 +11,7 @@
     spotify
     mpv
     kdePackages.kdenlive
-    
+    bilibili
 
 
     ## Office
@@ -30,12 +30,20 @@
     kdePackages.ark
     peazip
 
+    motrix
+
+    snipaste
+
+    #fpv utils
+    betaflight-configurator
+
     ## Level editor
     ldtk
     tiled
 
     ## terminal
     warp-terminal
+    waveterm
     
   ];
 }

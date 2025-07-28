@@ -13,6 +13,11 @@
     win-virtio
     win-spice
     adwaita-icon-theme
+    virglrenderer
+    # qemu_full
+    # qemu_kvm
+    virtualgl
+    virglrenderer
 
     podman-desktop
     distrobox

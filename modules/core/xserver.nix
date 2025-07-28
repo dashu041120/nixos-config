@@ -6,8 +6,11 @@
       xkb.layout = "us,cn";
     };
 
-    xserver.displayManager = {
-      lightdm.enable = false;
+    xserver.displayManager.lightdm = {
+      enable = false;
+      # greeters.gtk.enable = true;
+      greeters.gtk.theme.name = "Adwaita";
+
     };
     displayManager.gdm.enable = true;
     # Enable auto-login for the specified user
@@ -15,7 +18,12 @@
       enable = false;
       user = "${username}";
     };
-    
+    xserver = {
+		  desktopManager = {
+			  cinnamon.enable = true;
+		  };
+	  };
+
     libinput = {
       enable = true;
     };

@@ -19,10 +19,13 @@
     gnumake
     valgrind
     llvmPackages_20.clang-tools
-
+    # arrow-c1pp
 
     python3
-
+    conda
+    uv
+    # jre8
+    jdk
 
     # gui
     imhex
