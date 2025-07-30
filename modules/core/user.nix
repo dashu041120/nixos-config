@@ -31,6 +31,7 @@
       "libvirt"
       "kvm"
       "render"
+      "adbusers"
     ];
     shell = pkgs.zsh;
   };

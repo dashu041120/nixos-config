@@ -31,5 +31,9 @@
     imhex
     serial-studio
     putty
+
+    # android
+    # android-tools
+    androidenv.androidPkgs.platform-tools
   ];
 }

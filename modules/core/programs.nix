@@ -10,7 +10,9 @@
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [ ];
-  
+
+  programs.adb.enable = true;
+
   programs.thunar = {
     enable = true;
     plugins = with pkgs.xfce; [ 
