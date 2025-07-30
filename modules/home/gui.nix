@@ -2,16 +2,16 @@
 {
   home.packages = with pkgs; [
     ## Multimedia
-    audacity
+    # audacity
     gimp
     pavucontrol
-    soundwireserver
-    video-trimmer
+    # soundwireserver
+    # video-trimmer
     vlc
     spotify
     mpv
     kdePackages.kdenlive
-    bilibili
+    # bilibili
 
 
     ## Office

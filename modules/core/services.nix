@@ -29,8 +29,10 @@
     dbus.packages = [pkgs.gcr];
 
     geoclue2.enable = true;
-
-    udev.packages = with pkgs; [gnome-settings-daemon];
+    udev.packages = with pkgs; [
+      gnome-settings-daemon
+      android-udev-rules
+    ];
   };
 
 
@@ -38,5 +40,7 @@
     # don’t shutdown when power button is short-pressed
     HandlePowerKey=ignore
   ''; 
+
+
   
 }
