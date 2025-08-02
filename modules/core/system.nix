@@ -52,6 +52,7 @@
     scrot
     sysstat
     yazi
+    polkit
 
     pciutils  #lspci
     autoconf
@@ -124,10 +125,6 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
-
-  
-
-
 
   security.polkit.enable = true;
 
