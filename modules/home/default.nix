@@ -42,6 +42,7 @@
 #     ./rofi.nix                        # launcher
 #     ./scripts/scripts.nix             # personal scripts
 #     ./ssh.nix                         # ssh config
+    ./starship.nix                     # shell prompt
 #     ./superfile/superfile.nix         # terminal file manager
 #     ./swaylock.nix                    # lock screen
 #     ./swayosd.nix                     # brightness / volume wiget
