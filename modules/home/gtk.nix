@@ -18,15 +18,15 @@
   };
 
   # Use Catppuccin theme via the official nix module
-  catppuccin = {
-    flavor = "mocha";
-    accent = "blue";  # You can change this to any accent color like "red", "green", "yellow", etc.
-    gtk.enable = true;
-    gtk.icon = {
-      enable = true;  # Enable GTK icon theme
-      accent = "blue";  # You can change this to any accent color like "red", "green", "yellow", etc.
-    };
-  };
+  # catppuccin = {
+  #   flavor = "mocha";
+  #   accent = "blue";  # You can change this to any accent color like "red", "green", "yellow", etc.
+  #   gtk.enable = false;
+  #   gtk.icon = {
+  #     enable = false;  # Enable GTK icon theme
+  #     accent = "blue";  # You can change this to any accent color like "red", "green", "yellow", etc.
+  #   };
+  # };
   gtk.cursorTheme = {
     name = "Bibata-Modern-Ice";
     package = pkgs.bibata-cursors;

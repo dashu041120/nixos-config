@@ -1,5 +1,8 @@
 { config, pkgs, ... }:
 {
+    # (UEFI 系统推荐) 确保 efi 变量可被写入
+    boot.loader.efi.canTouchEfiVariables = true;
+    
     boot.loader.grub = {
     # 启用 GRUB
     enable = true;
@@ -40,6 +43,5 @@
     # 如果为虚拟机，请override
     boot.loader.systemd-boot.enable = false;
     # boot.loader.efi.efiSysMountPoint = "/boot/efi"; # UEFI 系统的 EFI 分区挂载点
-    # (UEFI 系统推荐) 确保 efi 变量可被写入
-    boot.loader.efi.canTouchEfiVariables = true;
+    
 }

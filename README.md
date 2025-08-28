@@ -23,7 +23,7 @@ impoertant degree:A B C D
 
 - [ ] 目前剪切板（能够查看历史记录）还没有完善 (B)
 
-- [ ] 输入法：切换输入法语言时，无需保留当前的第一个候选词，需要在`oh-my-rime`的配置中修改 (A)
+- [x] 输入法：切换输入法语言时，无需保留当前的第一个候选词，需要在`oh-my-rime`的配置中修改 (A) (在fcitx5-configuretool 里面修改即可)
 
 - [ ] 输入法：需要匹配窗口设置不同的输入策略，比如vscode强制半角符号，进入先切换为英文 (D)
 
@@ -39,6 +39,12 @@ impoertant degree:A B C D
 - [ ] 考虑加一个dotfiles管理器，意见切换（很不重要，懒得弄~）
 - [ ] UI-fix: 在nix配置中添加qt主题的配置，kate很丑
 
+
+>    Search Light: Super+Space - macOS Spotlight-like search functionality
+>    Gradia: Super+PrintScreen - Advanced screenshot and annotation tool
+>    Smile: Ctrl+Alt+Space and Super+. - Emoji picker and special characters
+
+- [ ] 区分home dotfiles 和 system dotfiles 会不会更好？ 参考：https://github.com/DaniD3v/nixOS-dotfiles
 
 ## Related projects
 rayn4in
