@@ -9,7 +9,7 @@
     historySubstringSearch.enable = true;
     
     # 补全配置
-    completionInit = "autoload -U compinit && compinit";
+    completionInit = "autoload -Uz compinit && compinit";
     
     # 历史记录配置
     history = {
@@ -41,8 +41,10 @@
       # NixOS 相关别名
       rebuild = "sudo nixos-rebuild switch --flake .#laptop";
       rebuild-test = "sudo nixos-rebuild test --flake .#laptop";
+      # rebuild = "sudo nh os switch laptop";
+      # rebuild-test = "sudo nh os test --flake .#laptop";
       update = "nix flake update";
-      
+      search = "nh search --limit 8";
       # VSCode
       vc = "code --ozone-platform-hint=wayland --disable-gpu";  # GUI代码编辑器
       
@@ -129,6 +131,9 @@
         git commit -m "$1"
         git push
       }
+
+      # 开启智能大小写补全
+      zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
       
       # 自动启动tmux (可选)
       # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then

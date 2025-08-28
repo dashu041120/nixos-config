@@ -93,5 +93,7 @@
     wineWowPackages.waylandFull
 
     gemini-cli
+
+    nh  # Yet another nix cli helper
   ];
 }

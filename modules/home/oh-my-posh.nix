@@ -2,7 +2,7 @@
 
 {
   programs.oh-my-posh = {
-    enable = true;
+    enable = false;
     enableBashIntegration = true;
     enableFishIntegration = true;
     enableZshIntegration = true;

@@ -33,6 +33,7 @@
     motrix
 
     snipaste
+    
 
     #fpv utils
     betaflight-configurator
@@ -44,6 +45,6 @@
     ## terminal
     warp-terminal
     waveterm
-    
+    zellij
   ];
 }
