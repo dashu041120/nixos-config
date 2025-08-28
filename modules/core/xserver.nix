@@ -6,21 +6,24 @@
       xkb.layout = "us,cn";
     };
 
-    xserver.displayManager.lightdm = {
-      enable = false;
-      # greeters.gtk.enable = true;
-      greeters.gtk.theme.name = "Adwaita";
+    # xserver.displayManager.lightdm = {
+    #   enable = false;
+    #   # greeters.gtk.enable = true;
+    #   greeters.gtk.theme.name = "Adwaita";
 
-    };
-    displayManager.gdm.enable = true;
-    # Enable auto-login for the specified user
+    # };
+    # displayManager.gdm.enable = false;
+    # # Enable auto-login for the specified user
+
+
     displayManager.autoLogin = {
       enable = false;
       user = "${username}";
     };
+
     xserver = {
 		  desktopManager = {
-			  cinnamon.enable = true;
+			  cinnamon.enable = false;
 		  };
 	  };
 
@@ -29,9 +32,18 @@
     };
   };
 
+
   # services.xserver.desktopManager.plasma5.useQtScaling = true;
 
 
   # To prevent getting stuck at shutdown
-  systemd.extraConfig = "DefaultTimeoutStopSec=10s";
+  # systemd.extraConfig = "DefaultTimeoutStopSec=10s";The option definition `systemd.extraConfig' in `/nix/store/fnszw5nsn64kaz6wmv2d6vxj1xbw49bn-source/modules/core/xserver.nix' no longer has any effect; please remove it.
+      #  Use systemd.settings.Manager instead.
+  systemd.settings.Manager = {
+    # KExecWatchdogSec = "5min";
+    RebootWatchdogSec = "10s";
+    # RuntimeWatchdogSec = "30s";
+    # WatchdogDevice = "/dev/watchdog";
+
+  };
 }

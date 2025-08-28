@@ -36,10 +36,17 @@
   };
 
 
-  services.logind.extraConfig = ''
-    # don’t shutdown when power button is short-pressed
-    HandlePowerKey=ignore
-  ''; 
+  # services.logind.extraConfig = ''
+  #   # don’t shutdown when power button is short-pressed
+  #   HandlePowerKey=ignore
+  # ''; 
+# Use services.logind.settings.Login instead.
+  
+  services.logind.settings.Login = {
+    HandleLidSwitch = "ignore";
+    KillUserProcesses = false;
+    
+  };
 
 
   

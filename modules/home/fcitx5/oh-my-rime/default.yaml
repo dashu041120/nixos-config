@@ -171,12 +171,22 @@ recognizer:
     uppercase: "[A-Z][-_+.'0-9A-Za-z]*$"  # 匹配大写字母开头的字符串
     url: "^(www[.]|https?:|ftp:|mailto:).*$|^[a-z]+[.].+$"  # 匹配 URL 或域名
 
+# ascii_composer:
+#   # 定义切换到西文模式的快捷键
+#   switch_key:
+#     Caps_Lock: commit_code  # 按下 Caps Lock 会直接上屏
+#     Control_L: noop  # 按下左 Control 键不做任何操作
+#     Control_R: noop  # 按下右 Control 键不做任何操作
+#     Shift_L: commit_code  # 按下左 Shift 键会直接上屏
+#     Shift_R: inline_ascii  # 按下右 Shift 键会临时切换到西文模式
+#   good_old_caps_lock: true  # 启用经典的 Caps Lock 开启西文模式的方式
+
 ascii_composer:
   # 定义切换到西文模式的快捷键
   switch_key:
     Caps_Lock: commit_code  # 按下 Caps Lock 会直接上屏
     Control_L: noop  # 按下左 Control 键不做任何操作
     Control_R: noop  # 按下右 Control 键不做任何操作
-    Shift_L: commit_code  # 按下左 Shift 键会直接上屏
-    Shift_R: inline_ascii  # 按下右 Shift 键会临时切换到西文模式
-  good_old_caps_lock: true  # 启用经典的 Caps Lock 开启西文模式的方式
+    Shift_L: noop  # 按下左 Shift 键会直接上屏
+    Shift_R: noop
+  good_old_caps_lock: false  

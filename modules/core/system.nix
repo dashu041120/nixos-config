@@ -65,6 +65,7 @@
     ncurses5
     stdenv.cc
     binutils
+    wayland-utils
   ];
 
   time.timeZone = "Asia/Shanghai";
