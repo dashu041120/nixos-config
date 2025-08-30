@@ -99,7 +99,7 @@
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
   let
-    # 步骤1: 定义一个函数，它接受所有可能变化的参数
+    # 定义一个函数，它接受所有可能变化的参数
     mkSystem = { hostname, username, system ? "x86_64-linux" }: 
     let 
       # specialArgs 保持不变，它将被传递给 NixOS 和 Home Manager
@@ -143,7 +143,7 @@
       };
   in
   {
-    # 步骤2: 调用这个函数来生成你的所有主机配置
+    # 调用这个函数来生成你的所有主机配置
     nixosConfigurations = {
       # 主机一：
       desktop = mkSystem { 
@@ -172,44 +172,8 @@
       # };
     };
 
-    # 新增：为 home-manager 提供 flake homeConfigurations 输出
-    # homeConfigurations = {
-    #   "dashu@laptop-rog-gu603" = home-manager.lib.homeManagerConfiguration {
-    #     pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    #     extraSpecialArgs = { username = "dashu"; };
-    #     modules = [
-    #       ./modules/home/home.nix
-    #       ./modules/core
-    #       inputs.catppuccin.homeManagerModules.catppuccin
-    #     ];
-    #     # 你可以根据需要添加更多模块
-    #   };
-    #   # 其他用户可仿照添加
-    # };
+    
   };
 }
 
-
-# .
-# ├── flake.nix
-# ├── hosts
-# │   ├── desktop
-# │   │   └── default.nix
-# │   ├── laptop
-# │   │   └── default.nix
-# │   └── vm
-# │       └── default.nix
-# └── users
-# │   ├── frostphoenix
-# │   │   ├── home.nix      <-- frostphoenix 的 Home Manager 配置
-# │   │   └── nixos.nix
-# │   ├── suzi
-# │   │   ├── home.nix      <-- suzi 的 Home Manager 配置
-# │   │   └── nixos.nix
-# │   └── guest
-# │       ├── home.nix      <-- guest 的 Home Manager 配置
-# │       └── nixos.nix
-# └── modules
-#     ├── core
-#     └── home
 

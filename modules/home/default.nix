@@ -25,6 +25,7 @@
     ./cli.nix
     ./dev.nix
     ./gui.nix
+    # ./looking-glass/kvmfr.nix
     ./vscode.nix
     ./xdg.nix
     ./yazi.nix                        # file manager

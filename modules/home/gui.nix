@@ -46,5 +46,8 @@
     warp-terminal
     waveterm
     zellij
+
+
+    looking-glass-client
   ];
 }

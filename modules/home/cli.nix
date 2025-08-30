@@ -33,6 +33,7 @@
     # woomer
     # yt-dlp-light
     htop
+    switcheroo-control
 
     ## TUI
     # epy                               # ebook reader
