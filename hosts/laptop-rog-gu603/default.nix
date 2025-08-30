@@ -3,6 +3,9 @@
   imports = [
     ./hardware-configuration.nix
     ./../../modules/core
+    # ./gpu-passthrough/hooks.nix
+    ./gpu-passthrough/specialisation.nix
+    ./gpu-passthrough/kvmfr.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -106,7 +109,7 @@
   services.scx.enable = true; # by default uses scx_rustland scheduler
 
   boot = {
-    kernelModules = [ "acpi_call" "kvm-intel" "v4l2loopback" ];
+    kernelModules = [ "acpi_call" "kvm-intel" "v4l2loopback" "intel_iommu=on" ];
     kernelParams = [
       "modprobe.blacklist=nouveau"
     ];
@@ -120,3 +123,6 @@
   };
 }
 
+# IOMMU Group 17:
+#         01:00.0 VGA compatible controller [0300]: NVIDIA Corporation AD107M [GeForce RTX 4060 Max-Q / Mobile] [10de:28e0] (rev a1)
+#         01:00.1 Audio device [0403]: NVIDIA Corporation AD107 High Definition Audio Controller [10de:22be] (rev a1)
