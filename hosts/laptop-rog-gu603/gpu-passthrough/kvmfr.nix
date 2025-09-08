@@ -17,9 +17,14 @@ in
     '';
   };
 
-  services.udev.extraRules = ''
-    SUBSYSTEM=="kvmfr", OWNER="${username}", GROUP="kvm", MODE="0660"
-  '';
+  # services.udev.extraRules = ''
+  #   SUBSYSTEM=="kvmfr", OWNER="${username}", GROUP="kvm", MODE="0660"
+  # '';
+
+  # systemd.tmpfiles.rules = [
+  #     # Type Path               Mode UID     GID Age Argument
+  #     "f /dev/shm/looking-glass 0660 ${username} kvm -"
+  #   ];
 
   virtualisation.libvirtd.qemu.verbatimConfig = ''
     namespaces = []

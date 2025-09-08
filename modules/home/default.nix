@@ -11,6 +11,7 @@
     # ./btop.nix                        # resouces monitor 
 #     ./cava.nix                        # audio visualizer
 #     ./discord.nix                     # discord
+    ./dconf.nix
 #     ./fastfetch.nix                   # fetch tool
 #     ./flow.nix                        # terminal text editor
     ./fzf.nix                         # fuzzy finder
@@ -19,9 +20,11 @@
     # ./gpu-optimization.nix            # GPU performance optimization
 #     ./git.nix                         # version control
 #     ./gnome.nix                       # gnome apps
-    ./gtk.nix                         # gtk theme
-    ./hyprland
+
+    # ./hyprland
+
     ./fcitx5                     # window manager
+    ./fonts.nix                   # font configuration
     ./cli.nix
     ./dev.nix
     ./gui.nix
@@ -49,8 +52,11 @@
 #     ./swayosd.nix                     # brightness / volume wiget
 #     ./swaync/swaync.nix               # notification deamon
       ./social.nix                     # social apps
+      ./theme
 #     # ./viewnior.nix                    # image viewer
-#     ./vscodium                        # vscode fork
+
+    # ./variables.nix
+
 #     ./waybar                          # status bar
 #     ./waypaper.nix                    # GUI wallpaper picker
     ./wps-office.nix                # WPS office

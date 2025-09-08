@@ -31,6 +31,7 @@ in {
 			# 	rev = "...";
 			# 	sha256 = "sha256-...";
 			# };
+
 		};
 
 		# initLua = ''
@@ -53,4 +54,6 @@ in {
 			];
 		};
 	};
+
+				# yaziPlugins.yatline-catppuccin
 }

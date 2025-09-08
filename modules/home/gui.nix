@@ -46,8 +46,9 @@
     warp-terminal
     waveterm
     zellij
-
+    ghostty
 
     looking-glass-client
+    pavucontrol
   ];
 }

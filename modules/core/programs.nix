@@ -24,7 +24,7 @@
   };
 
   programs.hyprland = {
-    enable = true;
+    enable = false;
     withUWSM = true;
     xwayland.enable = true;
     #package = inputs.hyprland.packages.${pkgs.system}.default;
@@ -32,5 +32,5 @@
     #  inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
   };
   # Optional, hint electron apps to use wayland:
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }

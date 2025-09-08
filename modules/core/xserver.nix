@@ -12,20 +12,12 @@
     #   greeters.gtk.theme.name = "Adwaita";
 
     # };
-    # displayManager.gdm.enable = false;
-    # # Enable auto-login for the specified user
-
+    
 
     displayManager.autoLogin = {
       enable = false;
       user = "${username}";
     };
-
-    xserver = {
-		  desktopManager = {
-			  cinnamon.enable = false;
-		  };
-	  };
 
     libinput = {
       enable = true;

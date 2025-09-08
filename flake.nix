@@ -133,7 +133,7 @@
               imports = [
                 ./users/${username}/home.nix
                 # 添加 Home Manager 模块
-                inputs.catppuccin.homeManagerModules.catppuccin
+                inputs.catppuccin.homeModules.catppuccin
                 inputs.chaotic.homeManagerModules.default
               ];
             };
