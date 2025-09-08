@@ -10,7 +10,7 @@
     spice
     spice-gtk
     spice-protocol
-    win-virtio
+    virtio-win
     win-spice
     adwaita-icon-theme
     virglrenderer
@@ -24,6 +24,7 @@
     crun
     runc
     gnome-boxes
+    virtiofsd
   ];
   
 
@@ -36,6 +37,7 @@
         ovmf.enable = true;
         # ovmf.packages = [ (pkgs.OVMFFull.override { csmSupport = false; }).fd ];
         ovmf.packages = [ pkgs.OVMF.fd ];
+        vhostUserPackages = with pkgs; [ virtiofsd ];
       };
     };
     spiceUSBRedirection.enable = true;

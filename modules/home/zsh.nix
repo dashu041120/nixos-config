@@ -139,6 +139,12 @@
       # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
       #   exec tmux
       # fi
+
+      export QT_IM_MODULE=fcitx5
+      
+      # # 强制设置正确的桌面环境变量（解决GNOME设置无法打开的问题）
+      # export XDG_CURRENT_DESKTOP=gnome
+      # export XDG_SESSION_DESKTOP=gnome
     '';
   };
 

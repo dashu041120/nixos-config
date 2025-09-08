@@ -39,7 +39,6 @@ export QT_IM_MODULE=fcitx5
 
 # 确保正确的会话类型
 export XDG_SESSION_TYPE=wayland
-export XDG_CURRENT_DESKTOP=Hyprland
 
 # 禁用一些可能导致冲突的环境变量
 unset DISPLAY

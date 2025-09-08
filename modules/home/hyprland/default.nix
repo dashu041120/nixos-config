@@ -3,8 +3,7 @@
 {
   imports = [
     ./hyprland.nix
-    
-    ./fonts.nix
+  
     ./variables.nix
     ./config.nix
     ./packages.nix

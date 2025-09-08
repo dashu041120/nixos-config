@@ -2,8 +2,12 @@
   networking.networkmanager.enable = true;
   hardware.enableRedistributableFirmware = true;
 
-  environment.systemPackages = with pkgs; [ networkmanagerapplet ];
-  
+  environment.systemPackages = with pkgs; [ 
+    networkmanagerapplet 
+    flclash
+    clash-nyanpasu
+  ];
+
   programs.clash-verge = {
     enable = true;
     # package = pkgs.clash-verge-rev;
@@ -20,5 +24,13 @@
     };
     wantedBy = ["multi-user.target"];
   };
+# https://47.238.198.94/iv/verify_mode.htm?token=83d524d1ef0bd64d11d4d7236739d117
 
+  # services.mihomo = {
+  #   enable = true;
+  #   package = pkgs.mihomo;
+  #   tunMode = true;
+  #   webui = pkgs.metacubexd;
+  #   configFile = "/home/dashu/config.yaml";
+  # };
 }

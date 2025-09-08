@@ -3,10 +3,7 @@
 # https://lostattractor.net/archives/nixos-gpu-vfio-passthrough
 
 let
-  # RTX 3060 Laptop
-  # IOMMU Group 8:
-  # 01:00.0 VGA compatible controller [0300]: NVIDIA Corporation GA106M [GeForce RTX 3060 Mobile / Max-Q] [10de:2520] (rev a1)
-  # 01:00.1 Audio device [0403]: NVIDIA Corporation GA106 High Definition Audio Controller [10de:228e] (rev a1)
+# lspci -nn | grep NVIDIA
   gpuIDs = [
     "10de:28e0" # Graphics
     "10de:22be" # Audio

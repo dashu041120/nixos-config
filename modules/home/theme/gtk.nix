@@ -2,20 +2,19 @@
 
 {
   fonts.fontconfig.enable = true;
-  home.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.fira-code
-    nerd-fonts.caskaydia-cove
-    nerd-fonts.symbols-only
-    twemoji-color-font
-    noto-fonts-emoji
-    fantasque-sans-mono
-    maple-mono.truetype-autohint
+  home.packages = with pkgs; [  
+    whitesur-gtk-theme
+    lxappearance
+    # catppuccin-gtk
   ];
-  # Configure GTK settings using Catppuccin/nix
-  gtk = {
-    enable = true;
-  };
+  # Configure GTK settings using 
+  # gtk = {
+  #   enable = true;
+  #   theme = {
+  #     # name = "WhiteSur-dark";
+  #     name = "Catppuccin-Mocha-Blue";
+  #   };
+  # };
 
   # Use Catppuccin theme via the official nix module
   # catppuccin = {

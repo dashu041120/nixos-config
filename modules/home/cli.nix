@@ -35,6 +35,9 @@
     htop
     switcheroo-control
 
+    # rar
+    unrar
+
     ## TUI
     # epy                               # ebook reader
     # gtt                               # google translate TUI
@@ -96,5 +99,14 @@
     gemini-cli
 
     nh  # Yet another nix cli helper
+
+    wl-clipboard
+    wf-recorder
+    yad
+    light
+    mpv
+
+    
+    power-profiles-daemon
   ];
 }

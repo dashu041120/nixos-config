@@ -107,12 +107,17 @@
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
   services.scx.enable = true; # by default uses scx_rustland scheduler
-
   boot = {
-    kernelModules = [ "acpi_call" "kvm-intel" "v4l2loopback" "intel_iommu=on" ];
+    kernelModules = [ "acpi_call" "kvm-intel" "v4l2loopback" "intel_iommu=on" "iommu=pt" ];
     kernelParams = [
       "modprobe.blacklist=nouveau"
+      "hugepagesz=2G"
+      "hugepages=24"
+      "video=efifb:off"
     ];
+    extraModprobeConfig = ''
+    options kvm_intel nested=1
+    '';
     extraModulePackages =
       with config.boot.kernelPackages;
       [

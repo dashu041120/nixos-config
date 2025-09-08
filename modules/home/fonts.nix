@@ -4,10 +4,7 @@
   # Install fonts via Nix packages for broader availability
   home.packages = with pkgs; [
     # hyprland needs these fonts
-    # nerd-fonts.iosevka
-    # nerd-fonts.jetbrains-mono
-    # nerd-fonts.symbols-only
-    # icomoon-feather
+    icomoon-feather
 
     #cjk
     noto-fonts
@@ -21,13 +18,20 @@
 
     fira
     fira-sans
-    nerd-fonts.fira-code
     font-awesome
     roboto
     helvetica-neue-lt-std
     fragment-mono
 
     corefonts
+
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    nerd-fonts.caskaydia-cove
+    nerd-fonts.symbols-only
+    twemoji-color-font
+    fantasque-sans-mono
+    maple-mono.truetype-autohint
   ];
 
 
@@ -35,24 +39,24 @@
   # The path is relative to this .nix file, pointing to the sibling fonts folder
   home.file = {
     ".local/share/fonts/Archcraft" = {
-      source = ../fonts/Archcraft.ttf;
+      source = ./fonts/Archcraft.ttf;
     };
     ".local/share/fonts/IcomoonFeather" = {
-      source = ../fonts/IcomoonFeather.ttf;
+      source = ./fonts/IcomoonFeather.ttf;
     };
     ".local/share/fonts/SymbolsNerdFontComplete" = {
-      source = ../fonts/SymbolsNerdFontComplete.ttf;
+      source = ./fonts/SymbolsNerdFontComplete.ttf;
     };
      ".local/share/fonts/IosevkaNerdFonts" = {
-      source = ../fonts/IosevkaNerdFonts;
+      source = ./fonts/IosevkaNerdFonts;
       recursive = true;
     };
     ".local/share/fonts/JetBrainsMono" = {
-      source = ../fonts/JetBrainsMono;
+      source = ./fonts/JetBrainsMono;
       recursive = true;
     };
     ".local/share/fonts/JetBrainsMonoNerdFonts" = {
-      source = ../fonts/JetBrainsMonoNerdFonts;
+      source = ./fonts/JetBrainsMonoNerdFonts;
       recursive = true;
     };
   };
