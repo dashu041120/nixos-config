@@ -9,7 +9,6 @@
     
     wl-clip-persist
     cliphist
-    glib
     wayland
     direnv
     
@@ -20,9 +19,7 @@
   ];
 
   wayland.windowManager.hyprland = {
-    enable = true;
-    package = null;
-    portalPackage = null;
+    enable = false;
     xwayland.enable = true;
 # gammastep/wallpaper-switcher need this to be enabled.
     systemd.variables = ["--all"];

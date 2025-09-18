@@ -2,11 +2,12 @@
 
 {
   services.xserver = {
-	desktopManager = {
-	  cinnamon.enable = false;
-      cinnamon.apps.enable = true;
-	};
+    desktopManager = {
+    cinnamon.enable = true;
+    };
+    displayManager.lightdm.enable = false;
   };
+  services.cinnamon.apps.enable = true;
 
   environment.sessionVariables = {
     XDG_CURRENT_DESKTOP = "Cinnamon";

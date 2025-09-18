@@ -3,7 +3,7 @@
   imports = [
     ./home.nix
 #     # TODO
-    ./aseprite.nix           # pixel art editor
+    # ./aseprite.nix           # pixel art editor
     ./alacritty.nix         # terminal emulator
 #     ./audacious.nix                   # music player
     ./bat.nix                         # better cat command

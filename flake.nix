@@ -27,6 +27,7 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable"; # IMPORTANT: 需要使用最新的 chaotic-cx/nyx 分支
     hyprland.url = "github:hyprwm/Hyprland";
+    minegrub-theme.url = "github:Lxtharia/minegrub-theme";
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -116,6 +117,7 @@
           # 添加  模块
           inputs.catppuccin.nixosModules.catppuccin
           inputs.chaotic.nixosModules.default
+          inputs.minegrub-theme.nixosModules.default
           # --- Home Manager 配置开始 ---
           #导入 Home Manager 的 NixOS 模块
           inputs.home-manager.nixosModules.home-manager
