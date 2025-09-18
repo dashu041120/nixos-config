@@ -14,6 +14,8 @@
     ncdu                              # disk space
     ripgrep                           # grep replacement
     tldr
+    appimage-run
+    appimageupdate
 
     ## Tools / useful cli
     # aoc-cli                           # Advent of Code command-line tool
@@ -23,6 +25,7 @@
     bitwise                           # cli tool for bit / hex manipulation
     broot
     btop                             # tree files view
+    baidupcs-go                      # Baidu Netdisk CLI client
     caligula                          # User-friendly, lightweight TUI for disk imaging
     hyperfine                         # benchmarking tool
     pastel                            # cli to manipulate colors
@@ -94,18 +97,22 @@
     xdg-utils
 
     winetricks
-    wineWowPackages.waylandFull
+    wineWow64Packages.stableFull
+    vkd3d
 
     gemini-cli
 
-    nh  # Yet another nix cli helper
+    coreutils-prefixed
+    gpaste
 
+    nh  # Yet another nix cli helper
+    wayland-utils
     wl-clipboard
+    wl-clipboard-x11
     wf-recorder
     yad
     light
     mpv
-
     
     power-profiles-daemon
   ];

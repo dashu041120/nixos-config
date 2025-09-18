@@ -63,7 +63,7 @@
 
   hardware.nvidia-container-toolkit.enable = true;
   hardware.nvidia-container-toolkit.mount-nvidia-executables = true;
-
+  hardware.nvidia.dynamicBoost.enable = true;
   services = {
     power-profiles-daemon.enable = true;
 
@@ -106,9 +106,9 @@
   # boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.kernelPackages = pkgs.linuxPackages_cachyos;
 
-  services.scx.enable = true; # by default uses scx_rustland scheduler
+  # services.scx.enable = true; # by default uses scx_rustland scheduler
   boot = {
-    kernelModules = [ "acpi_call" "kvm-intel" "v4l2loopback" "intel_iommu=on" "iommu=pt" ];
+    kernelModules = [ "acpi_call" "kvm-intel" "v4l2loopback" "intel_iommu=on" "iommu=pt" "iptables" "iptable_nat" ];
     kernelParams = [
       "modprobe.blacklist=nouveau"
       "hugepagesz=2G"

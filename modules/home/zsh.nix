@@ -145,6 +145,21 @@
       # # 强制设置正确的桌面环境变量（解决GNOME设置无法打开的问题）
       # export XDG_CURRENT_DESKTOP=gnome
       # export XDG_SESSION_DESKTOP=gnome
+
+      # >>> conda initialize >>>
+      # !! Contents within this block are managed by 'conda init' !!
+      __conda_setup="$('/home/dashu/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+      if [ $? -eq 0 ]; then
+          eval "$__conda_setup"
+      else
+          if [ -f "/home/dashu/miniforge3/etc/profile.d/conda.sh" ]; then
+              . "/home/dashu/miniforge3/etc/profile.d/conda.sh"
+          else
+              export PATH="/home/dashu/miniforge3/bin:$PATH"
+          fi
+      fi
+      unset __conda_setup
+      # <<< conda initialize <<<
     '';
   };
 

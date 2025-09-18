@@ -1,4 +1,4 @@
-{pkgs, lib, ...}: 
+{pkgs, ...}: 
 
 let
   sddm-astronaut = pkgs.sddm-astronaut.override {
@@ -12,7 +12,7 @@ let
 in {
   services.displayManager.sddm = {
     enable = true;
-    package = lib.mkForce pkgs.kdePackages.sddm; # qt6 sddm version - force override Plasma6 default
+    package = pkgs.kdePackages.sddm; # qt6 sddm version
     # wayland.enable = true;
     theme = "sddm-astronaut-theme";
     extraPackages = [sddm-astronaut];

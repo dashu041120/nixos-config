@@ -27,10 +27,26 @@
     # jre8
     jdk
 
+    ## nodejs
+    nodePackages.nodejs
+    yarn
+    pnpm
+
+    ## Golang
+    go
+
+    glib
+    glibtool
+    glibc
+    glibcLocales
+    glibcInfo
+
     # gui
     imhex
     serial-studio
     putty
+    freerdp
+    libxcb
 
     # android
     # android-tools

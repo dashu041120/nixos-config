@@ -13,6 +13,10 @@
     kdePackages.kdenlive
     # bilibili
 
+    # bottles-unwrapped
+    q4wine
+
+    # cassowary
 
     ## Office
     # libreoffice
