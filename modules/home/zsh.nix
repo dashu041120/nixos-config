@@ -58,9 +58,6 @@
       # 总是递归创建目录
       mkdir = "mkdir -p";
       
-      # 修复通过ssh使用默认kitty终端打开某些程序时的"Error opening terminal: xterm-kitty"错误
-      ssh = "kitten ssh";
-      
       # 其他有用的别名
       grep = "grep --color=auto";
       cp = "cp -i";

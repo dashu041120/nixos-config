@@ -105,7 +105,7 @@
     fontDir.enable = true;
     # use fonts specified by user rather than default ones
     enableDefaultPackages = false;
-
+    fontconfig.useEmbeddedBitmaps = true;
     # user defined fonts
     # the reason there's Noto Color Emoji everywhere is to override DejaVu's
     # B&W emojis that would sometimes show instead of some Color emojis

@@ -24,7 +24,7 @@
         (vaapiIntel.override { enableHybridCodec = true; }) 
         
         #AMD
-        amdvlk # AMD 官方开源 Vulkan 驱动 (与 Mesa RADV 互补)
+
 
         # generic
         vaapiVdpau # VDPAU 到 VA-API 的转译层

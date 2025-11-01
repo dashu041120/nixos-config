@@ -4,8 +4,9 @@
 
   environment.systemPackages = with pkgs; [ 
     networkmanagerapplet 
-    flclash
+    # flclash
     clash-nyanpasu
+    # hiddify-app
   ];
 
   programs.clash-verge = {

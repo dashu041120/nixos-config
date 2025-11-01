@@ -35,7 +35,7 @@
 #     ./kitty.nix                       # terminal
 #     ./lazygit.nix
 #     ./nemo.nix                        # file manager
-#     ./nix-search/nix-search.nix       # TUI to search nixpkgs
+    ./nix-direnv.nix                 # nix-direnv integration
 #     ./nvim.nix                        # neovim editor
     ./oh-my-posh.nix
     ./obs-studio.nix                 # screen recorder

@@ -20,5 +20,6 @@
     qq
     # wechat-uos   
     # wechat
+    spotify
   ];
 }

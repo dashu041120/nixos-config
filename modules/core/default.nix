@@ -11,7 +11,7 @@
     ./bluetooth.nix
     ./garbage_clean.nix
     # ./gnome.nix
-    # ./kde.nix
+    ./kde.nix
     ./cinnamon.nix
     ./pipewire.nix
     ./programs.nix
@@ -23,5 +23,6 @@
     ./wayland.nix
     ./virtualization.nix
     ./game.nix
+    ./net-forwarding.nix
   ];
 }

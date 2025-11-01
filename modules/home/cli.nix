@@ -15,7 +15,7 @@
     ripgrep                           # grep replacement
     tldr
     appimage-run
-    appimageupdate
+    # appimageupdate
 
     ## Tools / useful cli
     # aoc-cli                           # Advent of Code command-line tool

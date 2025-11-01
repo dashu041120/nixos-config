@@ -14,7 +14,7 @@
     # bilibili
 
     # bottles-unwrapped
-    q4wine
+    # q4wine
 
     # cassowary
 
@@ -37,7 +37,8 @@
     motrix
 
     snipaste
-    
+    filezilla
+    xorg.xkill # kill X server window
 
     #fpv utils
     betaflight-configurator

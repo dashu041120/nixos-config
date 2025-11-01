@@ -38,9 +38,9 @@
       enable = true;
       qemu = {
         swtpm.enable = true;
-        ovmf.enable = true;
-        # ovmf.packages = [ (pkgs.OVMFFull.override { csmSupport = false; }).fd ];
-        ovmf.packages = [ pkgs.OVMF.fd ];
+        # ovmf.enable = true;
+        # # ovmf.packages = [ (pkgs.OVMFFull.override { csmSupport = false; }).fd ];
+        # ovmf.packages = [ pkgs.OVMF.fd ];
         vhostUserPackages = with pkgs; [ virtiofsd ];
       };
     };
