@@ -24,6 +24,7 @@
     fragment-mono
 
     corefonts
+    vista-fonts-chs
 
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code

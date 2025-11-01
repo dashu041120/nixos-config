@@ -1,5 +1,9 @@
-{ username, ... }:
+{ username, pkgs, ... }:
 {
+  environment.systemPackages =  with pkgs; [
+    xhost
+    x11docker
+  ];
   services = {
     xserver = {
       enable = true;

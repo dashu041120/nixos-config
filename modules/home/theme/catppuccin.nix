@@ -22,26 +22,24 @@ let
     '';
   });
 
-  # 自定义 Catppuccin Kvantum 主题包，指定 mocha 风味  
-  catppuccin-kvantum-mocha = pkgs.catppuccin-kvantum.overrideAttrs (oldAttrs: {
-    # 重写安装阶段，确保使用 mocha 风味和 blue accent
-    installPhase = ''
-      runHook preInstall
-      mkdir -p $out/share/Kvantum
-      cp -a themes/catppuccin-mocha-blue $out/share/Kvantum
-      runHook postInstall
-    '';
-  });
-
 in
 {
   config = {
-    # 安装自定义的主题包
     home.packages = [
       catppuccin-gtk-mocha
-      catppuccin-kvantum-mocha
+      # catppuccin-kvantum-mocha
       pkgs.libsForQt5.qtstyleplugin-kvantum
       pkgs.qt6Packages.qtstyleplugin-kvantum
+      (pkgs.catppuccin.override {
+        accent = "blue"; # blue, rosewater, pink, mauve, red, maroon, peach, yellow, green, teal, sky, sapphire, lavender
+        variant = "mocha"; # latte, frappe, macchiato, mocha
+        themeList = [ "kvantum" "qt5ct" ];
+      })
+      (pkgs.catppuccin-kde.override {
+        accents = [ "blue" ]; # blue, rosewater, pink, mauve, red, maroon, peach, yellow, green, teal, sky, sapphire, lavender
+        flavour = [ "mocha" ]; # latte, frappe, macchiato, mocha
+        winDecStyles = [ "modern" "classic" ]; 
+      })
     ];
 
     # 配置 GTK 使用 Catppuccin Mocha
@@ -65,4 +63,29 @@ in
       theme=catppuccin-mocha-blue
     '';
   };
+  
 }
+
+
+# or try this?
+# flakes.nix
+# {
+#   inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
+#   outputs = { self, nixpkgs }: {
+#     packages.x86_64-linux.catppuccin-gtk-all-accents = 
+#       let
+#         pkgs = import nixpkgs { system = "x86_64-linux"; };
+#         allAccents = [
+#           "blue" "flamingo" "green" "lavender" "maroon" "mauve"
+#           "peach" "pink" "red" "rosewater" "sapphire" "sky" "teal" "yellow"
+#         ];
+#       in
+#         pkgs.catppuccin-gtk {
+#           accents = allAccents;
+#           # 你也可以指定其它参数，比如 variant/size/tweaks
+#           variant = "frappe";
+#           size = "standard";
+#         };
+#   };
+# }

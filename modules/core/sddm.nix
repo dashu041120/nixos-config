@@ -12,7 +12,7 @@ let
 in {
   services.displayManager.sddm = {
     enable = true;
-    package = pkgs.kdePackages.sddm; # qt6 sddm version
+    # package = pkgs.kdePackages.sddm; # qt6 sddm version
     # wayland.enable = true;
     theme = "sddm-astronaut-theme";
     extraPackages = [sddm-astronaut];

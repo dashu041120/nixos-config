@@ -34,3 +34,19 @@ in
     ];
   };
 }
+
+# how to do in other linux dist?
+# edit /etc/grub.d/40_custom
+
+# menuentry "Arch Linux" {
+#     linux /vmlinuz-linux root=/dev/sda2 quiet splash
+#     initrd /initramfs-linux.img
+# }
+
+# # GPU Passthrough 配置（模拟 specialisation）
+# menuentry "Arch Linux - GPU Passthrough" {
+#     linux /vmlinuz-linux root=/dev/sda2 quiet splash \
+#         vfio-pci.ids=10de:2204,10de:1aef \
+#         modprobe.blacklist=nvidia,nvidia_drm,nvidia_modeset,nvidia_uvm
+#     initrd /initramfs-linux.img
+# }

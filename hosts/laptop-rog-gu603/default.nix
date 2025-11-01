@@ -6,6 +6,7 @@
     # ./gpu-passthrough/hooks.nix
     ./gpu-passthrough/specialisation.nix
     ./gpu-passthrough/kvmfr.nix
+    # ./disable-dgpu.nix
   ];
 
   environment.systemPackages = with pkgs; [
@@ -108,7 +109,7 @@
 
   # services.scx.enable = true; # by default uses scx_rustland scheduler
   boot = {
-    kernelModules = [ "acpi_call" "kvm-intel" "v4l2loopback" "intel_iommu=on" "iommu=pt" "iptables" "iptable_nat" ];
+    kernelModules = [ "acpi_call" "kvm-intel" "v4l2loopback" "intel_iommu=on" "iommu=pt" "iptables" "iptable_nat" "btusb" "uhid" ];
     kernelParams = [
       "modprobe.blacklist=nouveau"
       "hugepagesz=2G"
