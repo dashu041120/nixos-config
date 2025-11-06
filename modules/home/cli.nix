@@ -62,7 +62,8 @@
     # cmatrix
     # countryfetch
     cowsay
-    fastfetch
+    fastfetch 
+    hyfetch
     # figlet
     # fortune
     # lavat

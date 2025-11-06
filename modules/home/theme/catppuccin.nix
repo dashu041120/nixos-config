@@ -1,26 +1,33 @@
 { config, pkgs, lib, ... }:
 
 let
-  # 自定义 Catppuccin GTK 主题包，指定 mocha 风味
-  catppuccin-gtk-mocha = pkgs.catppuccin-gtk.overrideAttrs (oldAttrs: {
-    # 重写构建参数，指定 mocha 风味和 blue accent
-    buildInputs = oldAttrs.buildInputs or [];
-    nativeBuildInputs = oldAttrs.nativeBuildInputs or [];
+  # # 自定义 Catppuccin GTK 主题包，指定 mocha 风味
+  # catppuccin-gtk-mocha = pkgs.catppuccin-gtk.overrideAttrs (oldAttrs: {
+  #   # 重写构建参数，指定 mocha 风味和 blue accent
+  #   buildInputs = oldAttrs.buildInputs or [];
+  #   nativeBuildInputs = oldAttrs.nativeBuildInputs or [];
     
-    # 重写安装阶段，确保使用 mocha 风味
-    installPhase = ''
-      runHook preInstall
+  #   # 重写安装阶段，确保使用 mocha 风味
+  #   installPhase = ''
+  #     runHook preInstall
 
-      mkdir -p $out/share/themes
+  #     mkdir -p $out/share/themes
 
-      python3 build.py mocha \
-        --accent blue \
-        --size standard \
-        --dest $out/share/themes
+  #     python3 build.py mocha \
+  #       --accent blue \
+  #       --size standard \
+  #       --dest $out/share/themes
 
-      runHook postInstall
-    '';
-  });
+  #     runHook postInstall
+  #   '';
+  # });
+  catppuccin-gtk-mocha = pkgs.catppuccin-gtk.override {
+    accents = [ "blue" ];
+    size = "standard";
+    variant = "mocha";
+    # 添加 tweaks 以包含更多组件支持
+    tweaks = [ "rimless" "normal" "float" ];
+  };
 
 in
 {

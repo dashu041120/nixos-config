@@ -77,3 +77,13 @@
   users.users.${username}.extraGroups = [ "libvirtd" "docker" ];
   virtualisation.oci-containers.backend = "docker"; # 使用 Docker 作为容器后端
 }
+
+
+# Default networking
+
+# To utilize the default libvirt network, you will need to install the dnsmasq package. This is required for DNS and DCHP functionality within the network.
+
+# Once the package is installed, enable and start the default network using the following commands:
+
+# # virsh net-autostart default
+# # virsh net-start default

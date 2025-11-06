@@ -19,13 +19,14 @@
     # GPU and performance monitoring tools
     # nvtopPackages.full
     # nvtopPackages.nvidia
-    glxinfo
+    mesa-demos  # 'glxinfo' has been renamed to/replaced by 'mesa-demos'
     vulkan-tools
 
     asusctl
 
-    cudatoolkit
-    cudaPackages.cudnn
+    # cudatoolkit # broken????
+    # cudaPackages.cudnn
+    # cudaPackages.libnpp
   ];
 
   

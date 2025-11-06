@@ -21,13 +21,13 @@
       extraPackages = with pkgs; [ 
         intel-media-driver # Intel 新一代硬解驱动 (VA-API)
         # Intel 新一代硬解驱动 (VA-API)
-        (vaapiIntel.override { enableHybridCodec = true; }) 
+        (intel-vaapi-driver.override { enableHybridCodec = true; }) 
         
         #AMD
 
 
         # generic
-        vaapiVdpau # VDPAU 到 VA-API 的转译层
+        libva-vdpau-driver # VDPAU 到 VA-API 的转译层
         libvdpau-va-gl # 另一个 VDPAU 到 VA-API 的转译层
       ];
     };

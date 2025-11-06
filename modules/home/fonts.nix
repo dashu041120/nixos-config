@@ -8,9 +8,9 @@
 
     #cjk
     noto-fonts
+    # noto-fonts-extra
     noto-fonts-cjk-sans
-    noto-fonts-extra
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     noto-fonts-emoji-blob-bin
     sarasa-gothic # 更纱黑体
     source-code-pro

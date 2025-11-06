@@ -31,7 +31,7 @@
     geoclue2.enable = true;
     udev.packages = with pkgs; [
       gnome-settings-daemon
-      android-udev-rules
+      # android-udev-rules # 'android-udev-rules' has been removed due to being superseded by built-in systemd uaccess rules.
     ];
   };
 

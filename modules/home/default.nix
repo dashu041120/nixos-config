@@ -37,6 +37,7 @@
 #     ./nemo.nix                        # file manager
     ./nix-direnv.nix                 # nix-direnv integration
 #     ./nvim.nix                        # neovim editor
+    ./niri                        # niri
     ./oh-my-posh.nix
     ./obs-studio.nix                 # screen recorder
 #     ./p10k/p10k.nix
