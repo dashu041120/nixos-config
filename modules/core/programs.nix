@@ -23,14 +23,12 @@
     ];
   };
 
-  programs.hyprland = {
-    enable = false;
-    withUWSM = true;
-    xwayland.enable = true;
-    #package = inputs.hyprland.packages.${pkgs.system}.default;
-    #portalPackage =
-    #  inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
-  };
+  # programs.hyprland = {
+  #   enable = false;
+  #   withUWSM = true;
+  #   xwayland.enable = true;
+  # };
+  programs.niri.enable = true;
   # Optional, hint electron apps to use wayland:
   # environment.sessionVariables.NIXOS_OZONE_WL = "1";
 }
