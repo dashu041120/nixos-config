@@ -1,0 +1,114 @@
+{
+  description = "Home Manager configuration with Nix Flakes (non-NixOS)";
+
+  nixConfig = {
+    extra-substituters = [
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
+      "https://cache.nixos.org/"
+      "https://hyprland.cachix.org"
+      "https://nix-community.cachix.org"
+      "https://nix-gaming.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
+    ];
+  };
+
+  inputs = {
+    # 使用 unstable 而不是 nixos-unstable
+    nixpkgs.url = "github:NixOS/nixpkgs/unstable";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    catppuccin.url = "github:catppuccin/nix";
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland.url = "github:hyprwm/Hyprland";
+
+    quickshell = {
+      url = "github:outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.quickshell.follows = "quickshell";
+    };
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
+    # 以下是可选的非 flake 输入
+    catppuccin-bat = {
+      url = "github:catppuccin/bat";
+      flake = false;
+    };
+
+    polybar-themes = {
+      url = "github:adi1090x/polybar-themes";
+      flake = false;
+    };
+  };
+
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    let
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
+      homeConfigurations = {
+        # dashu 用户配置
+        "dashu@laptop" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home/dashu/default.nix
+            inputs.catppuccin.homeModules.catppuccin
+          ];
+          extraSpecialArgs = {
+            inherit inputs;
+            username = "dashu";
+            hostname = "laptop-rog-gu603";
+          };
+        };
+
+        # patrickz 用户配置（如果需要）
+        "patrickz@desktop" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            ./home/patrickz/default.nix
+            inputs.catppuccin.homeModules.catppuccin
+          ];
+          extraSpecialArgs = {
+            inherit inputs;
+            username = "patrickz";
+            hostname = "desktop";
+          };
+        };
+      };
+
+      # 提供有用的脚本
+      packages.${system} = {
+        # 垃圾收集脚本
+        nix-gc = pkgs.writeShellScriptBin "nix-gc-helper" ''
+          exec bash ${./home/scripts/nix-gc.sh} "$@"
+        '';
+
+        # 初始化脚本
+        init-nix-env = pkgs.writeShellScriptBin "init-nix-env" ''
+          exec bash ${./home/scripts/init-nix-env.sh} "$@"
+        '';
+      };
+
+      # 默认包
+      defaultPackage.${system} = self.packages.${system}.init-nix-env;
+    };
+}

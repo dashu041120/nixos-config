@@ -1,0 +1,318 @@
+input {
+    keyboard {
+        xkb {
+            layout "us"
+        }
+        repeat-delay 300
+        repeat-rate 30
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        scroll-method "two-finger"
+    }
+
+    mouse {
+        accel-profile "flat"
+        accel-speed 1
+    }
+    focus-follows-mouse max-scroll-amount="0%"
+
+    // niri默认接管电源按钮的功能是sleep,这里禁用以使用关机功能
+
+    disable-power-key-handling
+
+    // 切换mod键：正常使用 Super，嵌套窗口内使用 Alt。
+
+    //mod-key "Super"
+
+    //mod-key-nested "Alt"
+}
+output "HDMI" {
+    // 注释以启用此显示器。
+    off
+    // 默认聚焦在这个显示器
+    focus-at-startup
+    // 格式为"<width>x<height>" 或者 "<width>x<height>@<refresh rate>".
+    // 如果省略了刷新率，niri将为分辨率选择最高的刷新率。
+    mode "3840x2160@60.000"
+    // 您可以使用整数或分数量表，例如，比例为150％。
+    scale 2
+    // transform允许逆时针旋转显示，有效值为:
+    // normal, 90, 180, 270, flipped, flipped-90, flipped-180 and flipped-270.
+    transform "normal"
+    // 输出在所有显示器坐标空间中的位置。未明确配置位置的显示器将放置在所有已放置的显示器右侧。
+    // position x=1280 y=0
+
+}
+//output "DP-3" {
+//    mode "3840x2160@240"
+//    scale 2
+//    transform "normal"
+//    variable-refresh-rate on-demand=true
+//    position x=0 y=0
+//}
+
+//output "DP-2" {
+//    mode "2560x1440@240"
+//    scale 1
+//    transform "normal"
+//    variable-refresh-rate on-demand=true
+//    position x=1920 y=0
+//}
+
+layout {
+    gaps 4
+    center-focused-column "never"
+        // mod+r在预设之间切换的宽度。
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+// 关闭聚焦框
+    focus-ring {
+        off
+    }
+
+    background-color "transparent"
+
+    default-column-width { proportion 0.66667; }
+
+    border {
+        width 2
+        active-gradient from="#0DB7D4" to="#9778D0" angle=90
+        inactive-color "#04404A"
+    }
+
+    struts {
+        left 2
+        right 2
+        top 2
+        bottom 2
+    }
+}
+
+layer-rule {
+    match namespace="^swww-daemon$"
+    place-within-backdrop true
+}
+
+//spawn-at-startup "/usr/bin/mate-polkit"
+//spawn-at-startup "pikabar"
+spawn-at-startup "qs" "-c" "noctalia-shell"
+spawn-at-startup "systemctl" "--user" "enable" "--now" "hypridle"
+spawn-at-startup "swww-daemon"
+spawn-at-startup "hyprlock"
+//启动niri时自动启动的软件
+// spawn-at-startup "/usr/bin/fcitx5"
+// spawn-at-startup "/usr/bin/v2rayn"
+// spawn-at-startup "/usr/bin/waybar"
+spawn-at-startup "vicinae" "server"
+spawn-at-startup "soteria"
+
+
+environment {
+    LD_PRELOAD ""
+    MOZ_ENABLE_WAYLAND "1"
+    XDG_SESSION_TYPE "wayland"
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_DESKTOP "niri"
+    MOZ_DBUS_REMOTE "1"
+    GDK_BACKEND "wayland"
+    QT_AUTO_SCREEN_SCALE_FACTOR "1"
+    QT_WAYLAND_FORCE_DPI "physical"
+    EGL_PLATFORM "wayland"
+    CLUTTER_BACKEND "wayland"
+    TERM "ghostty"
+    TERMINAL "ghostty"
+     _JAVA_AWT_WM_NONREPARENTING "1"
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    QT_QPA_PLATFORMTHEME "qt6ct"
+    //nv GSK_RENDERER "ngl"
+    //nv NVD_BACKEND "direct"
+    //nv LIBVA_DRIVER_NAME "nvidia"
+    //nv GBM_BACKEND "nvidia-drm"
+    //nv VDPAU_DRIVER "nvidia"
+    //nv __GLX_VENDOR_LIBRARY_NAME "nvidia"
+    //nv __GL_VRR_ALLOWED "1"
+    //nv __GL_GSYNC_ALLOWED "1"
+    //nv __GL_SHADER_DISK_CACHE_SKIP_CLEANUP "1"
+    //nv __GL_YIELD "USLEEP"
+    //nv __EGL_VENDOR_LIBRARY_FILENAMES "/usr/share/glvnd/egl_vendor.d/10_nvidia.json"
+}
+
+prefer-no-csd
+
+hotkey-overlay {
+//    skip-at-startup
+}
+
+//screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+screenshot-path null
+//screenshot-notification-disable
+animations {
+    // Uncomment to turn off all animations.
+    // off
+
+    // Slow down all animations by this factor. Values below 1 speed them up instead.
+    // slowdown 3.0
+}
+
+window-rule {
+    match app-id="^(steam_app_.*)$"
+    variable-refresh-rate true
+    open-fullscreen true
+}
+
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+}
+
+window-rule {
+    geometry-corner-radius 20
+    clip-to-geometry true
+}
+
+// 可以使用wev来查询特定的按键对应的XKB名称
+binds {
+    Mod+Shift+Slash { show-hotkey-overlay; }
+    Mod+Return { spawn "ghostty"; }
+    Mod+D hotkey-overlay-title="Run an Application" { spawn "vicinae" "toggle"; }
+    Super+Alt+L { spawn "pikabar-lock"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "pamixer" "-i" "5"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "pamixer" "-d" "5"; }
+    XF86AudioMute        allow-when-locked=true { spawn "pamixer" "-t"; }
+
+    Mod+Shift+Q { spawn "wlogout"; }
+    Mod+Q { close-window; }
+
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+    Mod+Right { focus-column-right; }
+    Mod+H     { focus-column-left; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
+
+    Mod+Ctrl+Left  { move-column-left; }
+    Mod+Ctrl+Down  { move-window-down; }
+    Mod+Ctrl+Up    { move-window-up; }
+    Mod+Ctrl+Right { move-column-right; }
+    Mod+Ctrl+H     { move-column-left; }
+    Mod+Ctrl+J     { move-window-down; }
+    Mod+Ctrl+K     { move-window-up; }
+    Mod+Ctrl+L     { move-column-right; }
+
+    Mod+Home { focus-column-first; }
+    Mod+End  { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
+
+    Mod+Shift+Left  { focus-monitor-left; }
+    Mod+Shift+Down  { focus-monitor-down; }
+    Mod+Shift+Up    { focus-monitor-up; }
+    Mod+Shift+Right { focus-monitor-right; }
+    Mod+Shift+H     { focus-monitor-left; }
+    Mod+Shift+J     { focus-monitor-down; }
+    Mod+Shift+K     { focus-monitor-up; }
+    Mod+Shift+L     { focus-monitor-right; }
+
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
+
+    Mod+Page_Down      { focus-workspace-down; }
+    Mod+Page_Up        { focus-workspace-up; }
+    Mod+U              { focus-workspace-down; }
+    Mod+I              { focus-workspace-up; }
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    Mod+Ctrl+U         { move-column-to-workspace-down; }
+    Mod+Ctrl+I         { move-column-to-workspace-up; }
+
+
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+U         { move-workspace-down; }
+    Mod+Shift+I         { move-workspace-up; }
+
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
+
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+    Mod+Ctrl+1 { move-column-to-workspace 1; }
+    Mod+Ctrl+2 { move-column-to-workspace 2; }
+    Mod+Ctrl+3 { move-column-to-workspace 3; }
+    Mod+Ctrl+4 { move-column-to-workspace 4; }
+    Mod+Ctrl+5 { move-column-to-workspace 5; }
+    Mod+Ctrl+6 { move-column-to-workspace 6; }
+    Mod+Ctrl+7 { move-column-to-workspace 7; }
+    Mod+Ctrl+8 { move-column-to-workspace 8; }
+    Mod+Ctrl+9 { move-column-to-workspace 9; }
+
+    Mod+BracketLeft  { consume-or-expel-window-left; }
+    Mod+BracketRight { consume-or-expel-window-right; }
+    Mod+Comma  { consume-window-into-column; }
+    Mod+Period { expel-window-from-column; }
+
+    Mod+R { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+    Mod+Ctrl+R { reset-window-height; }
+    // Mod+F { maximize-column; }
+    Mod+F { fullscreen-window; }
+    Mod+Shift+F { spawn "nemo"; }
+    Mod+C { center-column; }
+    Mod+Minus { set-column-width "-10%"; }
+    Mod+Equal { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    Print { screenshot; }
+    Ctrl+Print { screenshot-screen; }
+    Alt+Print { screenshot-window; }
+
+    Mod+Shift+E { quit; }
+    Ctrl+Alt+Delete { quit; }
+}
+
+
+// 禁用鼠标左上角热角
+
+gestures {
+    hot-corners {
+        // off
+    }
+}
