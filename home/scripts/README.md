@@ -99,6 +99,51 @@ chmod +x nix-gc.sh
 
 ---
 
+### 4. `gpu-boot-entry.sh` - GPU 启动条目管理
+
+**作用**: 在 GRUB 启动菜单中创建 GPU 配置启动条目
+
+**替代的 NixOS 配置**:
+- `hosts/laptop-rog-gu603/disable-dgpu.nix` - 禁用 dGPU 配置
+- 系统启动参数配置
+
+**用法**:
+
+```bash
+chmod +x gpu-boot-entry.sh
+
+# 安装 GPU 启动条目
+sudo ./gpu-boot-entry.sh install
+
+# 查看启动条目
+sudo ./gpu-boot-entry.sh show
+
+# 显示详细说明
+sudo ./gpu-boot-entry.sh details
+
+# 验证 GRUB 配置
+sudo ./gpu-boot-entry.sh verify
+
+# 删除条目
+sudo ./gpu-boot-entry.sh remove "Disable"
+
+# 从备份恢复
+sudo ./gpu-boot-entry.sh restore
+```
+
+**功能**:
+- 创建两个 GRUB 启动条目：
+  1. **Disable dGPU (iGPU only)** - 禁用独立显卡，延长续航 2-4 小时
+  2. **GPU Passthrough (IOMMU Enabled)** - 启用 GPU 直通用于虚拟机
+- 自动检测发行版（ArchLinux/Debian）
+- 自动检测根分区 UUID
+- GRUB 配置备份和恢复
+- 配置验证和重建
+
+**详见**: `../docs/GPU_BOOT_ENTRIES.md` - 完整 GPU 启动条目配置指南
+
+---
+
 ## 其他可替代的配置
 
 ### `modules/core/game.nix`
