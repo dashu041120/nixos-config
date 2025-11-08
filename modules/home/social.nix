@@ -16,8 +16,8 @@
     freerdp # required by remmina
 
     # my custom hardened packages
-    qqmusic
-    qq
+    # qqmusic
+    # qq
     # wechat-uos   
     # wechat
     spotify
