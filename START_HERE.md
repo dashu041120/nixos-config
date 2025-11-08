@@ -8,7 +8,7 @@
 
 ```bash
 # 1. 切换分支
-git checkout migrate-to-nix-standalone
+git checkout nix-only
 
 # 2. 一键初始化（推荐）
 bash QUICK_START.sh

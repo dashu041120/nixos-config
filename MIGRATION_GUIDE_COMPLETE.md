@@ -15,7 +15,7 @@
 bash QUICK_START.sh
 
 # 方法 2: 手动步骤
-git checkout migrate-to-nix-standalone
+git checkout nix-only
 bash home/scripts/init-nix-env.sh
 nix flake show
 nix run home-manager -- switch --flake .#dashu@laptop
@@ -48,14 +48,14 @@ nix run home-manager -- switch --flake .#dashu@laptop
 
 ### 📊 迁移成果
 
-| 指标 | 数值 |
-|------|------|
-| 工作分支 | `migrate-to-nix-standalone` |
+| 指标     | 数值                           |
+| -------- | ------------------------------ |
+| 工作分支 | `nix-only`                    |
 | 配置文件 | 202 个 (从 modules/home/ 复制) |
-| 脚本文件 | 4 个 POSIX shell 脚本 |
-| 代码行数 | 928 行 (脚本代码) |
-| 文档字数 | 15,000+ 字 |
-| 总提交数 | 6 个主要提交 |
+| 脚本文件 | 4 个 POSIX shell 脚本          |
+| 代码行数 | 928 行 (脚本代码)              |
+| 文档字数 | 15,000+ 字                     |
+| 总提交数 | 6 个主要提交                   |
 
 ### 📁 目录结构
 
@@ -109,24 +109,24 @@ nix run home-manager -- switch --flake .#dashu@laptop
 
 #### 成功替代的 NixOS 功能
 
-| NixOS 配置 | 替代方案 | 状态 |
-|-----------|--------|------|
-| `modules/core/system.nix` | `init-nix-env.sh` | ✅ 完全替代 |
+| NixOS 配置                         | 替代方案                            | 状态        |
+| ---------------------------------- | ----------------------------------- | ----------- |
+| `modules/core/system.nix`        | `init-nix-env.sh`                 | ✅ 完全替代 |
 | `modules/core/garbage_clean.nix` | `setup-nix-gc.sh` + `nix-gc.sh` | ✅ 完全替代 |
-| `modules/core/security.nix` | 基础安全配置 | ✅ 适配 |
-| 启动参数配置 | `gpu-boot-entry.sh` | ✅ 增强替代 |
-| 30+ home-manager 模块 | `home/dashu/` | ✅ 直接复用 |
+| `modules/core/security.nix`      | 基础安全配置                        | ✅ 适配     |
+| 启动参数配置                       | `gpu-boot-entry.sh`               | ✅ 增强替代 |
+| 30+ home-manager 模块              | `home/dashu/`                     | ✅ 直接复用 |
 
 #### 不适用或需要替代的 NixOS 功能
 
 以下配置涉及系统级设置，在独立 Nix 环境中不适用：
 
-| 文件 | 原因 | 替代方案 |
-|------|------|--------|
-| `modules/core/bootloader.nix` | 系统启动配置 | 使用发行版的引导程序工具 |
-| `modules/core/hardware.nix` | BIOS/UEFI 配置 | 发行版硬件工具 (intel-microcode 等) |
-| `modules/core/network.nix` | 系统网络配置 | NetworkManager 或 systemd-networkd |
-| `modules/core/virtualization.nix` | 系统虚拟化 | `libvirt` 包 + 用户权限配置 |
+| 文件                                | 原因           | 替代方案                                            |
+| ----------------------------------- | -------------- | --------------------------------------------------- |
+| `modules/core/bootloader.nix`     | 系统启动配置   | 使用发行版的引导程序工具                            |
+| `modules/core/hardware.nix`       | BIOS/UEFI 配置 | 发行版硬件工具 (intel-microcode 等)                 |
+| `modules/core/network.nix`        | 系统网络配置   | NetworkManager 或 systemd-networkd                  |
+| `modules/core/virtualization.nix` | 系统虚拟化     | `libvirt` 包 + 用户权限配置                       |
 | `modules/core/kde.nix` 等桌面环境 | 系统级 DE 配置 | home-manager 中的 `hyprland.nix`, `niri.nix` 等 |
 
 ---
@@ -164,11 +164,11 @@ nix-shell -p home-manager
 
 ### 配置迁移步骤
 
-#### 步骤 1: 切换到迁移分支
+#### 步骤 1: 切换到 nix-only 分支
 
 ```bash
 cd /path/to/nixos-config
-git checkout migrate-to-nix-standalone
+git checkout nix-only
 ```
 
 #### 步骤 2: 运行初始化脚本
@@ -178,6 +178,7 @@ bash home/scripts/init-nix-env.sh
 ```
 
 此脚本将：
+
 - ✓ 检查 Nix 和 home-manager 安装
 - ✓ 配置 Nix 替代品源（缓存）
 - ✓ 启用实验特性 (nix-command, flakes)
@@ -232,6 +233,7 @@ bash home/scripts/init-nix-env.sh
 ```
 
 **功能**:
+
 - 检查 Nix 和 home-manager 安装
 - 配置 Nix 替代品源和二进制缓存
 - 初始化实验特性 (nix-command, flakes)
@@ -273,11 +275,12 @@ bash home/scripts/setup-nix-gc.sh uninstall-systemd
 **支持的方式**:
 
 1. **systemd 定时器**（推荐）
+
    - 现代、可靠的任务调度
    - 与 systemd 集成
    - 支持日志查看: `journalctl --user -u nix-gc -f`
-
 2. **cron 任务**（备选）
+
    - 简单、轻量级
    - 需要 cron 服务运行
    - 支持自定义时间表
@@ -315,6 +318,7 @@ bash home/scripts/nix-gc.sh --force --days 14
 - `--help` - 显示帮助信息
 
 **功能**:
+
 - 删除旧的构建结果
 - 优化 store 链接
 - 支持预览模式
@@ -352,6 +356,7 @@ sudo bash home/scripts/gpu-boot-entry.sh rebuild
 ```
 
 **功能**:
+
 - 创建两个 GRUB 启动条目：
   1. **Disable dGPU (iGPU only)** - 禁用独立显卡，延长续航
   2. **GPU Passthrough (IOMMU Enabled)** - 启用 GPU 直通
@@ -371,6 +376,7 @@ sudo bash home/scripts/gpu-boot-entry.sh rebuild
 **用途**: 使用集成显卡，禁用独立显卡
 
 **优势**:
+
 - 延长笔记本续航 2-4 小时
 - 降低系统温度 5-15°C
 - 减少功耗 20-30W
@@ -391,6 +397,7 @@ nvidia.NVreg_DynamicPowerManagement=0
 **用途**: 启用 IOMMU 和 GPU 直通支持
 
 **优势**:
+
 - 虚拟机可访问 GPU
 - 性能达原生 95%+
 - 低延迟 (<1%)
@@ -412,14 +419,17 @@ kvm.report_ignored_msrs=0
 ### 硬件要求
 
 **CPU 要求**:
+
 - Intel - VT-d 支持 (Sandy Bridge 及以后)
 - AMD - AMD-Vi 支持 (Bulldozer 及以后)
 
 **主板 BIOS 要求**:
+
 - 需启用 IOMMU（VT-d 或 AMD-Vi）
 - 需启用虚拟化扩展（VT-x 或 SVM）
 
 **GPU 要求**:
+
 - NVIDIA dGPU（在 Windows 虚拟机上无特殊限制）
 
 ### 安装步骤
@@ -592,7 +602,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg  # Debian/ArchLinux
 
 ```bash
 git branch -v
-# 应显示: * migrate-to-nix-standalone ...
+# 应显示: * nix-only ...
 ```
 
 ### Q2: 如何更新配置后应用更改？
@@ -625,6 +635,7 @@ home-manager switch --gen <generation-number>
 ### Q6: 脚本需要 sudo 权限吗？
 
 大多数脚本不需要，但以下需要：
+
 - `gpu-boot-entry.sh` - 需要修改 GRUB
 - `setup-nix-gc.sh` - 需要创建系统文件
 
@@ -802,6 +813,7 @@ sudo bash home/scripts/gpu-boot-entry.sh install
 ### ArchLinux
 
 **GRUB 配置文件位置**:
+
 - 自定义文件: `/etc/grub.d/40_custom`
 - 主配置: `/etc/default/grub`
 - 生成配置: `/boot/grub/grub.cfg`
@@ -813,12 +825,14 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 **启动参数文件**:
+
 - `/boot/vmlinuz-linux` - Linux 内核
 - `/boot/initramfs-linux.img` - 初始化 RAM 磁盘
 
 ### Debian / Ubuntu
 
 **GRUB 配置文件位置**:
+
 - 自定义文件: `/etc/grub.d/40_custom`
 - 主配置: `/etc/default/grub`
 - 生成配置: `/boot/grub/grub.cfg`
@@ -834,6 +848,7 @@ sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 **启动参数文件**:
+
 - `/boot/vmlinuz-linux-generic` 或 `/boot/vmlinuz-$(uname -r)` - Linux 内核
 - `/boot/initrd.img` 或 `/boot/initramfs-$(uname -r).img` - 初始化 RAM 磁盘
 
@@ -1011,25 +1026,26 @@ home.packages = with pkgs; [
 ### ✅ 推荐做法
 
 1. **定期备份配置**
+
    - 使用 git 管理所有配置
    - 定期 push 到远程仓库
-
 2. **验证更改前应用**
+
    ```bash
    nix build .#homeConfigurations.dashu@laptop.activationPackage
    ```
-
 3. **使用有意义的提交信息**
+
    ```bash
    git commit -m "feat: add fcitx5 input method configuration"
    ```
-
 4. **定期更新依赖**
+
    ```bash
    nix flake update
    ```
-
 5. **监控磁盘使用**
+
    ```bash
    du -sh ~/.cache/nix
    du -sh ~/.nix-profile
@@ -1049,21 +1065,22 @@ home.packages = with pkgs; [
 ### 可选的改进项目
 
 1. **测试其他发行版**
+
    - Debian/Ubuntu 虚拟机测试
    - ArchLinux 虚拟机测试
    - 验证脚本完全兼容性
-
 2. **扩展 GPU 支持**
+
    - 添加 AMD GPU 配置
    - 添加 Intel Arc GPU 支持
    - 创建 NVIDIA 特定优化
-
 3. **自动化部署**
+
    - 创建安装脚本自动克隆仓库
    - 添加 CI/CD 管道验证配置
    - 实现一键部署脚本
-
 4. **性能优化**
+
    - 根据实际使用调整 GC 时间表
    - 监控磁盘使用和 store 大小
    - 实现自动告警机制
@@ -1095,7 +1112,7 @@ home.packages = with pkgs; [
 ## 版本信息
 
 - **创建日期**: 2025-11-08
-- **迁移分支**: `migrate-to-nix-standalone`
+- **工作分支**: `nix-only`
 - **主要版本**: 1.0
 - **状态**: ✅ 完成和验证
 - **文档状态**: ✅ 完整
