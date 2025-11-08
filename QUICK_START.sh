@@ -34,12 +34,12 @@ print_success "Flake 项目已验证"
 print_header "2️⃣  验证工作分支"
 
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-if [ "$CURRENT_BRANCH" != "migrate-to-nix-standalone" ]; then
+if [ "$CURRENT_BRANCH" != "nix-only" ]; then
     print_info "当前分支: $CURRENT_BRANCH"
-    read -p "是否切换到 migrate-to-nix-standalone 分支? (y/n) " -n 1 -r
+    read -p "是否切换到 nix-only 分支? (y/n) " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        git checkout migrate-to-nix-standalone || {
+        git checkout nix-only || {
             print_error "无法切换分支"
             exit 1
         }
@@ -89,8 +89,8 @@ echo "   4. 设置 GPU 启动条目（可选）:"
 echo "      sudo bash home/scripts/gpu-boot-entry.sh install"
 echo ""
 echo "🔗 相关资源:"
-echo "   - 迁移分支: git checkout migrate-to-nix-standalone"
-echo "   - 查看提交: git log --oneline migrate-to-nix-standalone"
+echo "   - nix-only 分支: git checkout nix-only"
+echo "   - 查看提交: git log --oneline nix-only"
 echo "   - 提示: 定期使用 'nix flake update' 更新依赖"
 echo ""
 

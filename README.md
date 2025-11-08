@@ -15,9 +15,9 @@ this is my nixos config
 
 cd /home/dashu/Desktop/nixos-config
 
-# 2. 切换到迁移分支
+# 2. 切换到 nix-only 分支
 
-git checkout migrate-to-nix-standalone
+git checkout nix-only
 
 # 3. 运行初始化脚本（只需一次）
 
