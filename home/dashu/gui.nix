@@ -35,7 +35,7 @@
     peazip
 
     motrix
-
+    meld
     snipaste
     filezilla
     xorg.xkill # kill X server window

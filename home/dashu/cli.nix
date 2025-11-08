@@ -73,14 +73,13 @@
     # tty-clock
 
     ## Multimedia
-    ani-cli
-    imv
-    lowfi
+    ani-cli #  A cli tool to browse and play anime 
+    imv  # imv is a command-line image viewer 
+    lowfi  
     mpv
     ffmpeg-full
     
     ## Utilities
-    meld
     entr                              # perform action when file change
     # ffmpeg  # removed to avoid conflict with ffmpeg-full
     file                              # Show file information
@@ -101,7 +100,7 @@
     wineWow64Packages.stableFull
     vkd3d
 
-    gemini-cli
+    # gemini-cli
 
     coreutils-prefixed
     gpaste
