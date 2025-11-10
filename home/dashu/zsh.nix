@@ -38,13 +38,17 @@
       # pc = "$aurhelper -Sc";   # 删除未使用缓存
       # po = "$aurhelper -Qtdq | $aurhelper -Rns -";  # 删除未使用包
       
-      # NixOS 相关别名
-      rebuild = "sudo nixos-rebuild switch --flake .#laptop";
-      rebuild-test = "sudo nixos-rebuild test --flake .#laptop";
+
+      hm-switch = "nix --extra-experimental-features 'nix-command flakes' run home-manager -- switch -b backup --flake .#dashu@laptop --impure";
+      hm-test = "nix --extra-experimental-features 'nix-command flakes' run home-manager -- build --flake .#dashu@laptop --impure";
+
+      # rebuild = "sudo nixos-rebuild switch --flake .#laptop";  # ❌ 仅 NixOS
+      # rebuild-test = "sudo nixos-rebuild test --flake .#laptop";  # ❌ 仅 NixOS
       # rebuild = "sudo nh os switch laptop";
       # rebuild-test = "sudo nh os test --flake .#laptop";
-      update = "nix flake update";
-      search = "nh search --limit 8";
+      update = "nix flake update && echo 'Flake updated. Run: hm-switch'";
+      search = "nix search nixpkgs";
+      # search = "nh search --limit 8";  # ❌ nh 需要 NixOS
       # VSCode
       vc = "code --ozone-platform-hint=wayland --disable-gpu";  # GUI代码编辑器
       

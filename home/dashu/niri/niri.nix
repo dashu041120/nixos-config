@@ -1,13 +1,13 @@
 { pkgs, ... }: {
     # xdg.configFile."niri/config.kdl".source = ./config.kdl;
     home.packages = with pkgs; [
-        swaybg # wallpaper
-        swww
-        xwayland-satellite # xwayland support
-        vicinae
+        # swaybg # wallpaper
+        # swww
+        # xwayland-satellite # xwayland support
+        # vicinae
         nirius
-        pkgs.xdg-desktop-portal-gnome # for screenshot support
-        matugen
+        # pkgs.xdg-desktop-portal-gnome # for screenshot support
+        # matugen
         soteria
         # stardust-xr-kiara # 360-degree app shell / DE for Stardust XR using Niri
     ];

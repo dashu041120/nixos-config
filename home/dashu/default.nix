@@ -10,31 +10,23 @@
 #     # TODO
     # ./aseprite.nix           # pixel art editor
     ./alacritty.nix         # terminal emulator
-#     ./audacious.nix                   # music player
     ./bat.nix                         # better cat command
     ./browser.nix                     # firefox based browser
     # ./btop.nix                        # resouces monitor 
-#     ./cava.nix                        # audio visualizer
-#     ./discord.nix                     # discord
+    ./cava.nix
     ./dconf.nix
 #     ./fastfetch.nix                   # fetch tool
-#     ./flow.nix                        # terminal text editor
     ./fzf.nix                         # fuzzy finder
     ./gaming.nix                      # packages related to gaming
     ./ghostty.nix                     # terminal
     # ./gpu-optimization.nix            # GPU performance optimization
-#     ./git.nix                         # version control
-#     ./gnome.nix                       # gnome apps
-
-    # ./hyprland
-
     ./fcitx5                     # window manager
     ./fonts.nix                   # font configuration
     ./cli.nix
     ./dev.nix
     ./gui.nix
-    # ./looking-glass/kvmfr.nix
-    ./vscode.nix
+    ./nixgl.nix                       # OpenGL support for non-NixOS
+    # ./vscode.nix
     ./xdg.nix
     ./yazi.nix                        # file manager
 #     ./kitty.nix                       # terminal
@@ -60,9 +52,7 @@
       ./social.nix                     # social apps
       ./theme
 #     # ./viewnior.nix                    # image viewer
-
     # ./variables.nix
-
 #     ./waybar                          # status bar
 #     ./waypaper.nix                    # GUI wallpaper picker
     ./wps-office.nix                # WPS office
