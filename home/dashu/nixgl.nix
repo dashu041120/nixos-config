@@ -12,11 +12,11 @@ let
     { name = "ghostty"; app = pkgs.ghostty; }
     # { name = "vicinae"; app = pkgs.vicinae; }
     # { name = "noctalia"; app = pkgs.noctalia; }
-    { name = "obs"; app = pkgs.obs-studio; }
+    # { name = "obs"; app = pkgs.obs-studio; }
     { name = "spotify"; app = pkgs.spotify; }
     { name = "vlc"; app = pkgs.vlc; }
-    # { name = "warp-terminal"; app = pkgs.warp-terminal; }
-    # { name = "waveterm"; app = pkgs.waveterm; }
+    { name = "warp-terminal"; app = pkgs.warp-terminal; }
+    { name = "waveterm"; app = pkgs.waveterm; }
     # { name = "looking-glass-client"; app = pkgs.looking-glass-client; }
     { name = "gimp"; app = pkgs.gimp; }
   ];
