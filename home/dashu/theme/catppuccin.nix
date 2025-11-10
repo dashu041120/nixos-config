@@ -35,6 +35,8 @@ in
     home.packages = [
       catppuccin-gtk-mocha
       # catppuccin-kvantum-mocha
+      pkgs.papirus-icon-theme
+      pkgs.bibata-cursors
       pkgs.libsForQt5.qtstyleplugin-kvantum
       pkgs.qt6Packages.qtstyleplugin-kvantum
       (pkgs.catppuccin.override {
@@ -49,12 +51,38 @@ in
       })
     ];
 
+    home.pointerCursor = {
+      name = "Bibata-Modern-Ice";
+      package = pkgs.bibata-cursors;
+      size = 24;
+    };
+
     # 配置 GTK 使用 Catppuccin Mocha
     gtk = {
       enable = true;
       theme = {
-        name = "Catppuccin-Mocha-Blue";
+        name = "catppuccin-mocha-blue-standard+rimless,normal,float";
+        package = catppuccin-gtk-mocha;
       };
+      iconTheme = {
+        name = "Papirus-Dark";
+        package = pkgs.papirus-icon-theme;
+      };
+      cursorTheme = {
+        name = "Bibata-Modern-Ice";
+        package = pkgs.bibata-cursors;
+        size = 24;
+      };
+      font = {
+        name = "Sans";
+        size = 10;
+      };
+    };
+
+    # 为 Nix 应用设置 GTK 环境变量，确保能找到主题
+    home.sessionVariables = {
+      GTK_THEME = "catppuccin-mocha-blue-standard+rimless,normal,float";
+      GTK_DATA_PREFIX = "${config.home.profileDirectory}:${config.home.homeDirectory}/.nix-profile:/usr/share";
     };
 
     # 配置 Qt 使用 Kvantum

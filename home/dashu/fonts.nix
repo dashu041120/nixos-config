@@ -1,25 +1,25 @@
 { config, pkgs, ... }:
 
 {
+  fonts.fontconfig.enable = true;
   # Install fonts via Nix packages for broader availability
   home.packages = with pkgs; [
     # hyprland needs these fonts
     icomoon-feather
 
     #cjk
-    noto-fonts
-    # noto-fonts-extra
-    noto-fonts-cjk-sans
-    noto-fonts-color-emoji
-    noto-fonts-emoji-blob-bin
+    # noto-fonts
+    # noto-fonts-cjk-sans
+    # noto-fonts-color-emoji
+    # noto-fonts-emoji-blob-bin
     sarasa-gothic # 更纱黑体
     source-code-pro
     wqy_zenhei # 添加文泉驿字体
 
-    fira
-    fira-sans
+    # fira
+    # fira-sans
     font-awesome
-    roboto
+    # roboto
     helvetica-neue-lt-std
     fragment-mono
 
@@ -45,24 +45,34 @@
     ".local/share/fonts/IcomoonFeather" = {
       source = ./fonts/IcomoonFeather.ttf;
     };
-    ".local/share/fonts/SymbolsNerdFontComplete" = {
-      source = ./fonts/SymbolsNerdFontComplete.ttf;
-    };
-     ".local/share/fonts/IosevkaNerdFonts" = {
-      source = ./fonts/IosevkaNerdFonts;
-      recursive = true;
-    };
-    ".local/share/fonts/JetBrainsMono" = {
-      source = ./fonts/JetBrainsMono;
-      recursive = true;
-    };
-    ".local/share/fonts/JetBrainsMonoNerdFonts" = {
-      source = ./fonts/JetBrainsMonoNerdFonts;
-      recursive = true;
-    };
+    # ".local/share/fonts/SymbolsNerdFontComplete" = {
+    #   source = ./fonts/SymbolsNerdFontComplete.ttf;
+    # };
+    #  ".local/share/fonts/IosevkaNerdFonts" = {
+    #   source = ./fonts/IosevkaNerdFonts;
+    #   recursive = true;
+    # };
+    # ".local/share/fonts/JetBrainsMono" = {
+    #   source = ./fonts/JetBrainsMono;
+    #   recursive = true;
+    # };
+    # ".local/share/fonts/JetBrainsMonoNerdFonts" = {
+    #   source = ./fonts/JetBrainsMonoNerdFonts;
+    #   recursive = true;
+    # };
   };
   # Rebuild font cache after activation to make new fonts available
   home.activation.rebuildFontCache = ''
     ${pkgs.fontconfig}/bin/fc-cache -fv
   '';
+
+  fonts.fontconfig.defaultFonts = {
+      serif = ["Noto Serif" "Noto Color Emoji"];
+      sansSerif = ["Noto Sans" "Noto Color Emoji"];
+      monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
+      emoji = ["Noto Color Emoji"];
+      #   serif = [ "Noto Serif" ];
+      #   sansSerif = [ "Noto Sans CJK SC" ];
+      #   monospace = [ "Noto Sans Mono CJK SC" ];
+    };
 }
