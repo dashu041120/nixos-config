@@ -9,7 +9,7 @@
     ./bat.nix                         # better cat command
     ./browser.nix                     # firefox based browser
     # ./btop.nix                        # resouces monitor 
-#     ./cava.nix                        # audio visualizer
+    ./cava.nix                        # audio visualizer
 #     ./discord.nix                     # discord
     ./dconf.nix
 #     ./fastfetch.nix                   # fetch tool

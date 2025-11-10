@@ -18,7 +18,7 @@
 
   inputs = {
     # 使用 nixos-unstable 分支
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -47,6 +47,11 @@
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # 以下是可选的非 flake 输入
     catppuccin-bat = {
       url = "github:catppuccin/bat";
@@ -59,13 +64,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixgl, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
         config.allowUnfreePredicate = _: true;
+        overlays = [ nixgl.overlay ];
       };
     in
     {

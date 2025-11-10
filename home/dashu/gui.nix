@@ -10,7 +10,8 @@
     vlc
     spotify
     mpv
-    kdePackages.kdenlive
+    # vesktop
+    # kdePackages.kdenlive
     # bilibili
 
     # bottles-unwrapped
@@ -41,7 +42,7 @@
     xorg.xkill # kill X server window
 
     #fpv utils
-    betaflight-configurator
+    # betaflight-configurator
 
     ## Level editor
     ldtk

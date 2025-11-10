@@ -2,8 +2,8 @@
 {
   home.packages = (
     with pkgs; [ 
-      firefox
-      google-chrome
+      # firefox
+      # google-chrome
     ]
   );
 }

@@ -96,9 +96,9 @@
     wl-clipboard                      # clipboard utils for wayland (wl-copy, wl-paste)
     xdg-utils
 
-    winetricks
-    wineWow64Packages.stableFull
-    vkd3d
+    # winetricks
+    # wineWow64Packages.stableFull
+    # vkd3d
 
     # gemini-cli
 
@@ -114,6 +114,6 @@
     light
     mpv
     
-    power-profiles-daemon
+    # power-profiles-daemon
   ];
 }
