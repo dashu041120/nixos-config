@@ -36,7 +36,7 @@
 #     ./nvim.nix                        # neovim editor
     ./niri                        # niri
     ./oh-my-posh.nix
-    ./obs-studio.nix                 # screen recorder
+    # ./obs-studio.nix                 # screen recorder
 #     ./p10k/p10k.nix
 #     ./packages                        # other packages
     ./pro-audio
