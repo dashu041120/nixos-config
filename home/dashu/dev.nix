@@ -2,44 +2,44 @@
 {
   home.packages = with pkgs; [
     # !!! devbox
-    devbox
+    # devbox
     ## Lsp
     nixd # nix
 
     ## formating
-    shfmt
-    treefmt
-    nixfmt-rfc-style
+    # shfmt
+    # treefmt
+    # nixfmt-rfc-style
 
     ## C / C++
-    gcc
-    gdb
-    gef
-    cmake
-    gnumake
-    valgrind
-    llvmPackages_20.clang-tools
+    # gcc
+    # gdb
+    # gef
+    # cmake
+    # gnumake
+    # valgrind
+    # llvmPackages_20.clang-tools
     # arrow-c1pp
 
     # python3
     # conda
     # uv
     # jre8
-    jdk
+    # jdk
 
     ## nodejs
-    nodePackages.nodejs
-    yarn
-    pnpm
+    # nodePackages.nodejs
+    # yarn
+    # pnpm
 
     ## Golang
-    go
+    # go
 
-    glib
-    glibtool
-    glibc
-    glibcLocales
-    glibcInfo
+    # glib
+    # glibtool
+    # glibc
+    # glibcLocales
+    # glibcInfo
 
     # gui
     imhex

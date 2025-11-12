@@ -77,20 +77,67 @@
     };
 
     # Zsh选项
-    # setOptions = [
-    #   "AUTO_CD"              # 自动cd到目录
-    #   "HIST_VERIFY"          # 历史扩展时提示
-    #   "SHARE_HISTORY"        # 在会话间共享历史
-    #   "HIST_IGNORE_SPACE"    # 忽略以空格开头的命令
-    #   "HIST_IGNORE_DUPS"     # 忽略重复命令
-    #   "HIST_FIND_NO_DUPS"    # 搜索时忽略重复
-    #   "AUTO_PUSHD"           # 自动pushd
-    #   "PUSHD_IGNORE_DUPS"    # pushd时忽略重复
-    #   "PUSHD_SILENT"         # 静默pushd
-    # ];
+    setOptions = [
+      "AUTO_CD"              # 自动cd到目录
+      "HIST_VERIFY"          # 历史扩展时提示
+      "SHARE_HISTORY"        # 在会话间共享历史
+      "HIST_IGNORE_SPACE"    # 忽略以空格开头的命令
+      "HIST_IGNORE_DUPS"     # 忽略重复命令
+      "HIST_FIND_NO_DUPS"    # 搜索时忽略重复
+      "AUTO_PUSHD"           # 自动pushd
+      "PUSHD_IGNORE_DUPS"    # pushd时忽略重复
+      "PUSHD_SILENT"         # 静默pushd
+    ];
 
     # 初始化脚本
     initContent = ''
+      # 路径压缩显示函数 - 当路径较长时进行智能压缩
+      # function prompt_pwd() {
+      #   local pwd="''${PWD/#$HOME/~}"
+      #   local maxlen=40
+        
+      #   if [ ''${#pwd} -gt $maxlen ]; then
+      #     # 将路径分割成数组
+      #     local IFS='/'
+      #     local -a parts=($pwd)
+      #     local result=""
+          
+      #     # 保留第一部分（~ 或 /）
+      #     if [ "''${parts[1]}" = "~" ]; then
+      #       result="~"
+      #       parts[1]=""
+      #     else
+      #       result="/"
+      #       parts[1]=""
+      #     fi
+          
+      #     # 压缩中间的目录，只显示首字母
+      #     local i
+      #     for i in "''${!parts[@]}"; do
+      #       if [ -n "''${parts[$i]}" ]; then
+      #         if [ $i -eq ''${#parts[@]} ] || [ $i -eq $((''${#parts[@]} - 1)) ]; then
+      #           # 最后一个或倒数第二个目录显示完整名称
+      #           result="''${result}''${parts[$i]}/"
+      #         else
+      #           # 中间目录只显示首字母
+      #           result="''${result}''${parts[$i]:0:1}/"
+      #         fi
+      #       fi
+      #     done
+          
+      #     # 移除末尾的斜杠，除非是根目录
+      #     result="''${result%/}"
+      #     [ "''$result" != "/" ] && result="''${result}/"
+      #     echo "''$result"
+      #   else
+      #     echo "''$pwd"
+      #   fi
+      # }
+      
+      # 自定义 PROMPT（使用压缩后的路径）
+      # 注意：这会和 starship 冲突，所以需要根据是否启用 starship 来决定
+      # 如果使用 starship，可以在 starship 配置中使用 truncate_length 选项
+      
       # 自定义函数
       function mkcd() {
         mkdir -p "$1" && cd "$1"

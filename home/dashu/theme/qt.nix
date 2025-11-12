@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    libsForQt5.qtstyleplugin-kvantum
+    # libsForQt5.qtstyleplugin-kvantum
     themechanger
     # catppuccin-kvantum
     gruvbox-kvantum
@@ -12,9 +12,14 @@
     # libsForQt5.qt5ct
   ];
 
-#   qt = {
-#     enable = true;
-#     style.name = "kvantum";
-#     platformTheme.name = "adwaita";
-#   };
+  # qt = {
+  #   enable = true;
+  #   style.name = "kvantum";
+  #   platformTheme.name = "adwaita";
+  # };
+  # qt = {
+  #   enable = true;
+  #   style.name = "qt6ct";
+  #   platformTheme.name = "breeze";
+  # };
 }
