@@ -37,8 +37,8 @@ in
       # catppuccin-kvantum-mocha
       pkgs.papirus-icon-theme
       pkgs.bibata-cursors
-      pkgs.libsForQt5.qtstyleplugin-kvantum
-      pkgs.qt6Packages.qtstyleplugin-kvantum
+      # pkgs.libsForQt5.qtstyleplugin-kvantum
+      # pkgs.qt6Packages.qtstyleplugin-kvantum
       (pkgs.catppuccin.override {
         accent = "blue"; # blue, rosewater, pink, mauve, red, maroon, peach, yellow, green, teal, sky, sapphire, lavender
         variant = "mocha"; # latte, frappe, macchiato, mocha

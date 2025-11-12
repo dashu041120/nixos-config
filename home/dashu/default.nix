@@ -27,6 +27,7 @@
     ./gui.nix
     ./nixgl.nix                       # OpenGL support for non-NixOS
     # ./vscode.nix
+    # ./vscode-server.nix
     ./xdg.nix
     ./yazi.nix                        # file manager
 #     ./kitty.nix                       # terminal

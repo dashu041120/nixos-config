@@ -23,20 +23,29 @@ in
       # format 字符串决定了各个模块的显示顺序和结构。
       # $all 表示所有未在 format 中明确指定的模块将在这里显示。
       # $line_break 用于换行，实现双行效果。
-      format = ''
-        $os$directory$git_branch
-        $character
-      '';
+      # format = ''
+      #   $os$directory$git_branch
+      #   $character
+      # '';
+
+      # format = "$all$nix_shell$nodejs$lua$golang$rust$php$git_branch$git_commit$git_state$git_status\n$username$hostname$directory";
       
+       format = "$os$nix_shell$python$nodejs$lua$golang$rust$php$directory$git_branch$git_status\n$character";
+
       # ---------------------------
       # -- 模块配置 (Module Configs) --
       # ---------------------------
 
       # 对应 OMP 的 "os" segment
       # template: "{{.Icon}} "
+      # os = {
+      #   style = "bold ${colors.os}";
+      #   format = "  ";
+      #   disabled = false; # 确保显示
+      # };
       os = {
         style = "bold ${colors.os}";
-        format = "  ";
+        format = " "; # Nerd Font: nf-dev-archlinux (U+EBC3) # 安装archcraft字体即可显示
         disabled = false; # 确保显示
       };
       
@@ -73,11 +82,13 @@ in
 
       # 对应 OMP 的 "path" segment
       # template: "{{ .Path }} "
-      # OMP "agnoster_short" 风格，这里用 truncation_length = 2 近似
+      # 路径压缩显示：当路径较长时，中间目录只显示首字母，保留最后目录完整名称
+      # 例如：/home/user/very/long/path/name 显示为 ~/v/l/p/name
       directory = {
         style = "bold ${colors.pink}";
-        truncation_length = 2;
-        truncation_symbol = "…/";
+        truncation_length = 3;           # 超过8层目录时才开始压缩（设置较大值以始终显示完整路径）
+        truncate_to_repo = false;        # 不截断到 git 仓库根目录
+        fish_style_pwd_dir_length = 1;   # 关键选项：中间目录只显示 1 个字符（首字母）
         home_symbol = "~";
         format = "[$path]($style)[$read_only]($read_only_style) ";
       };
@@ -96,7 +107,7 @@ in
         disabled = true;
       };
       git_status = {
-        style = "bold red";
+        style = "bold ${colors.lavender}";
         conflicted = "⚔️ ";
         ahead = " ";      # Nerd Font: nf-fa-arrow_up
         behind = " ";     # Nerd Font: nf-fa-arrow_down
@@ -117,6 +128,7 @@ in
       nix_shell = {
         symbol = " "; # Nerd Font: nf-dev-nixos unicode:F313
         style = "bold blue";
+        format = "[$symbol]($style)"; # 只显示图标，不显示 impure/pure 消息
         impure_msg = "impure";
         pure_msg = "pure";
       };

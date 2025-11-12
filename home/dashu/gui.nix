@@ -30,7 +30,7 @@
     gnome-disk-utility
     mission-center # GUI resources monitor
     zenity
-    boxbuddy
+    # boxbuddy
     localsend
     kdePackages.ark
     peazip

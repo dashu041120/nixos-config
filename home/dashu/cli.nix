@@ -2,19 +2,19 @@
 {
   home.packages = with pkgs; [
     ## Better core utils
-    duf                               # disk information
-    eza                               # ls replacement
-    fd                                # find replacement
+    # duf                               # disk information
+    # eza                               # ls replacement
+    # fd                                # find replacement
     gping                             # ping with a graph
     gtrash                            # rm replacement, put deleted files in system trash
     trash-cli
     # hevi                              # hex viewer
     # hexyl                             # hex viewer
-    man-pages                         # extra man pages
+    # man-pages                         # extra man pages
     ncdu                              # disk space
     ripgrep                           # grep replacement
     tldr
-    appimage-run
+    # appimage-run
     # appimageupdate
 
     ## Tools / useful cli
@@ -24,7 +24,7 @@
     binsider
     bitwise                           # cli tool for bit / hex manipulation
     broot
-    btop                             # tree files view
+    # btop                             # tree files view
     baidupcs-go                      # Baidu Netdisk CLI client
     caligula                          # User-friendly, lightweight TUI for disk imaging
     hyperfine                         # benchmarking tool
@@ -35,8 +35,8 @@
     translate-shell                   # cli translator
     # woomer
     # yt-dlp-light
-    htop
-    switcheroo-control
+    # htop
+    # switcheroo-control
 
     # rar
     unrar
@@ -87,14 +87,14 @@
     killall
     libnotify
     mimeo
-    openssl
+    # openssl
     pamixer                           # pulseaudio command line mixer
     playerctl                         # controller for media players
     poweralertd
     unzip
     wget
-    wl-clipboard                      # clipboard utils for wayland (wl-copy, wl-paste)
-    xdg-utils
+    # wl-clipboard                      # clipboard utils for wayland (wl-copy, wl-paste)
+    # xdg-utils
 
     # winetricks
     # wineWow64Packages.stableFull
@@ -106,9 +106,9 @@
     gpaste
 
     nh  # Yet another nix cli helper
-    wayland-utils
-    wl-clipboard
-    wl-clipboard-x11
+    # wayland-utils
+    # wl-clipboard
+    # wl-clipboard-x11
     wf-recorder
     yad
     light

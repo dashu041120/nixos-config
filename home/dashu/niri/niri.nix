@@ -14,6 +14,7 @@
     home.sessionVariables = {
         NIXOS_OZONE_WL = "1";
     };
+    # services.polkit-gnome.enable = true; # polkit
 }
 
 # 热键	功能
