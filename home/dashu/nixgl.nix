@@ -13,12 +13,13 @@ let
     # { name = "vicinae"; app = pkgs.vicinae; }
     # { name = "noctalia"; app = pkgs.noctalia; }
     # { name = "obs"; app = pkgs.obs-studio; }
-    { name = "spotify"; app = pkgs.spotify; }
+    # { name = "spotify"; app = pkgs.spotify; }
     { name = "vlc"; app = pkgs.vlc; }
-    { name = "warp-terminal"; app = pkgs.warp-terminal; }
+    # { name = "warp-terminal"; app = pkgs.warp-terminal; }
     { name = "waveterm"; app = pkgs.waveterm; }
     # { name = "looking-glass-client"; app = pkgs.looking-glass-client; }
     { name = "gimp"; app = pkgs.gimp; }
+    { name = "cavalier"; app = pkgs.cavalier; }
   ];
 
   # 过滤掉不存在的应用

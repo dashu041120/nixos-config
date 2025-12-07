@@ -1,14 +1,22 @@
 { pkgs, ... }: {
     # xdg.configFile."niri/config.kdl".source = ./config.kdl;
+    xdg.configFile."niri/niri-shot-fuzzel.sh" = {
+        source = ./niri-shot-fuzzel.sh;  # 相对于当前 nix 文件的路径
+        executable = true;
+    };
+    xdg.configFile."niri/niri-shot-notify-send.sh" = {
+        source = ./niri-shot-notify-send.sh;
+        executable = true;
+    };
     home.packages = with pkgs; [
         # swaybg # wallpaper
         # swww
         # xwayland-satellite # xwayland support
         # vicinae
-        nirius
+        # nirius
         # pkgs.xdg-desktop-portal-gnome # for screenshot support
         # matugen
-        soteria
+        # soteria
         # stardust-xr-kiara # 360-degree app shell / DE for Stardust XR using Niri
     ];
     home.sessionVariables = {

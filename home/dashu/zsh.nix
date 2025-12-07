@@ -211,7 +211,7 @@
     '';
   };
 
-  # 确保需要的包被安装
+  # # 确保需要的包被安装
   home.packages = with pkgs; [
     eza           # 现代的ls替代品
     bat           # 现代的cat替代品

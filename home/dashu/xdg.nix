@@ -32,7 +32,8 @@
       enable = true;
       # let `xdg-open` to open the url with the correct application.
       defaultApplications = let
-        browser = [ "firefox.desktop" "google-chrome.desktop" ];
+        #zen.desktop is zen-browser, a privacy-focused browser.
+        browser = [ "zen.desktop" "firefox.desktop" "google-chrome.desktop" ];
         editor = [ "kate.desktop" "code.desktop" "nvim.desktop" "Helix.desktop" ];
       in {
         "application/json" = browser;
@@ -76,7 +77,7 @@
         "image/png" = ["imv-dir.desktop"];
         "image/webp" = ["imv-dir.desktop"];
 
-        "inode/directory" = ["thunar.desktop"];
+        "inode/directory" = ["nemo.desktop"];
       };
 
       associations.removed = {

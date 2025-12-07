@@ -2,8 +2,8 @@
 {
     # systemctl --user add-wants niri hypridle
     home.packages = with pkgs; [
-        hypridle
-        hyprlock
+        # hypridle
+        # hyprlock
     ];
     xdg.configFile."hypr/hypridle.conf".text = ''
         general {
@@ -113,7 +113,7 @@
 
         # GENERAL
         general {
-        disable_loading_bar = true
+        # disable_loading_bar = true
         hide_cursor = true
         }
 

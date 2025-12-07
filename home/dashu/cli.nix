@@ -25,7 +25,7 @@
     bitwise                           # cli tool for bit / hex manipulation
     broot
     # btop                             # tree files view
-    baidupcs-go                      # Baidu Netdisk CLI client
+    # baidupcs-go                      # Baidu Netdisk CLI client
     caligula                          # User-friendly, lightweight TUI for disk imaging
     hyperfine                         # benchmarking tool
     pastel                            # cli to manipulate colors
@@ -74,7 +74,7 @@
 
     ## Multimedia
     ani-cli #  A cli tool to browse and play anime 
-    imv  # imv is a command-line image viewer 
+    # imv  # imv is a command-line image viewer 
     lowfi  
     mpv
     ffmpeg-full
@@ -112,7 +112,7 @@
     wf-recorder
     yad
     light
-    mpv
+
     
     # power-profiles-daemon
   ];

@@ -7,9 +7,10 @@
     pavucontrol
     # soundwireserver
     # video-trimmer
-    vlc
-    spotify
+    # vlc
+    # spotify
     mpv
+    blanket
     # vesktop
     # kdePackages.kdenlive
     # bilibili
@@ -21,7 +22,7 @@
 
     ## Office
     # libreoffice
-    gnome-calculator
+    # gnome-calculator
     obsidian
     kdePackages.kate
 
@@ -29,32 +30,36 @@
     dconf-editor
     gnome-disk-utility
     mission-center # GUI resources monitor
-    zenity
+    # zenity
     # boxbuddy
     localsend
-    kdePackages.ark
+    # kdePackages.ark
     peazip
 
     motrix
     meld
-    snipaste
+    # snipaste
     filezilla
-    xorg.xkill # kill X server window
+    # xorg.xkill # kill X server window
 
     #fpv utils
     # betaflight-configurator
+
+    kando
+    gnomeExtensions.kando-integration
 
     ## Level editor
     ldtk
     tiled
 
     ## terminal
-    warp-terminal
+    # warp-terminal
     waveterm
     zellij
     ghostty
 
-    looking-glass-client
-    pavucontrol
+    usbkvm
+
+    # looking-glass-client
   ];
 }

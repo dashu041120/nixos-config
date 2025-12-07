@@ -22,6 +22,7 @@
     # ./gpu-optimization.nix            # GPU performance optimization
     ./fcitx5                     # window manager
     ./fonts.nix                   # font configuration
+    ./flatpak.nix
     ./cli.nix
     ./dev.nix
     ./gui.nix
@@ -56,7 +57,7 @@
     # ./variables.nix
 #     ./waybar                          # status bar
 #     ./waypaper.nix                    # GUI wallpaper picker
-    ./wps-office.nix                # WPS office
+    # ./wps-office.nix                # WPS office
 #     ./xdg-mimes.nix                   # xdg config
     ./zsh.nix                            # shell
   ];

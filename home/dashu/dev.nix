@@ -45,11 +45,11 @@
     imhex
     serial-studio
     putty
-    freerdp
-    libxcb
+    # freerdp
+    # libxcb
 
     # android
     # android-tools
-    androidenv.androidPkgs.platform-tools
+    # androidenv.androidPkgs.platform-tools
   ];
 }
