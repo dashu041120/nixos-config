@@ -40,6 +40,7 @@ ACTION=$(
     "Copied to clipboard. Extra action?" \
     -A save="Save to file" \
     -A edit="Edit with satty" \
+    -A rspin="Show with rspin" \
     --wait
 )
 
@@ -70,6 +71,16 @@ case "$ACTION" in
     notify-send "niri screenshot" "Opened in satty"
     ;;
 
+  rspin)
+    # re-create temp file if needed
+    if [ ! -f "$TMP_FILE" ]; then
+      TMP_FILE="$(mktemp "${TMP_DIR}/niri-shot-XXXXXX.${FORMAT}")"
+      wl-paste > "$TMP_FILE"
+    fi
+    cat "$TMP_FILE" | rspin --opacity 0.9
+    notify-send "niri screenshot" "Displayed with rspin"
+    ;;
+    
   *)
     notify-send "niri screenshot" "Unknown action: ${ACTION}"
     exit 1

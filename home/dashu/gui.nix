@@ -36,7 +36,7 @@
     # kdePackages.ark
     peazip
 
-    motrix
+    # motrix
     meld
     # snipaste
     filezilla

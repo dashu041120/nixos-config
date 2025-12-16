@@ -7,7 +7,7 @@
     ];
     xdg.configFile."hypr/hypridle.conf".text = ''
         general {
-            lock_cmd = pikabar-lock   # avoid starting multiple hyprlock instances.
+            lock_cmd = qs -c noctalia-shell ipc call lockScreen lock   # avoid starting multiple hyprlock instances.
             before_sleep_cmd = loginctl lock-session    # lock before suspend.
             after_sleep_cmd = niri msg action power-on-monitors  # to avoid having to press a key twice to turn on the display.
             ignore_dbus_inhibit = false

@@ -8,6 +8,10 @@
         source = ./niri-shot-notify-send.sh;
         executable = true;
     };
+    xdg.configFile."niri/niri-shot-notify-send-rspin.sh" = {
+        source = ./niri-shot-notify-send-rspin.sh;
+        executable = true;
+    };
     home.packages = with pkgs; [
         # swaybg # wallpaper
         # swww
