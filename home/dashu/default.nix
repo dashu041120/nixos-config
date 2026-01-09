@@ -21,7 +21,7 @@
     ./ghostty.nix                     # terminal
     # ./gpu-optimization.nix            # GPU performance optimization
     ./fcitx5                     # window manager
-    ./fonts.nix                   # font configuration
+    ./fonts                      # font configuration
     ./flatpak.nix
     ./cli.nix
     ./dev.nix

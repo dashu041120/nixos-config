@@ -12,27 +12,30 @@
     # noto-fonts-cjk-sans
     # noto-fonts-color-emoji
     # noto-fonts-emoji-blob-bin
-    sarasa-gothic # 更纱黑体
+    # sarasa-gothic # 更纱黑体
     source-code-pro
     wqy_zenhei # 添加文泉驿字体
 
     # fira
     # fira-sans
-    font-awesome
+    # font-awesome
     # roboto
-    helvetica-neue-lt-std
-    fragment-mono
+    # helvetica-neue-lt-std
+    # fragment-mono
 
     corefonts
     vista-fonts-chs
 
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.fira-code
-    nerd-fonts.caskaydia-cove
+    # nerd-fonts.jetbrains-mono
+    # nerd-fonts.fira-code
+    # nerd-fonts.caskaydia-cove
     nerd-fonts.symbols-only
     twemoji-color-font
-    fantasque-sans-mono
-    maple-mono.truetype-autohint
+
+    # maple-mono.NF-CN
+
+    # fantasque-sans-mono
+    # maple-mono.truetype-autohint
   ];
 
 
@@ -40,11 +43,11 @@
   # The path is relative to this .nix file, pointing to the sibling fonts folder
   home.file = {
     ".local/share/fonts/Archcraft" = {
-      source = ./fonts/Archcraft.ttf;
+      source = ./Archcraft.ttf;
     };
-    ".local/share/fonts/IcomoonFeather" = {
-      source = ./fonts/IcomoonFeather.ttf;
-    };
+    # ".local/share/fonts/IcomoonFeather" = {
+    #   source = ./fonts/IcomoonFeather.ttf;
+    # };
     # ".local/share/fonts/SymbolsNerdFontComplete" = {
     #   source = ./fonts/SymbolsNerdFontComplete.ttf;
     # };
@@ -69,7 +72,7 @@
   fonts.fontconfig.defaultFonts = {
       serif = ["Noto Serif" "Noto Color Emoji"];
       sansSerif = ["Noto Sans" "Noto Color Emoji"];
-      monospace = ["JetBrainsMono Nerd Font" "Noto Color Emoji"];
+      monospace = ["Maple Mono NF" "JetBrainsMono Nerd Font" "Noto Color Emoji"];
       emoji = ["Noto Color Emoji"];
       #   serif = [ "Noto Serif" ];
       #   sansSerif = [ "Noto Sans CJK SC" ];

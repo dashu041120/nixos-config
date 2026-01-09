@@ -10,7 +10,8 @@
     window-decoration = true
     
     # Font configuration matching Alacritty
-    font-family = "JetBrainsMono Nerd Font"
+    # font-family = "JetBrainsMono Nerd Font"
+    font-family = "Maple Mono NF"
     font-size = 10
     font-style = normal
     font-style-bold = bold

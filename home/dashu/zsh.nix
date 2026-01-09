@@ -91,6 +91,14 @@
 
     # 初始化脚本
     initContent = ''
+      # 优先加入 .local/bin 到 PATH
+      export PATH="$HOME/.local/bin:$PATH"
+
+      # 在 .local/bin 之后加载 Nix 环境（保证 Nix 路径在系统 PATH 之后）
+      if [ -e /etc/profile.d/nix.sh ]; then
+        . /etc/profile.d/nix.sh
+      fi
+
       # 路径压缩显示函数 - 当路径较长时进行智能压缩
       # function prompt_pwd() {
       #   local pwd="''${PWD/#$HOME/~}"

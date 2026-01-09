@@ -21,17 +21,32 @@
         dynamic_title = true;
       };
       scrolling.history = 10000;
+      # font = {
+      #   normal = {
+      #     family = "JetBrainsMono Nerd Font";
+      #     style = "Regular";
+      #   };
+      #   bold = {
+      #     family = "JetBrainsMono Nerd Font";
+      #     style = "Bold";
+      #   };
+      #   italic = {
+      #     family = "JetBrainsMono Nerd Font";
+      #     style = "Italic";
+      #   };
+      #   size = 10;
+      # };
       font = {
         normal = {
-          family = "JetBrainsMono Nerd Font";
+          family = "Maple Mono NF";
           style = "Regular";
         };
         bold = {
-          family = "JetBrainsMono Nerd Font";
+          family = "Maple Mono NF";
           style = "Bold";
         };
         italic = {
-          family = "JetBrainsMono Nerd Font";
+          family = "Maple Mono NF";
           style = "Italic";
         };
         size = 10;
