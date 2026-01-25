@@ -2,25 +2,28 @@
   pkgs,
   ...
 }: {
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5.waylandFrontend = true;
-    fcitx5.addons = with pkgs; [
-      # for flypy chinese input method
-      fcitx5-rime
-      # needed enable rime using configtool after installed
-      qt6Packages.fcitx5-configtool
-      qt6Packages.fcitx5-chinese-addons
-      # fcitx5-mozc    # japanese input method
-      fcitx5-gtk # gtk im module
-      # fcitx5-qt5  # qt im module
-      libsForQt5.fcitx5-qt
-      # fcitx5-qt6
-      kdePackages.fcitx5-qt
-      # fcitx5-libpinyin # pinyin input method
-    ];
-  };
+  # i18n.inputMethod = {
+  #   enable = true;
+  #   type = "fcitx5";
+  #   fcitx5.waylandFrontend = true;
+  #   fcitx5.addons = with pkgs; [
+  #     # for flypy chinese input method
+  #     fcitx5-rime
+  #     # needed enable rime using configtool after installed
+  #     kdePackages.fcitx5-with-addons
+  #     kdePackages.fcitx5-configtool
+  #     kdePackages.fcitx5-chinese-addons
+  #     # fcitx5-mozc    # japanese input method
+  #     fcitx5-gtk # gtk im module
+  #     # fcitx5-qt5  # qt im module
+  #     libsForQt5.fcitx5-qt
+  #     # fcitx5-qt6
+  #     kdePackages.fcitx5-qt
+  #     fcitx5-lua # lua scripting support
+  #     fcitx5-m17n # multilingual support
+  #     # fcitx5-libpinyin # pinyin input method
+  #   ];
+  # };
 
   # copy themes to ~/.local/share/fcitx5/themes
   home.file.".local/share/fcitx5/themes" = {
