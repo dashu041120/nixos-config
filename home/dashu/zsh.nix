@@ -94,6 +94,18 @@
       # 优先加入 .local/bin 到 PATH
       export PATH="$HOME/.local/bin:$PATH"
 
+      # 将常见的 npm 全局 bin 目录加入 PATH（如果存在）
+      if [ -d "$HOME/.npm-global/bin" ]; then
+        export PATH="$HOME/.npm-global/bin:$PATH"
+      fi
+
+      # 其它常见位置（.local/share/npm、.npm-packages、.node_modules_global）
+      for _npm in "$HOME/.local/share/npm/bin" "$HOME/.npm-packages/bin" "$HOME/.node_modules_global/bin" "$HOME/.npm/bin"; do
+        if [ -d "$_npm" ]; then
+          export PATH="$_npm:$PATH"
+        fi
+      done
+
       # 在 .local/bin 之后加载 Nix 环境（保证 Nix 路径在系统 PATH 之后）
       if [ -e /etc/profile.d/nix.sh ]; then
         . /etc/profile.d/nix.sh
