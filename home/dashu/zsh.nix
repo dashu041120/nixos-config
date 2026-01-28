@@ -7,7 +7,7 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     historySubstringSearch.enable = true;
-    
+    dotDir = "${config.xdg.configHome}/zsh";
     # 补全配置
     completionInit = "autoload -Uz compinit && compinit";
     
