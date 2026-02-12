@@ -34,7 +34,7 @@
     
     # Shell integration
     shell-integration = detect
-    
+    shell-integration-features = sudo
     # Performance settings
     resize-overlay = never
     resize-overlay-position = center
