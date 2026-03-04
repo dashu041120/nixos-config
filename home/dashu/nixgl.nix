@@ -14,12 +14,12 @@ let
     # { name = "noctalia"; app = pkgs.noctalia; }
     # { name = "obs"; app = pkgs.obs-studio; }
     # { name = "spotify"; app = pkgs.spotify; }
-    { name = "vlc"; app = pkgs.vlc; }
+    # { name = "vlc"; app = pkgs.vlc; }
     # { name = "warp-terminal"; app = pkgs.warp-terminal; }
-    { name = "waveterm"; app = pkgs.waveterm; }
+    # { name = "waveterm"; app = pkgs.waveterm; }
     # { name = "looking-glass-client"; app = pkgs.looking-glass-client; }
-    { name = "gimp"; app = pkgs.gimp; }
-    { name = "cavalier"; app = pkgs.cavalier; }
+    # { name = "gimp"; app = pkgs.gimp; }
+    # { name = "cavalier"; app = pkgs.cavalier; }
   ];
 
   # 过滤掉不存在的应用
@@ -35,12 +35,12 @@ in
   ] ++ (map (app: mkNixGLApp app.name app.app) availableApps);
 
   # 环境变量配置，确保 OpenGL 库正确加载
-  home.sessionVariables = {
-    LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath [
-      pkgs.libGL
-      pkgs.vulkan-loader
-    ]}:$LD_LIBRARY_PATH";
-  };
+  # home.sessionVariables = {
+  #   LD_LIBRARY_PATH = "${pkgs.lib.makeLibraryPath [
+  #     pkgs.libGL
+  #     pkgs.vulkan-loader
+  #   ]}:$LD_LIBRARY_PATH";
+  # };
 
   # ============================================================
   # 使用说明

@@ -2,13 +2,16 @@
 
 {
   xdg.configFile."ghostty/config".text = ''
-    # Window settings matching Alacritty
     window-width = 95
     window-height = 40
     window-padding-x = 12
     window-padding-y = 12
     window-decoration = true
-    
+    # window-padding-color = background # extend?
+    # window-padding-balance = true
+
+    # custom-shader = shaders/glow.glsl
+
     # Font configuration matching Alacritty
     # font-family = "JetBrainsMono Nerd Font"
     font-family = "Maple Mono NF"
@@ -16,36 +19,37 @@
     font-style = normal
     font-style-bold = bold
     font-style-italic = italic
-    
-    # Scrollback matching Alacritty
+
     scrollback-limit = 10000
-    
+
     # Cursor matching Alacritty
     cursor-style = block
     cursor-style-blink = true
-    
+
     # Additional terminal settings
     confirm-close-surface = false
     quit-after-last-window-closed = true
-    
+
     # Mouse settings
     mouse-hide-while-typing = true
     copy-on-select = true
-    
+
     # Shell integration
     shell-integration = detect
     shell-integration-features = sudo
+    shell-integration-features = ssh-terminfo,ssh-env
     # Performance settings
     resize-overlay = never
     resize-overlay-position = center
-    
+
     # Theme
     theme = Catppuccin Mocha
-    
+
     # Background transparency and blur
     background-opacity = 0.85
-    background-blur = true
-    background-blur-radius = 10
+    # background-blur = true
+    # background-blur-radius = 10
+
   '';
 
 }

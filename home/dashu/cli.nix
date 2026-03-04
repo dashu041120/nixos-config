@@ -76,7 +76,6 @@
     ani-cli #  A cli tool to browse and play anime 
     # imv  # imv is a command-line image viewer 
     lowfi  
-    mpv
     ffmpeg-full
     
     ## Utilities
@@ -92,7 +91,7 @@
     playerctl                         # controller for media players
     poweralertd
     unzip
-    wget
+    # wget
     # wl-clipboard                      # clipboard utils for wayland (wl-copy, wl-paste)
     # xdg-utils
 
@@ -102,14 +101,17 @@
 
     # gemini-cli
 
-    coreutils-prefixed
+    # coreutils-prefixed
     gpaste
 
     nh  # Yet another nix cli helper
     # wayland-utils
     # wl-clipboard
     # wl-clipboard-x11
-    wf-recorder
+    
+    # wf-recorder
+    # gpu-screen-recorder
+
     yad
     light
 

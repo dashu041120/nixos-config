@@ -52,6 +52,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-openclaw = {
+      url = "github:openclaw/nix-openclaw";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+
     # 以下是可选的非 flake 输入
     catppuccin-bat = {
       url = "github:catppuccin/bat";
@@ -71,7 +77,10 @@
         inherit system;
         config.allowUnfree = true;
         config.allowUnfreePredicate = _: true;
-        overlays = [ nixgl.overlay ];
+        overlays = [
+          nixgl.overlay
+          inputs.nix-openclaw.overlays.default
+        ];
       };
     in
     {
@@ -80,6 +89,7 @@
         "dashu@laptop" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
+            inputs.nix-openclaw.homeManagerModules.openclaw
             ./home/dashu/default.nix
             inputs.catppuccin.homeModules.catppuccin
           ];

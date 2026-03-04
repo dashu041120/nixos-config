@@ -18,7 +18,10 @@
 #     ./fastfetch.nix                   # fetch tool
     ./fzf.nix                         # fuzzy finder
     ./gaming.nix                      # packages related to gaming
-    ./ghostty.nix                     # terminal
+
+    # [TODO]
+    # ./ghostty.nix                     # terminal
+
     # ./gpu-optimization.nix            # GPU performance optimization
     ./fcitx5                     # window manager
     ./fonts                      # font configuration
@@ -26,9 +29,12 @@
     ./cli.nix
     ./dev.nix
     ./gui.nix
+    # ./openclaw.nix
+
     ./nixgl.nix                       # OpenGL support for non-NixOS
-    # ./vscode.nix
-    # ./vscode-server.nix
+    
+    # ./vscode.nix              # in nixos
+    # ./vscode-server.nix       # in nixos-only, vscode server for remote development
     ./xdg.nix
     ./yazi.nix                        # file manager
 #     ./kitty.nix                       # terminal

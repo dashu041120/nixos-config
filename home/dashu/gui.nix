@@ -9,7 +9,7 @@
     # video-trimmer
     # vlc
     # spotify
-    mpv
+    # mpv
     blanket
     # vesktop
     # kdePackages.kdenlive
@@ -23,7 +23,7 @@
     ## Office
     # libreoffice
     # gnome-calculator
-    obsidian
+    # obsidian
     kdePackages.kate
 
     ## Utility
@@ -45,8 +45,8 @@
     #fpv utils
     # betaflight-configurator
 
-    kando
-    gnomeExtensions.kando-integration
+    # kando
+    # gnomeExtensions.kando-integration
 
     ## Level editor
     ldtk
@@ -54,9 +54,9 @@
 
     ## terminal
     # warp-terminal
-    waveterm
-    zellij
-    ghostty
+    # waveterm
+    # zellij
+    # ghostty
 
     usbkvm
 
