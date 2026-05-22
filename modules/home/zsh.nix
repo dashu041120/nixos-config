@@ -87,6 +87,7 @@
 
     # 初始化脚本
     initContent = ''
+      
       # 自定义函数
       function mkcd() {
         mkdir -p "$1" && cd "$1"

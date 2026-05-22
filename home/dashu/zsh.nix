@@ -106,10 +106,21 @@
         fi
       done
 
-      # 在 .local/bin 之后加载 Nix 环境（保证 Nix 路径在系统 PATH 之后）
-      if [ -e /etc/profile.d/nix.sh ]; then
-        . /etc/profile.d/nix.sh
-      fi
+      # # 加载 Determinate Nix / NixOS 常见的初始化脚本
+      # for nix_init in \
+      #   /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh \
+      #   /nix/var/nix/profiles/default/etc/profile.d/nix.sh \
+      #   /etc/profile.d/nix-daemon.sh \
+      #   /etc/profile.d/nix.sh; do
+      #   if [ -r "$nix_init" ]; then
+      #     . "$nix_init"
+      #     break
+      #   fi
+      # done
+
+      # if ! command -v nix >/dev/null 2>&1 && [ -d /nix/var/nix/profiles/default/bin ]; then
+      #   export PATH="/nix/var/nix/profiles/default/bin:$PATH"
+      # fi
 
       # 路径压缩显示函数 - 当路径较长时进行智能压缩
       # function prompt_pwd() {

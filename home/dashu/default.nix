@@ -31,7 +31,7 @@
     ./gui.nix
     # ./openclaw.nix
 
-    ./nixgl.nix                       # OpenGL support for non-NixOS
+    #./nixgl.nix                       # OpenGL support for non-NixOS
     
     # ./vscode.nix              # in nixos
     # ./vscode-server.nix       # in nixos-only, vscode server for remote development

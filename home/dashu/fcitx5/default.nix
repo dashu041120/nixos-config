@@ -42,8 +42,8 @@
   };
 
 
-  home.file.".local/share/fcitx5/rime" = {
-    source = ./oh-my-rime;
-    recursive = true;
-  };
+  # home.file.".local/share/fcitx5/rime" = {
+  #   source = ./oh-my-rime;
+  #   recursive = true;
+  # };
 }
