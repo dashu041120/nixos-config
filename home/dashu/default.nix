@@ -20,7 +20,7 @@
     ./gaming.nix                      # packages related to gaming
 
     # [TODO]
-    # ./ghostty.nix                     # terminal
+    ./ghostty.nix                     # terminal
 
     # ./gpu-optimization.nix            # GPU performance optimization
     ./fcitx5                     # window manager

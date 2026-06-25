@@ -32,7 +32,7 @@
     mission-center # GUI resources monitor
     # zenity
     # boxbuddy
-    localsend
+    # localsend
     # kdePackages.ark
     peazip
 

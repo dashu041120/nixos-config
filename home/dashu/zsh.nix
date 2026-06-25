@@ -94,6 +94,11 @@
       # 优先加入 .local/bin 到 PATH
       export PATH="$HOME/.local/bin:$PATH"
 
+      # 加入 Cargo 全局二进制目录（如果存在）
+      if [ -d "$HOME/.cargo/bin" ]; then
+        export PATH="$HOME/.cargo/bin:$PATH"
+      fi
+
       # 将常见的 npm 全局 bin 目录加入 PATH（如果存在）
       if [ -d "$HOME/.npm-global/bin" ]; then
         export PATH="$HOME/.npm-global/bin:$PATH"

@@ -33,6 +33,10 @@
         break
       fi
     done
+
+    if [ -d "$HOME/.cargo/bin" ]; then
+      export PATH="$HOME/.cargo/bin:$PATH"
+    fi
   
     if ! command -v nix >/dev/null 2>&1 && [ -d /nix/var/nix/profiles/default/bin ]; then
       export PATH="/nix/var/nix/profiles/default/bin:$PATH"
