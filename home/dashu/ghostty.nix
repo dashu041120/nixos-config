@@ -10,7 +10,8 @@
     # window-padding-color = background # extend?
     # window-padding-balance = true
 
-    # custom-shader = shaders/glow.glsl
+#     custom-shader = /home/dashu/ghostty-blackhole/blackhole.glsl
+#     custom-shader-animation = true
 
     # Font configuration matching Alacritty
     # font-family = "JetBrainsMono Nerd Font"

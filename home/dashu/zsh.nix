@@ -111,6 +111,17 @@
         fi
       done
 
+      # CUDA
+      if [ -d "/usr/local/cuda/bin" ]; then
+        export PATH="/usr/local/cuda/bin:$PATH"
+      fi
+
+      # Flatpak
+      if [ -d "/var/lib/flatpak/exports/bin" ]; then
+        export PATH="/var/lib/flatpak/exports/bin:$PATH"
+      fi
+      export XDG_DATA_DIRS="''${XDG_DATA_DIRS:-/usr/local/share:/usr/share}:/var/lib/flatpak/exports/share:/home/$USER/.local/share/flatpak/exports/share"
+
       # # 加载 Determinate Nix / NixOS 常见的初始化脚本
       # for nix_init in \
       #   /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh \
