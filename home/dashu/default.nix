@@ -35,7 +35,7 @@
     
     ./vscode.nix              # in nixos
     # ./vscode-server.nix       # in nixos-only, vscode server for remote development
-    
+
 #     ./kitty.nix                       # terminal
 #     ./lazygit.nix
 #     ./nemo.nix                        # file manager
@@ -57,7 +57,7 @@
 #     ./swayosd.nix                     # brightness / volume wiget
 #     ./swaync/swaync.nix               # notification deamon
       ./social.nix                     # social apps
-      ./theme
+    #   ./theme
 #     # ./viewnior.nix                    # image viewer
     
     ./variables.nix                    # environment variables may cause some problems
