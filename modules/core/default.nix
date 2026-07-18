@@ -4,6 +4,7 @@
 
   imports = [
     ./bootloader.nix
+    ./marathon-grub-theme.nix
     # ./cosmic.nix
     ./hardware.nix
     ./xserver.nix

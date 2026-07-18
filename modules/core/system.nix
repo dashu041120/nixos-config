@@ -1,7 +1,13 @@
 { pkgs, inputs, ... }:
 {
   # imports = [ inputs.nix-gaming.nixosModules.default ];
+  nixpkgs.config = {
+    problems.handlers = {
+      cups.broken = "warn";
+    };
+  };
   nix = {
+    package = pkgs.nix;
     settings = {
       auto-optimise-store = true;
       experimental-features = [

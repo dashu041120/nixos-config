@@ -6,15 +6,7 @@
   ##################################################################################################################
 
   imports = [
-    ../../modules/home/default.nix
-
-    # ../../modules/home/core.nix
-
-    # ../../modules/home/fcitx5
-    # ../../modules/home/hyprland
-    # ../../modules/home/programs
-    # ../../modules/home/rofi
-    # ../../modules/home/shell
+    ../../home/dashu/default.nix
   ];
 
   programs.git = {

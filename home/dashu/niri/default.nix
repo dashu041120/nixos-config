@@ -1,9 +1,9 @@
 { pkgs, inputs, ... }: {
     imports = [
         # ./quickshell.nix
-        # ./noctalia.nix
+        ./noctalia.nix
         ./niri.nix
-        ./hypridle.nix
+        # ./hypridle.nix
         
     ];
 }

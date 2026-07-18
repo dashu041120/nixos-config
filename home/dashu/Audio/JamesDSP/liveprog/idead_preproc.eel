@@ -1,0 +1,326 @@
+desc:Advanced Audio eDSP Enhancer
+
+slider1:0<0,1,1{Off,On}>Enable Adaptive EQ
+slider2:0<0,1,1{Off,On}>Enable Auto-balancer
+slider3:0<0,1,1{Off,On}>Enable DJ Mode
+slider4:0.5<0,1,0.01>Dry/Wet Mix
+slider5:0.01<0,0.1,0.001>Noise Threshold (Adaptive EQ)
+slider6:0.05<0,0.5,0.005>Fine-tune Speed (Adaptive EQ)
+slider7:16<2,31,1>Number of EQ Bands
+slider8:0.5<0,1,0.01>DJ Mode Dither Amount
+slider9:0.1<0,1,0.01>DJ Mode Balance Speed
+slider10:0.0<0,1,0.01>DJ Mode Preset Gain
+slider11:0<0,1,1{Off,On}>Speaker Mode
+slider12:0<0,2,1{Headphone, Internal Speaker, Bluetooth}>Output type
+
+@init
+// --- Preconfigured slider values ---
+slider1 = 1;
+slider2 = 1;
+slider3 = 1;
+slider4 = 0.74;
+slider5 = 0.07;
+slider6 = 0.50;
+slider7 = 26;
+slider8 = 0.79;
+slider9 = 0.99;
+slider10 = 0.82;
+slider11 = 1;
+slider12 = 1;
+
+// --- Print initial values ---
+printf("INIT -> Adaptive EQ: %d\n", slider1);
+printf("INIT -> Auto-balancer: %d\n", slider2);
+printf("INIT -> DJ Mode: %d\n", slider3);
+printf("INIT -> Dry/Wet Mix: %f\n", slider4);
+printf("INIT -> Noise Threshold: %f\n", slider5);
+printf("INIT -> Fine-tune Speed: %f\n", slider6);
+printf("INIT -> Number of EQ Bands: %d\n", slider7);
+printf("INIT -> DJ Mode Dither Amount: %f\n", slider8);
+printf("INIT -> DJ Mode Balance Speed: %f\n", slider9);
+printf("INIT -> DJ Mode Preset Gain: %f\n", slider10);
+printf("INIT -> Speaker Mode: %d\n", slider11);
+printf("INIT -> Output Type: %d (0=Headphones, 1=Internal Speaker, 2=Bluetooth)\n", slider12);
+
+// --- DSP setup ---
+sampleRate = srate;
+maxBands   = 31;
+numBands   = max(2, min(maxBands, floor(slider7)));
+
+// Memory allocation
+mem_base = 0;
+bandFreqs_ptr     = mem_base;
+bandQs_ptr        = bandFreqs_ptr     + maxBands;
+bandGainsL_ptr    = bandQs_ptr        + maxBands;
+bandGainsR_ptr    = bandGainsL_ptr    + maxBands;
+bandNoiseL_ptr    = bandGainsR_ptr    + maxBands;
+bandNoiseR_ptr    = bandNoiseL_ptr    + maxBands;
+filterStatesL_ptr = bandNoiseR_ptr    + maxBands;
+filterStatesR_ptr = filterStatesL_ptr + maxBands*4;
+mem_end           = filterStatesR_ptr + maxBands*4;
+
+biquadCoeffs_ptr  = mem_end; 
+mem_end          += maxBands*5;
+
+djPresetGains_ptr = mem_end; 
+mem_end          += maxBands;
+
+states = mem_end;
+mem_end += maxBands*4;
+
+// Adaptive EQ scheduling
+adapt_counter  = 0;
+adapt_interval = 512; 
+
+// BT compression parameters
+bt_thresh = 0.85;   // threshold (normalized -1..1)
+bt_ratio  = 2.0;    // mild compression ratio
+bt_attack = 0.01;   // attack speed
+bt_release= 0.1;    // release speed
+bt_gain   = 1.05;   // makeup gain
+bt_envL   = 0;
+bt_envR   = 0;
+
+// --- Auto Soft-Fade setup ---
+fade_time     = 0.075;               // 75 ms fade
+fade_samples  = fade_time*sampleRate;
+fade_phase    = 0;
+fade_dir      = 0;                   // 1 = fade in, -1 = fade out
+fade_gain     = 1;
+signal_thresh = 1e-5;                // silence detection threshold
+silence_cnt   = 0;                   // silent frame counter
+silence_hold  = sampleRate*0.02;     // 20 ms silence before fade-out
+
+// Function: Calculate biquad bandpass coefficients
+function calc_bandpass_coeffs(freq, Q, offset)
+local(w0, alpha, cosw0, sinw0, b0, b1, b2, a0, a1, a2)
+(
+  w0 = 2*$pi*freq/sampleRate;
+  cos_w0 = cos(w0);
+  sin_w0 = sin(w0);
+  alpha = sin_w0/(2*Q);
+
+  b0 = alpha;
+  b1 = 0;
+  b2 = -alpha;
+  a0 = 1+alpha;
+  a1 = -2*cos_w0;
+  a2 = 1-alpha;
+
+  biquadCoeffs_ptr[offset+0] = b0/a0;
+  biquadCoeffs_ptr[offset+1] = b1/a0;
+  biquadCoeffs_ptr[offset+2] = b2/a0;
+  biquadCoeffs_ptr[offset+3] = a1/a0;
+  biquadCoeffs_ptr[offset+4] = a2/a0;
+);
+
+// Function: Process one sample through biquad
+function biquad_process_sample(x, b0,b1,b2,a1,a2,state_off) 
+local(y, x1, x2, y1, y2) 
+(
+    x1 = states[state_off];
+    x2 = states[state_off+1];
+    y1 = states[state_off+2];
+    y2 = states[state_off+3];
+
+    y = b0*x + b1*x1 + b2*x2 - a1*y1 - a2*y2;
+
+    states[state_off]   = x;
+    states[state_off+1] = x1;
+    states[state_off+2] = y;
+    states[state_off+3] = y1;
+
+    y;
+);
+
+// Smoothing constants
+noise_alpha = 0.001;
+gain_alpha  = 0.005;
+
+// Band initialization
+minFreq = 50;
+maxFreq = 20000;
+freqRatio = pow(maxFreq/minFreq, 1.0/(numBands-1));
+
+i = 0;
+loop(numBands,
+  bandFreqs_ptr[i] = minFreq*pow(freqRatio,i);
+  bandQs_ptr[i]    = 1.0;
+  bandGainsL_ptr[i]= 1.0;
+  bandGainsR_ptr[i]= 1.0;
+  bandNoiseL_ptr[i]= 0.0;
+  bandNoiseR_ptr[i]= 0.0;
+
+  filterStatesL_ptr[i*4+0] = 0;
+  filterStatesL_ptr[i*4+1] = 0;
+  filterStatesL_ptr[i*4+2] = 0;
+  filterStatesL_ptr[i*4+3] = 0;
+
+  filterStatesR_ptr[i*4+0] = 0;
+  filterStatesR_ptr[i*4+1] = 0;
+  filterStatesR_ptr[i*4+2] = 0;
+  filterStatesR_ptr[i*4+3] = 0;
+
+  calc_bandpass_coeffs(bandFreqs_ptr[i], bandQs_ptr[i], i*5);
+
+  (bandFreqs_ptr[i] > 500 && bandFreqs_ptr[i] < 5000) ? (
+    djPresetGains_ptr[i] = 1.2;
+  ) : (
+    djPresetGains_ptr[i] = 0.8;
+  );
+
+  i += 1;
+)
+
+@sample
+processedL = spl0;
+processedR = spl1;
+
+// === Auto Soft-Fade ===
+abs(processedL)+abs(processedR) < signal_thresh ? (
+  silence_cnt += 1;
+  (silence_cnt > silence_hold && fade_dir != -1) ? (
+    fade_dir = -1; fade_phase = 0;
+  );
+) : (
+  silence_cnt = 0;
+  (fade_dir != 1 && fade_gain < 0.99) ? (
+    fade_dir = 1; fade_phase = 0;
+  );
+);
+
+fade_dir != 0 ? (
+  fade_phase += 1;
+  pos = fade_phase/fade_samples;
+  pos > 1 ? (
+    fade_dir = 0;
+    fade_gain = (fade_gain < 0.5 ? 0 : 1);
+  ) : (
+    fade_gain = (fade_dir > 0) ? (1 - exp(-5*pos)) : exp(-5*pos);
+  );
+);
+
+processedL *= fade_gain;
+processedR *= fade_gain;
+
+// === Adaptive EQ ===
+slider1 > 0 ? (
+  adapt_counter += 1;
+  adapt_counter >= adapt_interval ? (
+    adapt_counter = 0;
+
+    i = 0;
+    loop(numBands,
+      coeff_off = i*5;
+      state_off = i*4;
+
+      yL = biquad_process_sample(processedL,
+        biquadCoeffs_ptr[coeff_off+0],
+        biquadCoeffs_ptr[coeff_off+1],
+        biquadCoeffs_ptr[coeff_off+2],
+        biquadCoeffs_ptr[coeff_off+3],
+        biquadCoeffs_ptr[coeff_off+4],
+        filterStatesL_ptr+state_off);
+
+      yR = biquad_process_sample(processedR,
+        biquadCoeffs_ptr[coeff_off+0],
+        biquadCoeffs_ptr[coeff_off+1],
+        biquadCoeffs_ptr[coeff_off+2],
+        biquadCoeffs_ptr[coeff_off+3],
+        biquadCoeffs_ptr[coeff_off+4],
+        filterStatesR_ptr+state_off);
+
+      noiseL = abs(yL);
+      noiseR = abs(yR);
+
+      noiseL > slider5 ? (
+        bandGainsL_ptr[i] += (noiseL - bandGainsL_ptr[i]) * slider6;
+      );
+      noiseR > slider5 ? (
+        bandGainsR_ptr[i] += (noiseR - bandGainsR_ptr[i]) * slider6;
+      );
+
+      i += 1;
+    );
+  );
+);
+
+// === Auto-balancer ===
+slider2 > 0 ? (
+  avgL = 0;
+  avgR = 0;
+  i = 0;
+  loop(numBands,
+    avgL += bandGainsL_ptr[i];
+    avgR += bandGainsR_ptr[i];
+    i += 1;
+  );
+  avgL /= numBands;
+  avgR /= numBands;
+
+  balance = avgL - avgR;
+  processedL -= balance*0.5;
+  processedR += balance*0.5;
+);
+
+// === DJ mode ===
+slider3 > 0 ? (
+  dither = (rand(65536)/65536 - 0.5) * slider8 * 1e-4;
+  processedL += dither;
+  processedR += dither;
+
+  processedL *= (1 + slider10);
+  processedR *= (1 + slider10);
+);
+
+// === Speaker Mode ===
+(slider11 > 0 && slider12 != 2) ? ( // ignore when BT (slider12 == 2)
+  slider12 == 0 ? (
+    // Headphones + Speaker Mode -> simulate speaker
+    processedL *= 0.9;
+    processedR *= 0.9;
+    widen = (processedL - processedR) * 0.15;
+    processedL += widen;
+    processedR -= widen;
+  ) : (
+    // Internal Speaker + Speaker Mode -> boost small drivers
+    processedL *= 1.1;
+    processedR *= 1.1;
+    mono = (processedL + processedR) * 0.5;
+    processedL = processedL*0.8 + mono*0.2;
+    processedR = processedR*0.8 + mono*0.2;
+  );
+);
+
+// === BT Optimization (active only if slider12 == 2) ===
+slider12 == 2 ? (
+  absL = abs(processedL);
+  absR = abs(processedR);
+
+  // Envelope follower
+  bt_envL = (absL > bt_envL) 
+    ? (bt_attack*absL + (1-bt_attack)*bt_envL) 
+    : (bt_release*absL + (1-bt_release)*bt_envL);
+
+  bt_envR = (absR > bt_envR) 
+    ? (bt_attack*absR + (1-bt_attack)*bt_envR) 
+    : (bt_release*absR + (1-bt_release)*bt_envR);
+
+  // Gain reduction if above threshold
+  gainL = 1;
+  gainR = 1;
+  bt_envL > bt_thresh ? (
+    gainL = pow(bt_envL/bt_thresh, (1/bt_ratio)-1);
+  );
+  bt_envR > bt_thresh ? (
+    gainR = pow(bt_envR/bt_thresh, (1/bt_ratio)-1);
+  );
+
+  // Apply gain & makeup
+  processedL *= gainL * bt_gain;
+  processedR *= gainR * bt_gain;
+);
+
+// === Mix dry/wet ===
+spl0 = spl0*(1-slider4) + processedL*slider4;
+spl1 = spl1*(1-slider4) + processedR*slider4;

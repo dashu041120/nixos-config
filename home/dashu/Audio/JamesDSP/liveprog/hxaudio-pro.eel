@@ -1,0 +1,369 @@
+desc:HXAudio Bass Suite - VirtualBass/Compressor/BassBoost
+
+//=============================================================================
+//  JamesDSP LiveProg - 低音增强套件
+//  参考 HXAudio APK v3.0 源码提取的默认参数
+//  功能: 虚拟低音(谐波合成) + 压缩器 + 低音增强
+//=============================================================================
+
+// ═══════ 虚拟低音 (Virtual Bass - 谐波合成) ═══════
+// 原理: Butterworth 分频器分离低频 → 非线性谐波生成 → 混合
+// APK 默认: enabled=true, strength=55, source_high=45, harmonic_count=4, timbre=0
+slider1:1<0,1,1{Off,On}>Virtual Bass Enable
+slider2:55<0,100,1>VB Strength (%)
+slider3:4<1,4,1>VB Harmonic Count
+slider4:45<1,99,1>VB Source High (x10 Hz)
+slider5:0<0,2,1{Warm,Neutral,Bright}>VB Timbre
+
+// ═══════ 压缩器 (Compressor) ═══════
+// APK 默认: threshold=-20dB, ratio=4:1, attack=10ms, release=100ms
+slider6:0<0,1,1{Off,On}>Compressor Enable
+slider7:-20<-60,0,0.5>Comp Threshold (dB)
+slider8:4<1,20,0.5>Comp Ratio
+slider9:10<0.1,200,0.1>Comp Attack (ms)
+slider10:100<1,2000,1>Comp Release (ms)
+slider11:0<-24,24,0.5>Comp Makeup Gain (dB)
+
+// ═══════ 低音增强 (Bass Boost - Low Shelf EQ) ═══════
+// APK 默认 PEQ: 90Hz/0dB/Q0.8
+slider12:0<0,1,1{Off,On}>Bass Boost Enable
+slider13:5<0,20,0.5>Bass Boost Gain (dB)
+slider14:90<20,300,1>Bass Boost Freq (Hz)
+slider15:0.8<0.1,5,0.1>Bass Boost Q
+
+// ═══════ 主控 ═══════
+slider16:0<-12,12,0.5>Master Gain (dB)
+
+//=============================================================================
+@init
+
+// --- Preconfigured slider values ---
+slider1  = 1;      // Virtual Bass On
+slider2  = 23;     // Strength 55%
+slider3  = 2;      // 4 harmonics
+slider4  = 23;     // 450 Hz crossover
+slider5  = 0;      // Warm timbre
+slider6  = 0;      // Compressor Off
+slider7  = -17.91;    // Threshold -20dB
+slider8  = 4.20;      // Ratio 4:1
+slider9  = 14.54;     // Attack 10ms
+slider10 = 87;    // Release 100ms
+slider11 = -4.51;      // Makeup 0dB
+slider12 = 1;      // Bass Boost Off
+slider13 = 4.08;      // Gain 5dB
+slider14 = 78;     // Freq 90Hz
+slider15 = 1.17;    // Q 0.8
+slider16 = -1.41;      // Master 0dB
+
+printf("INIT -> Virtual Bass: %d\n", slider1);
+printf("INIT -> VB Strength: %d%%\n", slider2);
+printf("INIT -> VB Harmonics: %d\n", slider3);
+printf("INIT -> VB Crossover: %d Hz\n", slider4*10);
+printf("INIT -> VB Timbre: %d (0=Warm,1=Neutral,2=Bright)\n", slider5);
+printf("INIT -> Compressor: %d\n", slider6);
+printf("INIT -> Comp Threshold: %.1f dB\n", slider7);
+printf("INIT -> Comp Ratio: %.1f:1\n", slider8);
+printf("INIT -> Bass Boost: %d\n", slider12);
+printf("INIT -> BB Freq: %d Hz, Gain: %.1f dB, Q: %.2f\n", slider14, slider13, slider15);
+
+// --- Constants ---
+M_PI  = $pi;
+M_2PI = $2PI;
+
+// --- Memory layout ---
+// Virtual Bass filter states (4 biquad stages × 2 channels)
+VB_LP_C   = 0;       // Low-pass coefficients (5 per stage × 2 stages)
+VB_HP_C   = 20;      // High-pass coefficients
+VB_LP_S_L = 40;      // LP state L (4 per stage × 2 stages)
+VB_LP_S_R = 48;      // LP state R
+VB_HP_S_L = 56;      // HP state L
+VB_HP_S_R = 64;      // HP state R
+
+// Delay line for latency compensation
+VB_DLY    = 100;     // Delay buffer (L+R)
+VB_DLY_SZ = 64;      // Delay buffer size per channel
+vb_dly_widx = 0;
+
+// Compressor envelope
+COMP_ENV = 300;
+
+// Bass Boost biquad
+BB_C   = 310;        // Coefficients (5)
+BB_S_L = 315;        // State L (4)
+BB_S_R = 319;        // State R (4)
+
+// Work buffer for harmonic generation
+VB_HARM = 330;
+
+// --- Track previous values for coefficient recalc ---
+prev_vb_fc    = 0;
+prev_bb_fc    = 0;
+prev_bb_gain  = 0;
+prev_bb_q     = 0;
+
+// Compressor envelope init
+comp_env_val = 0;
+
+// Delay buffer init
+memset(VB_DLY, 0, VB_DLY_SZ * 2);
+
+// Bass boost coefficients init (flat)
+memset(BB_C, 0, 5);
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Function: 2阶 Butterworth 低通系数
+// ═══════════════════════════════════════════════════════════════════════════════
+function calc_lp2(fc, fs, c) local(w0 sinw0 cosw0 alpha a0 inv)
+(
+  w0 = M_2PI * fc / fs;
+  sinw0 = sin(w0);
+  cosw0 = cos(w0);
+  alpha = sinw0 / 1.4142135;
+  a0 = 1 + alpha;
+  inv = 1.0 / a0;
+  c[0] = (1 - cosw0) * 0.5 * inv;
+  c[1] = (1 - cosw0) * inv;
+  c[2] = c[0];
+  c[3] = -2 * cosw0 * inv;
+  c[4] = (1 - alpha) * inv;
+);
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Function: 2阶 Butterworth 高通系数
+// ═══════════════════════════════════════════════════════════════════════════════
+function calc_hp2(fc, fs, c) local(w0 sinw0 cosw0 alpha a0 inv)
+(
+  w0 = M_2PI * fc / fs;
+  sinw0 = sin(w0);
+  cosw0 = cos(w0);
+  alpha = sinw0 / 1.4142135;
+  a0 = 1 + alpha;
+  inv = 1.0 / a0;
+  c[0] = (1 + cosw0) * 0.5 * inv;
+  c[1] = -(1 + cosw0) * inv;
+  c[2] = c[0];
+  c[3] = -2 * cosw0 * inv;
+  c[4] = (1 - alpha) * inv;
+);
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Function: 低架式 EQ 系数
+// ═══════════════════════════════════════════════════════════════════════════════
+function calc_lowshelf(fc, gain_dB, Q, fs, c) local(A w0 sinw0 cosw0 alpha twoSA a0 b0 b1 b2 a1 a2 inv)
+(
+  A = pow(10, gain_dB / 40);
+  w0 = M_2PI * fc / fs;
+  sinw0 = sin(w0);
+  cosw0 = cos(w0);
+  alpha = sinw0 / (2 * Q);
+  twoSA = 2 * sqrt(A);
+  b0 = A * ((A+1) - (A-1)*cosw0 + twoSA*alpha);
+  b1 = 2*A * ((A-1) - (A+1)*cosw0);
+  b2 = A * ((A+1) - (A-1)*cosw0 - twoSA*alpha);
+  a0 = (A+1) + (A-1)*cosw0 + twoSA*alpha;
+  a1 = -2 * ((A-1) + (A+1)*cosw0);
+  a2 = (A+1) + (A-1)*cosw0 - twoSA*alpha;
+  inv = 1.0 / a0;
+  c[0] = b0*inv; c[1] = b1*inv; c[2] = b2*inv;
+  c[3] = a1*inv; c[4] = a2*inv;
+);
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Function: Biquad 处理 (Direct Form II Transposed)
+// ═══════════════════════════════════════════════════════════════════════════════
+function biquad_proc(x, c, st) local(y)
+(
+  y = c[0]*x + st[0];
+  st[0] = c[1]*x - c[3]*y + st[1];
+  st[1] = c[2]*x - c[4]*y;
+  y;
+);
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Function: dB → 线性
+// ═══════════════════════════════════════════════════════════════════════════════
+function db2lin(db)
+(
+  pow(10, db / 20);
+);
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Function: 软拐点压缩增益
+// ═══════════════════════════════════════════════════════════════════════════════
+function comp_gain_calc(x_db, thr, ratio, knee) local(kb g)
+(
+  x_db < (thr - knee/2) ? (
+    g = 0;
+  ) : x_db > (thr + knee/2) ? (
+    g = (thr + (x_db - thr)/ratio) - x_db;
+  ) : (
+    kb = thr - knee/2;
+    g = ((x_db - kb) * (x_db - kb)) * (1/ratio - 1) / (2*knee);
+  );
+  g;
+);
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Function: 谐波 Waveshaper
+// mode=0: Warm (tanh), mode=1: Neutral (asymmetric), mode=2: Bright (cubic)
+// ═══════════════════════════════════════════════════════════════════════════════
+function waveshape(x, mode) local(y ax)
+(
+  mode == 0 ? (
+    y = tanh(x * 1.5);
+  ) : mode == 1 ? (
+    ax = abs(x);
+    y = x / (1 + ax);
+  ) : (
+    ax = abs(x);
+    ax > 0.667 ? (
+      y = sign(x) * 0.667;
+    ) : (
+      y = x - (x*x*x) / 3.0;
+    );
+  );
+  y;
+);
+
+//=============================================================================
+@sample
+
+// ─── Read input ───
+inL = spl0;
+inR = spl1;
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// 1. 虚拟低音 (Virtual Bass Harmonic Synthesis)
+// ═══════════════════════════════════════════════════════════════════════════════
+slider1 > 0 ? (
+  vb_strength = slider2 / 100.0;
+  vb_harms    = floor(slider3);
+  vb_fc       = max(40, min(slider4 * 10, 990));
+  vb_timbre   = floor(slider5);
+
+  // Recalc filter coefficients when crossover freq changes
+  vb_fc != prev_vb_fc ? (
+    prev_vb_fc = vb_fc;
+    // 4阶 = 2级联 2阶 Butterworth
+    calc_lp2(vb_fc, srate, VB_LP_C);
+    calc_lp2(vb_fc, srate, VB_LP_C + 5);
+    calc_hp2(vb_fc, srate, VB_HP_C);
+    calc_hp2(vb_fc, srate, VB_HP_C + 5);
+  );
+
+  // Mid signal for bass extraction
+  mid = (inL + inR) * 0.5;
+
+  // 4阶低通 → 提取低频
+  lp1    = biquad_proc(mid, VB_LP_C,     VB_LP_S_L);
+  lp_out = biquad_proc(lp1, VB_LP_C + 5, VB_LP_S_L + 4);
+
+  // 谐波生成: 多级 waveshaping
+  harmonics = 0;
+  ws = lp_out;
+
+  // 1st harmonic (2nd partial)
+  ws_in = ws * (1.0 + vb_strength * 2.0);
+  ws = waveshape(ws_in, vb_timbre);
+  harmonics = harmonics + (ws - lp_out);
+
+  // 2nd harmonic (3rd partial)
+  vb_harms >= 2 ? (
+    ws_in2 = ws * (1.0 + vb_strength * 1.5);
+    ws2 = waveshape(ws_in2, vb_timbre);
+    harmonics = harmonics + (ws2 - ws) * 0.7;
+    ws = ws2;
+  );
+
+  // 3rd harmonic (5th partial)
+  vb_harms >= 3 ? (
+    ws_in3 = ws * (1.0 + vb_strength);
+    ws3 = waveshape(ws_in3, vb_timbre);
+    harmonics = harmonics + (ws3 - ws) * 0.5;
+    ws = ws3;
+  );
+
+  // 4th harmonic (7th partial)
+  vb_harms >= 4 ? (
+    ws_in4 = ws * (1.0 + vb_strength * 0.8);
+    ws4 = waveshape(ws_in4, vb_timbre);
+    harmonics = harmonics + (ws4 - ws) * 0.35;
+  );
+
+  // Low-pass filter harmonics to avoid harshness
+  h_filtered = biquad_proc(harmonics, VB_LP_C, VB_LP_S_L + 8);
+
+  // Delay compensation: 4th-order LP introduces group delay
+  VB_DLY[vb_dly_widx]            = inL;
+  VB_DLY[vb_dly_widx + VB_DLY_SZ] = inR;
+
+  dly_smps = floor(2.0 * srate / (M_PI * vb_fc));
+  dly_smps < 1 ? (dly_smps = 1);
+  dly_smps > (VB_DLY_SZ - 1) ? (dly_smps = VB_DLY_SZ - 1);
+
+  dly_rd = (vb_dly_widx - dly_smps + VB_DLY_SZ) % VB_DLY_SZ;
+  dlyL   = VB_DLY[dly_rd];
+  dlyR   = VB_DLY[dly_rd + VB_DLY_SZ];
+
+  // Mix: delayed original + harmonics
+  inL = dlyL + h_filtered * vb_strength;
+  inR = dlyR + h_filtered * vb_strength;
+
+  vb_dly_widx = (vb_dly_widx + 1) % VB_DLY_SZ;
+);
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// 2. 压缩器 (Compressor)
+// ═══════════════════════════════════════════════════════════════════════════════
+slider6 > 0 ? (
+  peak    = max(abs(inL), abs(inR));
+  peak_db = 20 * log(max(peak, 0.0000001)) / log(10);
+
+  att_c = exp(-1.0 / (srate * slider9  * 0.001));
+  rel_c = exp(-1.0 / (srate * slider10 * 0.001));
+
+  peak_db > comp_env_val ? (
+    comp_env_val = att_c * comp_env_val + (1 - att_c) * peak_db;
+  ) : (
+    comp_env_val = rel_c * comp_env_val + (1 - rel_c) * peak_db;
+  );
+
+  g       = comp_gain_calc(comp_env_val, slider7, slider8, 6);
+  gain_lin = db2lin(g + slider11);
+
+  inL = inL * gain_lin;
+  inR = inR * gain_lin;
+);
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// 3. 低音增强 (Bass Boost - Low Shelf EQ)
+// ═══════════════════════════════════════════════════════════════════════════════
+slider12 > 0 ? (
+  // Recalc when parameters change
+  (slider14 != prev_bb_fc || slider13 != prev_bb_gain || slider15 != prev_bb_q) ? (
+    prev_bb_fc   = slider14;
+    prev_bb_gain = slider13;
+    prev_bb_q    = slider15;
+    calc_lowshelf(slider14, slider13, slider15, srate, BB_C);
+  );
+
+  inL = biquad_proc(inL, BB_C, BB_S_L);
+  inR = biquad_proc(inR, BB_C, BB_S_R);
+);
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// 4. 主增益 + 软限幅
+// ═══════════════════════════════════════════════════════════════════════════════
+master = db2lin(slider16);
+inL = inL * master;
+inR = inR * master;
+
+// Soft clip protection
+inL >  1.0 ? (inL =  1.0);
+inL < -1.0 ? (inL = -1.0);
+inR >  1.0 ? (inR =  1.0);
+inR < -1.0 ? (inR = -1.0);
+
+// ─── Output ───
+spl0 = inL;
+spl1 = inR;

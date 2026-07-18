@@ -4,6 +4,7 @@
     ## Multimedia
     # audacity
     gimp
+    glava
     pavucontrol
     # soundwireserver
     # video-trimmer
@@ -30,8 +31,10 @@
     dconf-editor
     gnome-disk-utility
     mission-center # GUI resources monitor
+    # appimagelauncher
+    appimage-run
     # zenity
-    # boxbuddy
+    boxbuddy
     # localsend
     # kdePackages.ark
     peazip
@@ -56,7 +59,7 @@
     # warp-terminal
     # waveterm
     # zellij
-    # ghostty
+    ghostty
 
     usbkvm
 

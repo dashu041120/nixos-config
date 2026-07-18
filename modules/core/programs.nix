@@ -11,7 +11,8 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [ ];
 
-  programs.adb.enable = true;
+  # programs.adb.enable = true;  # 已废弃，systemd 258 自动处理 uaccess
+  environment.systemPackages = [ pkgs.android-tools ];
 
   programs.thunar = {
     enable = true;

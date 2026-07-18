@@ -1,4 +1,17 @@
-this is my nixos config
+# this is my nixos config
+
+
+## 第一步：装系统 + home-manager CLI
+
+sudo nixos-rebuild switch --flake .#laptop
+
+## 第二步：用刚装好的 home-manager 管理用户配置
+
+home-manager switch --flake .#dashu@laptop
+nixos-rebuild switch 会把 home-manager 命令装到系统里，之后就能独立用了。
+
+
+
 
 `home-manager switch --flake .#dashu@laptop-rog-gu603`
 
@@ -8,8 +21,6 @@ this is my nixos config
 
 > ! hyprland 相关配置即将从本仓库剥离
 > 日后会采用git clone命令方式自动配置
-
-
 
 # 1. 进入项目目录
 

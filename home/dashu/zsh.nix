@@ -121,6 +121,11 @@
         export PATH="/var/lib/flatpak/exports/bin:$PATH"
       fi
       export XDG_DATA_DIRS="''${XDG_DATA_DIRS:-/usr/local/share:/usr/share}:/var/lib/flatpak/exports/share:/home/$USER/.local/share/flatpak/exports/share"
+      
+      # Cargo/Rust
+      if [ -d "$HOME/.cargo/bin" ]; then
+      export PATH="$HOME/.cargo/bin:$PATH"
+      fi
 
       # # 加载 Determinate Nix / NixOS 常见的初始化脚本
       # for nix_init in \
@@ -255,6 +260,8 @@
       fi
       unset __conda_setup
       # <<< conda initialize <<<
+
+      export PATH=/home/dashu/.mimocode/bin:$PATH
     '';
   };
 
@@ -267,7 +274,7 @@
     fd            # 快速find替代品
     tree          # 目录树显示
     htop          # 进程监视器
-    neofetch      # 系统信息显示
+    fastfetch     # 系统信息显示
     tmux          # 终端复用器
     git           # 版本控制
     curl          # HTTP客户端

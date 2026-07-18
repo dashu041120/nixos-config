@@ -5,11 +5,16 @@
     
     boot.loader.grub = {
     # theme
-      minegrub-theme = {
+      # minegrub-theme = {
+      #   enable = true;
+      #   splash = "100% Flakes!";
+      #   background = "background_options/1.8  - [Classic Minecraft].png";
+      #   boot-options-count = 4;
+      # };
+      marathon-theme = {
         enable = true;
-        splash = "100% Flakes!";
-        background = "background_options/1.8  - [Classic Minecraft].png";
-        boot-options-count = 4;
+        variant = "Marathon-NewCascadia"; # MapScreen | NewCascadia | TitleScreen | UESC
+        resolution = "1920x1080";          # 1600x900 | 1920x1080 | 2560x1440
       };
       # 启用 GRUB
       enable = true;
@@ -35,13 +40,13 @@
 
     boot.plymouth = {
       enable = true;
-      theme = "rog";
-      themePackages = with pkgs; [
-        # By default we would install all themes
-        (adi1090x-plymouth-themes.override {
-          selected_themes = [ "rog" ];
-        })
-      ];
+      # theme = "rog";
+      # themePackages = with pkgs; [
+      #   # By default we would install all themes
+      #   (adi1090x-plymouth-themes.override {
+      #     selected_themes = [ "rog" ];
+      #   })
+      # ];
     };
 
     # Enable "Silent boot"

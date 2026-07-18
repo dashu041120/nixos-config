@@ -113,7 +113,7 @@
     # gpu-screen-recorder
 
     yad
-    light
+    brightnessctl
 
     
     # power-profiles-daemon

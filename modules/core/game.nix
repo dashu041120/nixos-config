@@ -2,10 +2,11 @@
 {
   config,
   pkgs,
-  nix-gaming,
+  inputs,
   lib,
   ...
 }: let
+  nix-gaming = inputs.nix-gaming;
   programs = lib.makeBinPath [
     config.programs.hyprland.package
     pkgs.coreutils
