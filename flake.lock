@@ -660,6 +660,22 @@
         "type": "github"
       }
     },
+    "nix-flatpak": {
+      "locked": {
+        "lastModified": 1767983141,
+        "narHash": "sha256-7ZCulYUD9RmJIDULTRkGLSW1faMpDlPKcbWJLYHoXcs=",
+        "owner": "gmodena",
+        "repo": "nix-flatpak",
+        "rev": "440818969ac2cbd77bfe025e884d0aa528991374",
+        "type": "github"
+      },
+      "original": {
+        "owner": "gmodena",
+        "ref": "v0.7.0",
+        "repo": "nix-flatpak",
+        "type": "github"
+      }
+    },
     "nix-gaming": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -1037,6 +1053,7 @@
         "home-manager": "home-manager_2",
         "hyprland": "hyprland",
         "minegrub-theme": "minegrub-theme",
+        "nix-flatpak": "nix-flatpak",
         "nix-gaming": "nix-gaming",
         "nixgl": "nixgl",
         "nixos-generators": "nixos-generators",
@@ -1046,7 +1063,8 @@
         "noctalia": "noctalia",
         "nur": "nur",
         "polybar-themes": "polybar-themes",
-        "quickshell": "quickshell"
+        "quickshell": "quickshell",
+        "zen-browser": "zen-browser"
       }
     },
     "systems": {
@@ -1117,6 +1135,29 @@
       "original": {
         "owner": "hyprwm",
         "repo": "xdg-desktop-portal-hyprland",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784287306,
+        "narHash": "sha256-N0uYliEuDJ7BCH9th1QKmlz1ddGjBwwL8LIvTpM/pt4=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "b039696b48f7796a753f9848cf004dbe072541f5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     }

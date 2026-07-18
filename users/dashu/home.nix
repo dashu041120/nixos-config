@@ -1,16 +1,14 @@
 {pkgs, ...}: {
-  ##################################################################################################################
-  #
-  # All dashu's Home Manager Configuration
-  #
-  ##################################################################################################################
+  home.enableNixpkgsReleaseCheck = false;
 
   imports = [
     ../../home/dashu/default.nix
   ];
 
   programs.git = {
-    userName = "dashu041120";
-    userEmail = "zhangjingduan@msn.com";
+    settings.user = {
+      name = "dashu041120";
+      email = "zhangjingduan@msn.com";
+    };
   };
 }

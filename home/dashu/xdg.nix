@@ -32,7 +32,6 @@
       enable = true;
       # let `xdg-open` to open the url with the correct application.
       defaultApplications = let
-        #zen.desktop is zen-browser, a privacy-focused browser.
         browser = [ "zen.desktop" "firefox.desktop" "google-chrome.desktop" ];
         editor = [ "kate.desktop" "code.desktop" "nvim.desktop" "Helix.desktop" ];
       in {

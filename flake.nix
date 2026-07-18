@@ -64,6 +64,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    zen-browser = {
+      url = "github:0xc000022070/zen-browser-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.7.0";
+
     catppuccin.url = "github:catppuccin/nix";
 
     catppuccin-bat = {
@@ -133,6 +141,8 @@
           inputs.catppuccin.homeModules.catppuccin
           inputs.chaotic.homeManagerModules.default
           inputs.noctalia.homeModules.default
+          inputs.zen-browser.homeModules.beta
+          inputs.nix-flatpak.homeManagerModules.nix-flatpak
         ];
       };
   in

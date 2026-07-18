@@ -33,10 +33,9 @@
 
     #./nixgl.nix                       # OpenGL support for non-NixOS
     
-    # ./vscode.nix              # in nixos
+    ./vscode.nix              # in nixos
     # ./vscode-server.nix       # in nixos-only, vscode server for remote development
-    ./xdg.nix
-    ./yazi.nix                        # file manager
+    
 #     ./kitty.nix                       # terminal
 #     ./lazygit.nix
 #     ./nemo.nix                        # file manager
@@ -60,11 +59,14 @@
       ./social.nix                     # social apps
       ./theme
 #     # ./viewnior.nix                    # image viewer
-    # ./variables.nix
+    
+    ./variables.nix                    # environment variables may cause some problems
+
 #     ./waybar                          # status bar
 #     ./waypaper.nix                    # GUI wallpaper picker
-    # ./wps-office.nix                # WPS office
-#     ./xdg-mimes.nix                   # xdg config
+    ./wps-office.nix                # WPS office
+    ./xdg.nix
+    ./yazi.nix                        # file manager
     ./zsh.nix                            # shell
   ];
 

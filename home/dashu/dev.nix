@@ -7,30 +7,34 @@
     nixd # nix
 
     ## formating
-    # shfmt
-    # treefmt
-    # nixfmt-rfc-style
+    shfmt
+    treefmt
+    nixfmt-rfc-style
 
     ## C / C++
-    # gcc
-    # gdb
-    # gef
-    # cmake
-    # gnumake
+    gcc
+    gdb
+    gef
+    cmake
+    gnumake
     # valgrind
     # llvmPackages_20.clang-tools
+    llvmPackages.clangUseLLVM
+    llvmPackages.clang-tools
     # arrow-c1pp
+    meson
 
-    # python3
+    python3
     # conda
-    # uv
-    # jre8
-    # jdk
+    uv
+    jre8
+    jdk
 
     ## nodejs
-    # nodePackages.nodejs
-    # yarn
-    # pnpm
+    nodePackages.nodejs
+    yarn
+    pnpm
+    bun
 
     ## Golang
     # go
@@ -41,16 +45,22 @@
     # glibcLocales
     # glibcInfo
 
+    # Rust
+    rustup
     # gui
     imhex
     serial-studio
     putty
-    # freerdp
+    freerdp
     # libxcb
 
     # android
-    # android-tools
+    android-tools
     # androidenv.androidPkgs.platform-tools
     edl
+
+    gh
+    ghui
+    opencode-desktop
   ];
 }

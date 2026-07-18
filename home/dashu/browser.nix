@@ -1,10 +1,11 @@
-{ pkgs, ... }:
-let
-  zenFlake = builtins.getFlake "github:youwen5/zen-browser-flake";
-  system = pkgs.stdenv.hostPlatform.system;
-in
+{ pkgs, inputs, ... }:
 {
-  home.packages = [
-    # zenFlake.packages.${system}.default
+  programs.zen-browser = {
+    enable = true;
+    setAsDefaultBrowser = true;
+  };
+  home.packages = with pkgs; [
+    firefox
+    google-chrome
   ];
 }

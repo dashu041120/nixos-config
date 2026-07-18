@@ -24,7 +24,7 @@
     binsider
     bitwise                           # cli tool for bit / hex manipulation
     broot
-    # btop                             # tree files view
+    btop                             # tree files view
     # baidupcs-go                      # Baidu Netdisk CLI client
     caligula                          # User-friendly, lightweight TUI for disk imaging
     hyperfine                         # benchmarking tool
@@ -34,8 +34,7 @@
     tokei                             # project line counter
     translate-shell                   # cli translator
     # woomer
-    # yt-dlp-light
-    # htop
+    htop
     # switcheroo-control
 
     # rar
@@ -51,7 +50,6 @@
 
     ## Monitoring / fetch
     # htop
-    # neofetch
     # nitch                             # systhem fetch util
     # onefetch                          # fetch utility for git repo
     wavemon                           # monitoring for wireless network devices
@@ -91,31 +89,27 @@
     playerctl                         # controller for media players
     poweralertd
     unzip
-    # wget
-    # wl-clipboard                      # clipboard utils for wayland (wl-copy, wl-paste)
-    # xdg-utils
+    wget
+    wl-clipboard                      # clipboard utils for wayland (wl-copy, wl-paste)
+    xdg-utils
 
     # winetricks
     # wineWow64Packages.stableFull
     # vkd3d
-
-    # gemini-cli
-
     # coreutils-prefixed
     gpaste
 
     nh  # Yet another nix cli helper
-    # wayland-utils
-    # wl-clipboard
-    # wl-clipboard-x11
+    wayland-utils
+    wl-clipboard
+    wl-clipboard-x11
     
-    # wf-recorder
-    # gpu-screen-recorder
+    wf-recorder
+    gpu-screen-recorder
 
     yad
     brightnessctl
-
     
-    # power-profiles-daemon
+    power-profiles-daemon
   ];
 }

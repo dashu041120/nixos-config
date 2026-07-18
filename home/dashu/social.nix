@@ -17,8 +17,8 @@
 
     # my custom hardened packages
     # qqmusic
-    # qq
+    qq
     # wechat-uos   
-    # wechat
+    wechat
   ];
 }

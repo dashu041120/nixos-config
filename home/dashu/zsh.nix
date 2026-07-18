@@ -267,7 +267,7 @@
 
   # # 确保需要的包被安装
   home.packages = with pkgs; [
-    # eza           # 现代的ls替代品
+    eza           # 现代的ls替代品
     bat           # 现代的cat替代品
     fzf           # 模糊查找器
     ripgrep       # 快速grep替代品

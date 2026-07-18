@@ -40,7 +40,7 @@
   security.rtkit.enable = true; # PipeWire 推荐开启
 
   #for Nvidia GPU
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = ["nvidia"];  # mesa-based ???
   hardware.graphics.enable = true;
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.beta;   # Latest beta driver

@@ -3,18 +3,21 @@
   home.packages = with pkgs; [
     ## Multimedia
     # audacity
+    calf  # audio plugin suite calf-plugin
     gimp
     glava
+    qsynth
     pavucontrol
     # soundwireserver
-    # video-trimmer
-    # vlc
+    video-trimmer
+    vlc
     # spotify
-    # mpv
+    mpv
     blanket
     # vesktop
     # kdePackages.kdenlive
     # bilibili
+    piliplus
 
     # bottles-unwrapped
     # q4wine
@@ -24,27 +27,30 @@
     ## Office
     # libreoffice
     # gnome-calculator
-    # obsidian
+    obsidian
     kdePackages.kate
 
     ## Utility
     dconf-editor
     gnome-disk-utility
     mission-center # GUI resources monitor
-    # appimagelauncher
+    appimagelauncher
     appimage-run
-    # zenity
+    zenity
     boxbuddy
-    # localsend
+    distroshelf
+    localsend
     # kdePackages.ark
     peazip
 
     # motrix
+    motrix-next
+    yt-dlp
     meld
-    # snipaste
+    snipaste
     filezilla
-    # xorg.xkill # kill X server window
-
+    xorg.xkill # kill X server window
+    kdePackages.filelight
     #fpv utils
     # betaflight-configurator
 
