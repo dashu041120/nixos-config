@@ -76,7 +76,7 @@
 
     llm-agents.url = "github:numtide/llm-agents.nix";
 
-    catppuccin.url = "github:catppuccin/nix";
+    # catppuccin.url = "github:catppuccin/nix";
 
     catppuccin-bat = {
       url = "github:catppuccin/bat";
@@ -115,7 +115,7 @@
         specialArgs = { inherit self inputs hostname username; };
         modules = [
           ./hosts/${hostname}
-          inputs.catppuccin.nixosModules.catppuccin
+          # inputs.catppuccin.nixosModules.catppuccin
           inputs.chaotic.nixosModules.default
           inputs.minegrub-theme.nixosModules.default
           inputs.aerothemeplasma-nix.nixosModules.aerothemeplasma-nix
@@ -142,7 +142,7 @@
           # { home-manager.backupFileExtension = "hm-backup"; }
           # standalone 模式需要指定 nix.package
           { nix.package = pkgs.nix; }
-          inputs.catppuccin.homeModules.catppuccin
+          # inputs.catppuccin.homeModules.catppuccin
           inputs.chaotic.homeManagerModules.default
           inputs.noctalia.homeModules.default
           inputs.zen-browser.homeModules.beta

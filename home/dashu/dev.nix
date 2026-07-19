@@ -31,7 +31,7 @@
     jdk
 
     ## nodejs
-    nodePackages.nodejs
+    nodejs
     yarn
     pnpm
     bun

@@ -32,6 +32,9 @@ let
 in
 {
   config = {
+    # Catppuccin theme configuration
+    catppuccin.autoEnable = true;
+
     home.packages = [
       catppuccin-gtk-mocha
       # catppuccin-kvantum-mocha

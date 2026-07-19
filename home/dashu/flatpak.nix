@@ -5,7 +5,7 @@
     update.onActivation = true;
 
     remotes = [
-      { name = "flathub"; url = "https://mirrors.cernet.edu.cn/flathub"; }
+      { name = "flathub"; location = "https://mirrors.cernet.edu.cn/flathub"; }
     ];
 
     packages = [
