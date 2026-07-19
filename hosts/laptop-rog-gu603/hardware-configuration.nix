@@ -14,33 +14,36 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/7246e595-3158-4efb-9812-8c4ac0c334b5";
+    { device = "/dev/disk/by-uuid/882d5224-ee2f-4670-9530-bc9b183adaa3";
       fsType = "btrfs";
-      options = [ "subvol=@" ];
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/882d5224-ee2f-4670-9530-bc9b183adaa3";
+      fsType = "btrfs";
+      options = [ "subvol=home" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/882d5224-ee2f-4670-9530-bc9b183adaa3";
+      fsType = "btrfs";
+      options = [ "subvol=nix" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/ED1B-90A4";
+    { device = "/dev/disk/by-uuid/C2C9-94C8";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/patrickz" =
-    { device = "/dev/disk/by-uuid/522092a4-cb70-4264-b816-f793d6c7e0dd";
+  fileSystems."/patrick" =
+    { device = "/dev/disk/by-uuid/4cb863bf-8de6-4f0e-ae92-d76abad44fb2";
       fsType = "btrfs";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/7563be8b-2a01-49dd-a05b-c2512b7ae8fb"; }
+    [ { device = "/dev/disk/by-uuid/1787249a-305d-448c-a0a3-9de390b07134"; }
     ];
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp58s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

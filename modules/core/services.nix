@@ -1,5 +1,11 @@
 { pkgs, ... }:
 {
+  nixpkgs.config = {
+    allowBroken = true;
+    problems.handlers = {
+      cups.broken = "warn";
+    };
+  };
   services = {
     gvfs.enable = true;
     # Mount, trash, and other functionalities
@@ -10,7 +16,7 @@
 
     # auto mount usb drives
     udisks2.enable = true;
-    printing.enable = true;
+#     printing.enable = true;
     
     openssh = {
       enable = true;

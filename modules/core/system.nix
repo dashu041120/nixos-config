@@ -1,11 +1,5 @@
 { pkgs, inputs, ... }:
 {
-  # imports = [ inputs.nix-gaming.nixosModules.default ];
-  nixpkgs.config = {
-    problems.handlers = {
-      cups.broken = "warn";
-    };
-  };
   nix = {
     package = pkgs.nix;
     settings = {
@@ -15,23 +9,22 @@
         "flakes"
       ];
       substituters = [
+        "https://nyx-cache.chaotic.cx/"
         "https://nix-community.cachix.org"
         "https://nix-gaming.cachix.org"
         "https://hyprland.cachix.org"
-        # "https://ghostty.cachix.org"
-        # cache mirror located in China
-        # status: https://mirror.sjtu.edu.cn/
-        # "https://mirror.sjtu.edu.cn/nix-channels/store"
-        # status: https://mirrors.ustc.edu.cn/status/
+        "https://noctalia.cachix.org"
+        "https://cache.numtide.com"
         "https://mirrors.ustc.edu.cn/nix-channels/store"
-
         "https://cache.nixos.org"
       ];
       trusted-public-keys = [
+        "nyx-cache.chaotic.cx:dJxTrgMC3V3cFfyIiBQDQorG6k1LsqurH/srpMSq7qk="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        # "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
+        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+        "cache.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
       ];
       builders-use-substitutes = true;
     };
@@ -66,8 +59,8 @@
     m4
     gperf
     libGLU libGL
-    xorg.libXi xorg.libXmu freeglut
-    xorg.libXext xorg.libX11 xorg.libXv xorg.libXrandr zlib 
+    libxi libxmu freeglut
+    libxext libx11 libxv libxrandr zlib
     ncurses5
     stdenv.cc
     binutils
@@ -88,8 +81,7 @@
     LC_TIME = "zh_CN.UTF-8";
   };
 
-  #Enable CUPS to print documents.
-  services.printing.enable = true;
+
 
   fonts = {
     packages = with pkgs; [
@@ -104,9 +96,9 @@
       # nerdfonts
       # https://github.com/NixOS/nixpkgs/blob/nixos-unstable-small/pkgs/data/fonts/nerd-fonts/manifests/fonts.json
       nerd-fonts.symbols-only # symbols icon only
-      nerd-fonts.fira-code
+#       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
-      nerd-fonts.iosevka
+#       nerd-fonts.iosevka
     ];
     fontDir.enable = true;
     # use fonts specified by user rather than default ones
@@ -133,5 +125,5 @@
 
   security.polkit.enable = true;
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "26.05";
 }

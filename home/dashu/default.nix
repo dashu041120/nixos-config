@@ -14,7 +14,9 @@
     ./browser.nix                     # firefox based browser
     # ./btop.nix                        # resouces monitor 
     ./cava.nix
-    ./dconf.nix
+
+#     ./dconf.nix
+
 #     ./fastfetch.nix                   # fetch tool
     ./fzf.nix                         # fuzzy finder
     ./gaming.nix                      # packages related to gaming
@@ -43,7 +45,7 @@
 #     ./nvim.nix                        # neovim editor
     ./niri                        # niri
     ./oh-my-posh.nix
-    # ./obs-studio.nix                 # screen recorder
+    ./obs-studio.nix                 # screen recorder
 #     ./p10k/p10k.nix
 #     ./packages                        # other packages
     ./pro-audio

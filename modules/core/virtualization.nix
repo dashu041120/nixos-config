@@ -28,7 +28,6 @@
     # sakaya
     # Run native wine applications inside declarative systemd-nspawn containers. 
     # sakaya functions as a replacement for wine on the host. Works well with NixOS.
-    bottles
   ];
   
 

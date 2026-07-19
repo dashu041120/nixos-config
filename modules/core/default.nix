@@ -3,6 +3,7 @@
 
 
   imports = [
+    ./nixpkgs.nix
     ./bootloader.nix
     ./marathon-grub-theme.nix
     # ./cosmic.nix
@@ -13,7 +14,7 @@
     ./garbage_clean.nix
     # ./gnome.nix
     ./kde.nix
-    ./cinnamon.nix
+    # ./cinnamon.nix
     ./pipewire.nix
     ./programs.nix
     ./sddm.nix
@@ -23,7 +24,7 @@
     ./user.nix
     ./wayland.nix
     ./virtualization.nix
-    ./game.nix
+#     ./game.nix
     ./net-forwarding.nix
   ];
 }
