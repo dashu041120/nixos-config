@@ -262,6 +262,9 @@
       # <<< conda initialize <<<
 
       export PATH=/home/dashu/.mimocode/bin:$PATH
+
+      # thefuck alias
+      eval $(thefuck --alias)
     '';
   };
 
@@ -281,5 +284,6 @@
     wget          # 下载工具
     unzip         # 解压工具
     zip           # 压缩工具
+    thefuck       # 命令纠错工具
   ];
 }
