@@ -27,7 +27,7 @@
     # ./gpu-optimization.nix            # GPU performance optimization
     # ./fcitx5                     # window manager
     ./fonts                      # font configuration
-    ./flatpak.nix
+    # ./flatpak.nix
     ./cli.nix
     ./dev.nix
     ./gui.nix

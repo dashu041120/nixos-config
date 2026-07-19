@@ -19,7 +19,7 @@
     gnumake
     # valgrind
     # llvmPackages_20.clang-tools
-    llvmPackages.clangUseLLVM
+    # llvmPackages.clangUseLLVM  # 与 gcc 冲突，都提供 c++ 命令
     llvmPackages.clang-tools
     # arrow-c1pp
     meson

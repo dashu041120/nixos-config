@@ -11,13 +11,13 @@ in
 
     # Claude Code Ecosystem
     cc-switch-cli
-    oh-my-claudecode
+    # oh-my-claudecode
 
     # Skills & Plugins
     claude-plugins
     skills
 
     # Utilities
-    agent-browser
+    # agent-browser
   ];
 }
