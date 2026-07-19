@@ -27,7 +27,7 @@
     python3
     # conda
     uv
-    jre8
+    # jre8  # 与 jdk 冲突，都提供 java 命令
     jdk
 
     ## nodejs
