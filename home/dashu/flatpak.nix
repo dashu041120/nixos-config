@@ -16,9 +16,9 @@
       "com.github.nickvdp.CrossMacro"
       "io.github.flattool.Warehouse"
       "io.missioncenter.MissionCenter"
-      "io.podman_desktop.PodmanDesktop"
+      # "io.podman_desktop.PodmanDesktop"
       "net.davidotek.pupgui2"
-      "org.kde.kdenlive"
+      # "org.kde.kdenlive"
       "io.github.vikdevelop.SaveDesktop"
     ];
   };

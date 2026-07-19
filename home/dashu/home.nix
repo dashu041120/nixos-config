@@ -14,7 +14,8 @@
     # the Home Manager release notes for a list of state version
     # changes in each release.
     stateVersion = "26.05";
-    
+    shell.enableZshIntegration = true;
+    shell.enableBashIntegration = true;
     # Install Home Manager CLI（已通过 flake 管理，无需重复安装）
     # packages = with pkgs; [
     #   home-manager
@@ -45,4 +46,5 @@
   
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  
 }

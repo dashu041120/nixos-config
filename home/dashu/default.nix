@@ -11,15 +11,15 @@
     # ./aseprite.nix           # pixel art editor
     ./alacritty.nix         # terminal emulator
     ./bat.nix                         # better cat command
-    ./browser.nix                     # firefox based browser
+    # ./browser.nix                     # firefox based browser
     # ./btop.nix                        # resouces monitor 
-    ./cava.nix
+    # ./cava.nix
 
 #     ./dconf.nix
 
 #     ./fastfetch.nix                   # fetch tool
     ./fzf.nix                         # fuzzy finder
-    ./gaming.nix                      # packages related to gaming
+    # ./gaming.nix                      # packages related to gaming
 
     # [TODO]
     ./ghostty.nix                     # terminal
@@ -44,13 +44,11 @@
     ./nix-direnv.nix                 # nix-direnv integration
 #     ./nvim.nix                        # neovim editor
     ./niri                        # niri
-    ./oh-my-posh.nix
-    ./obs-studio.nix                 # screen recorder
-#     ./p10k/p10k.nix
-#     ./packages                        # other packages
-    ./pro-audio
-#     ./retroarch.nix  
-#     ./rofi.nix                        # launcher
+    # ./oh-my-posh.nix
+    # ./obs-studio.nix                 # screen recorder
+
+    # ./pro-audio
+
 #     ./scripts/scripts.nix             # personal scripts
 #     ./ssh.nix                         # ssh config
     ./starship.nix                     # shell prompt
@@ -58,18 +56,21 @@
 #     ./swaylock.nix                    # lock screen
 #     ./swayosd.nix                     # brightness / volume wiget
 #     ./swaync/swaync.nix               # notification deamon
-      ./social.nix                     # social apps
+    #   ./social.nix                     # social apps
+
     #   ./theme
+
 #     # ./viewnior.nix                    # image viewer
     
-    ./variables.nix                    # environment variables may cause some problems
+    # ./variables.nix                    # environment variables may cause some problems
 
 #     ./waybar                          # status bar
 #     ./waypaper.nix                    # GUI wallpaper picker
-    ./wps-office.nix                # WPS office
-    ./xdg.nix
+    # ./wps-office.nix                # WPS office
+    # ./xdg.nix
     ./yazi.nix                        # file manager
     ./zsh.nix                            # shell
+    ./llm-agents.nix                     # AI coding agents
   ];
 
   programs.git.settings = {

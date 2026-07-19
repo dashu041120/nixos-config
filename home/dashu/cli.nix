@@ -5,9 +5,9 @@
     # duf                               # disk information
     # eza                               # ls replacement
     # fd                                # find replacement
-    gping                             # ping with a graph
-    gtrash                            # rm replacement, put deleted files in system trash
-    trash-cli
+    # gping                             # ping with a graph
+    # gtrash                            # rm replacement, put deleted files in system trash
+    # trash-cli
     # hevi                              # hex viewer
     # hexyl                             # hex viewer
     # man-pages                         # extra man pages
@@ -23,18 +23,18 @@
     asciinema-agg
     binsider
     bitwise                           # cli tool for bit / hex manipulation
-    broot
-    btop                             # tree files view
+    # broot
+    # btop                             # tree files view
     # baidupcs-go                      # Baidu Netdisk CLI client
     caligula                          # User-friendly, lightweight TUI for disk imaging
     hyperfine                         # benchmarking tool
     pastel                            # cli to manipulate colors
-    swappy                            # snapshot editing tool
+    
     tdf                               # cli pdf viewer
     tokei                             # project line counter
     translate-shell                   # cli translator
     # woomer
-    htop
+    # htop
     # switcheroo-control
 
     # rar
@@ -74,42 +74,42 @@
     ani-cli #  A cli tool to browse and play anime 
     # imv  # imv is a command-line image viewer 
     lowfi  
-    ffmpeg-full
+    # ffmpeg-full
     
     ## Utilities
-    entr                              # perform action when file change
+    # entr                              # perform action when file change
     # ffmpeg  # removed to avoid conflict with ffmpeg-full
-    file                              # Show file information
-    jq                                # JSON processor
-    killall
-    libnotify
+    # file                              # Show file information
+    # jq                                # JSON processor
+    # killall
+    # libnotify
     mimeo
     # openssl
     pamixer                           # pulseaudio command line mixer
     playerctl                         # controller for media players
     poweralertd
-    unzip
-    wget
-    wl-clipboard                      # clipboard utils for wayland (wl-copy, wl-paste)
-    xdg-utils
+    # unzip
+    # wget
+    # wl-clipboard                      # clipboard utils for wayland (wl-copy, wl-paste)
+    # xdg-utils
 
     # winetricks
     # wineWow64Packages.stableFull
     # vkd3d
     # coreutils-prefixed
-    gpaste
+    # gpaste
 
     nh  # Yet another nix cli helper
-    wayland-utils
-    wl-clipboard
-    wl-clipboard-x11
+    # wayland-utils
+    # wl-clipboard
+    # wl-clipboard-x11
     
-    wf-recorder
-    gpu-screen-recorder
+    # wf-recorder
+    # gpu-screen-recorder
 
-    yad
-    brightnessctl
+    # yad
+    # brightnessctl
     
-    power-profiles-daemon
+    # power-profiles-daemon
   ];
 }
