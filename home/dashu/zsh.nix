@@ -263,8 +263,8 @@
 
       export PATH=/home/dashu/.mimocode/bin:$PATH
 
-      # thefuck alias
-      eval $(thefuck --alias)
+      # pay-respects alias (replacement for thefuck)
+      eval "$(pay-respects zsh --alias)"
     '';
   };
 
@@ -284,6 +284,6 @@
     wget          # 下载工具
     unzip         # 解压工具
     zip           # 压缩工具
-    thefuck       # 命令纠错工具
+    pay-respects  # 命令纠错工具 (替代 thefuck)
   ];
 }
